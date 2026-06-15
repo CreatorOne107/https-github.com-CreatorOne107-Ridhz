@@ -87,40 +87,55 @@
         }
 
         
+        /* --- UPDATE CSS KARTU SEJAJAR + ANIMASI MELAYANG --- */
         .cards {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px; 
+            gap: 20px; /* Jarak antar kartu biar gak terlalu rapat */
             margin-bottom: 40px;
             width: 100%;
-            max-width: 650px; 
+            max-width: 650px;
         }
 
         .card {
-            position: relative; 
-            width: 160px; 
-            height: 220px; 
+            position: relative;
+            width: 160px;
+            height: 220px;
             object-fit: cover;
             border-radius: 16px;
             border: 2px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             background: #111;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+            /* Animasi melayang otomatis naik-turun */
+            animation: melayang 4s ease-in-out infinite;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        
-        .card-1, .card-2, .card-3 {
-            transform: none;
-            z-index: 1;
-        }
+        /* Variasi waktu animasi biar gerakannya gak barengan (efek estetik) */
+        .card-1 { animation-delay: 0s; }
+        .card-2 { animation-delay: 0.5s; }
+        .card-3 { animation-delay: 1s; }
 
-        
+        /* Efek saat kursor menyentuh kartu (Hover) */
         .card:hover {
-            transform: translateY(-10px) scale(1.05);
+            transform: scale(1.1); /* Kartu membesar pas didekati */
             border-color: var(--primary);
-            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.3);
-            z-index: 2;
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.4);
+            z-index: 10;
+            animation-play-state: paused; /* Gerakan melayang berhenti pas disentuh */
+        }
+
+        /* Rumus pergerakan animasi naik turun halus */
+        @keyframes melayang {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px); /* Naik ke atas 10 pixel */
+            }
+        }
         }
 
         .hero h1 {
