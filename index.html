@@ -741,6 +741,138 @@
 
 
 
+
+
+        /* --- FIX JARAK JUDUL PENDIRI ---
+           Judul dibuat sedikit naik dan jaraknya ke card diperlebar. */
+        #member {
+            padding-top: 96px;
+        }
+
+        #member .section-head {
+            margin-bottom: 72px;
+            transform: translateY(-18px);
+        }
+
+        #member .section-head h2 {
+            line-height: 1.15;
+            text-shadow: 3px 3px 0 rgba(0,0,0,.55);
+        }
+
+
+
+        /* --- FIX MOBILE DAFTAR GENERASI ---
+           Tampilan card generasi dibuat lebih rapi di HP: gambar, badge, dan teks sejajar. */
+        #generation .grid-3 {
+            align-items: stretch;
+        }
+
+        #generation .glass-card {
+            min-height: 360px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        #generation .gen-card-img {
+            width: 100%;
+            max-height: 190px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        #generation .badge {
+            width: fit-content;
+        }
+
+        #generation .glass-card h3 {
+            font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+            line-height: 1.22;
+            letter-spacing: -.6px;
+            margin-bottom: 6px;
+        }
+
+        #generation .glass-card p {
+            margin-top: 4px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 880px) {
+            #generation .grid-3 {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+                margin: 0 auto;
+                gap: 16px;
+            }
+
+            #generation .glass-card {
+                min-height: unset;
+                display: grid;
+                grid-template-columns: 112px 1fr;
+                grid-template-rows: auto auto auto;
+                column-gap: 16px;
+                align-items: center;
+                padding: 18px;
+                border-radius: 22px;
+            }
+
+            #generation .gen-card-img {
+                grid-row: 1 / 4;
+                width: 112px;
+                height: 112px;
+                aspect-ratio: 1 / 1;
+                margin: 0;
+                border-radius: 18px;
+            }
+
+            #generation .badge {
+                justify-self: start;
+                margin: 0 0 8px;
+                padding: 6px 13px;
+                font-size: .76rem;
+            }
+
+            #generation .glass-card h3 {
+                font-size: 1.25rem;
+                line-height: 1.25;
+                margin: 0;
+                letter-spacing: -.4px;
+            }
+
+            #generation .glass-card p {
+                margin-top: 6px;
+                font-size: .92rem;
+                line-height: 1.45;
+            }
+        }
+
+        @media (max-width: 420px) {
+            #generation .grid-3 {
+                gap: 14px;
+            }
+
+            #generation .glass-card {
+                grid-template-columns: 94px 1fr;
+                column-gap: 14px;
+                padding: 15px;
+            }
+
+            #generation .gen-card-img {
+                width: 94px;
+                height: 94px;
+                border-radius: 16px;
+            }
+
+            #generation .glass-card h3 {
+                font-size: 1.08rem;
+            }
+
+            #generation .badge {
+                padding: 5px 11px;
+                font-size: .72rem;
+            }
+        }
+
         /* --- PENDIRI CREATOR ANIME ONE: 3 slot seperti card Daftar Generasi --- */
         .founder-podium {
             display: grid;
@@ -888,6 +1020,15 @@
         }
 
         @media (max-width: 880px) {
+            #member {
+                padding-top: 72px;
+            }
+
+            #member .section-head {
+                margin-bottom: 40px;
+                transform: none;
+            }
+
             .founder-podium {
                 grid-template-columns: 1fr;
                 max-width: 520px;
@@ -1250,6 +1391,48 @@
 <p style="margin-top: 8px;">Creator Anime One Community .</p>
 </div>
 </footer>
+<script>
+        // Ganti nomor ini dengan nomor bot WhatsApp kamu, contoh: 6281234567890
+        const NOMOR_BOT = "6281234567890";
+
+        function bukaBot(perintah) {
+            const pesan = encodeURIComponent(perintah);
+            window.open(`https://wa.me/${NOMOR_BOT}?text=${pesan}`, "_blank");
+        }
+
+        // Mouse drag untuk slider admin di desktop/laptop
+        const adminSlider = document.getElementById("adminSlider");
+
+        if (adminSlider) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            adminSlider.addEventListener("mousedown", (e) => {
+                isDown = true;
+                adminSlider.classList.add("dragging");
+                startX = e.pageX - adminSlider.offsetLeft;
+                scrollLeft = adminSlider.scrollLeft;
+            });
+
+            adminSlider.addEventListener("mouseleave", () => {
+                isDown = false;
+                adminSlider.classList.remove("dragging");
+            });
+
+            adminSlider.addEventListener("mouseup", () => {
+                isDown = false;
+                adminSlider.classList.remove("dragging");
+            });
+
+            adminSlider.addEventListener("mousemove", (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - adminSlider.offsetLeft;
+                const walk = (x - startX) * 1.4;
+                adminSlider.scrollLeft = scrollLeft - walk;
+            });
+        }
 </script>
 </body>
 </html>
