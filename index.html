@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreatorAnimeOne | Hub Kreator</title>
+    
+    <!-- Favicon (Menggunakan foto profil kamu juga) -->
+    <link rel="icon" type="image/png" href="./avatar.png?v=1">
+    
+    <!-- Font Keren dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /* Background gradasi gelap estetik ala anime dashboard */
+            background: linear-gradient(135deg, #0f0f1a, #1a1a2e, #16213e);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-container {
+            /* Efek Kaca Transparan (Glassmorphism) */
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animasi Foto Profil Bulat */
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff4e50;
+            box-shadow: 0 0 20px rgba(255, 78, 80, 0.5);
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .avatar:hover {
+            transform: rotate(360deg) scale(1.05);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #ff4e50;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .bio {
+            font-size: 0.95rem;
+            color: #b2bec3;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Wrapper untuk deretan tombol */
+        .links-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Style Tombol Utama */
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efek Hover Menyala dan Bergeser */
+        .link-item:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(255, 78, 80, 0.4);
+            color: #0f0f1a;
+        }
+
+        /* Footer Hak Cipta Singkat */
+        .footer {
+            margin-top: 35px;
+            font-size: 0.8rem;
+            color: #636e72;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <!-- Foto Profil Kamu -->
+        <img src="./avatar.png?v=1" alt="CreatorAnimeOne Avatar" class="avatar">
+        
+        <!-- Nama Akun / Titel -->
+        <h1>CreatorAnimeOne</h1>
+        <div class="tagline">Anime Content Creator</div>
+        
+        <!-- Deskripsi Singkat/Bio -->
+        <p class="bio">Tempat berkumpulnya para pecinta anime. Mengulas rekomendasi, info terbaru, dan pembahasan menarik seputar dunia anime & manga favoritmu!</p>
+        
+        <!-- Deretan Link Tombol Media Sosial -->
+        <div class="links-wrapper">
+            <!-- Ganti tanda # di bawah dengan link akun asli kamu -->
+            <a href="#" target="_blank" class="link-item">📺 YouTube Channel</a>
+            <a href="#" target="_blank" class="link-item">📸 Instagram</a>
+            <a href="#" target="_blank" class="link-item">🎵 TikTok</a>
+            <a href="#" target="_blank" class="link-item">💬 Grup Komunitas Telegram</a>
+            <a href="#" target="_blank" class="link-item">☕ Dukung via Trakteer / Saweria</a>
+        </div>
+        
+        <div class="footer">
+            © 2026 CreatorAnimeOne. All Rights Reserved.
+        </div>
+    </div>
+
+</body>
+</html>
