@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="id">
@@ -739,84 +738,166 @@
 
 
 
-        /* --- TIKTOK ADMIN SECTION --- */
-        .tiktok-grid {
+        /* --- PENDIRI CREATOR ANIME ONE: 3 slot seperti card Daftar Generasi --- */
+        .founder-podium {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .tiktok-card {
-            min-height: 270px;
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: 1fr 1.18fr 1fr;
+            gap: 20px;
             align-items: center;
-            text-align: center;
-            justify-content: space-between;
+            max-width: 1060px;
+            margin: 0 auto;
         }
 
-        .tiktok-avatar {
-            width: 92px;
-            height: 92px;
-            border-radius: 50%;
+        .founder-card {
+            min-height: 430px;
+            padding: 24px;
+            border-radius: 28px;
+            text-align: left;
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,.09);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: .25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-card::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, .22), transparent 35%);
+            pointer-events: none;
+        }
+
+        .founder-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(196, 181, 253, .28);
+            background: rgba(255,255,255,.105);
+        }
+
+        .founder-card.owner {
+            min-height: 500px;
+            padding: 28px;
+            transform: translateY(-22px) scale(1.05);
+            border-color: rgba(196,181,253,.32);
+            box-shadow: 0 30px 90px rgba(139,92,246,.18), 0 24px 70px rgba(0,0,0,.28);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(139, 92, 246, .30), transparent 34%),
+                rgba(255,255,255,.095);
+        }
+
+        .founder-card.owner:hover {
+            transform: translateY(-28px) scale(1.07);
+        }
+
+        .founder-photo {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            border-radius: 20px;
+            margin: 0 0 18px;
             position: relative;
             overflow: hidden;
             display: grid;
             place-items: center;
-            margin: 0 auto 14px;
-            background: linear-gradient(135deg, rgba(56,189,248,.28), rgba(244,114,182,.28));
-            border: 2px solid rgba(255,255,255,.16);
-            box-shadow: 0 18px 40px rgba(0,0,0,.26);
+            background:
+                radial-gradient(circle at 50% 30%, rgba(139,92,246,.25), transparent 35%),
+                rgba(255,255,255,.045);
+            border: 1px solid rgba(255,255,255,.14);
+            box-shadow: 0 18px 35px rgba(0,0,0,.22);
         }
 
-        .tiktok-avatar img {
+        .founder-card.owner .founder-photo {
+            aspect-ratio: 16 / 11;
+            border-radius: 22px;
+            box-shadow: 0 24px 48px rgba(0,0,0,.30);
+        }
+
+        .founder-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        .tiktok-placeholder {
+        .founder-placeholder {
             position: absolute;
-            inset: 0;
+            inset: 12px;
+            border: 1px dashed rgba(196,181,253,.35);
+            border-radius: 18px;
             display: grid;
             place-items: center;
-            font-size: 1.8rem;
+            text-align: center;
+            padding: 10px;
+            color: #c4b5fd;
+            font-size: .85rem;
             font-weight: 800;
-            color: #fff;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            line-height: 1.35;
+            background: rgba(255,255,255,.035);
         }
 
-        .tiktok-avatar img + .tiktok-placeholder {
+        .founder-photo img + .founder-placeholder {
             display: none;
         }
 
-        .tiktok-username {
-            color: #c4b5fd;
-            font-weight: 800;
-            margin-bottom: 10px;
-            font-size: .92rem;
-        }
-
-        .tiktok-followers {
+        .founder-role {
             display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-            padding: 8px 12px;
+            padding: 7px 11px;
             border-radius: 999px;
-            background: rgba(255,255,255,.065);
-            border: 1px solid rgba(255,255,255,.10);
-            color: var(--text-muted);
-            font-weight: 700;
+            color: #d8ccff;
+            background: rgba(139, 92, 246, .18);
+            border: 1px solid rgba(139, 92, 246, .25);
+            font-size: .78rem;
+            font-weight: 800;
             margin-bottom: 14px;
         }
 
-        .tiktok-note {
-            margin-top: 18px;
-            color: var(--text-soft);
-            font-size: .88rem;
-            text-align: center;
+        .founder-card.owner .founder-role {
+            color: #fff;
+            background: rgba(139, 92, 246, .28);
+            border-color: rgba(196,181,253,.38);
+        }
+
+        .founder-card h3 {
+            font-size: 1.18rem;
+            margin-bottom: 10px;
+            letter-spacing: -.3px;
+        }
+
+        .founder-card.owner h3 {
+            font-size: clamp(1.65rem, 3vw, 2.35rem);
+            letter-spacing: -1px;
+        }
+
+        .founder-card p {
+            color: var(--text-muted);
+            line-height: 1.65;
+            font-size: .95rem;
+        }
+
+        .founder-card.owner p {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 880px) {
+            .founder-podium {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+            }
+
+            .founder-card.owner {
+                transform: none;
+                order: -1;
+            }
+
+            .founder-card.owner:hover {
+                transform: translateY(-5px);
+            }
         }
 
         /* --- MANUAL ADMIN SCROLL: HP swipe + mouse drag --- */
@@ -875,7 +956,6 @@
             .nav-menu { display: none; }
             .info-banner, .stats-grid, .rank-grid { grid-template-columns: 1fr; }
             .member-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .tiktok-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .hashtag-grid { grid-template-columns: 1fr; }
         }
 
@@ -890,7 +970,6 @@
             .cards:hover .card-3 { transform: translateX(-50%) translateX(70px) rotate(18deg); }
             .info-copy { padding: 26px; }
             .member-list { grid-template-columns: 1fr; }
-            .tiktok-grid { grid-template-columns: 1fr; }
             .admin-card { width: 200px; flex-basis: 200px; min-height: 235px; }
 
             .join-logo-wrap { width: min(190px, 78vw); }
@@ -912,7 +991,7 @@
 <div class="nav-menu">
 <a href="#info">Info</a>
 <a href="#generation">Gen</a>
-<a href="#member">TikTok Admin</a>
+<a href="#member">Pendiri</a>
 <a href="#admin">Admin</a>
 </div>
 </div>
@@ -1027,90 +1106,38 @@
 <section id="member">
 <div class="container">
 <div class="section-head">
-<h2>Akun TikTok Para Admin</h2>
-<p>Daftar akun TikTok admin Creator Anime One. Klik kartu untuk membuka profil TikTok masing-masing.</p>
+<h2>Pendiri Creator Anime One</h2>
+<p>Susunan inti Creator Anime One. Tampilannya dibuat seperti card Daftar Generasi, dengan Owner di tengah yang lebih besar.</p>
 </div>
-<div class="tiktok-grid">
-<article class="glass-card tiktok-card">
-<div>
-<div class="tiktok-avatar">
-<img alt="Profile TikTok Ridhz Tempesto" onerror="this.remove()" src="tiktok-ridhz.jpg"/>
-<span class="tiktok-placeholder">R</span>
+<div class="founder-podium">
+<article class="glass-card founder-card co-owner">
+<div class="founder-photo">
+<img alt="Foto Co-Owner" onerror="this.remove()" src="co-owner.jpg"/>
+<span class="founder-placeholder">+ Add<br/>Image</span>
 </div>
+<span class="founder-role">Co-Owner</span>
+<h3>Co-Owner</h3>
+<p>Partner pendiri yang membantu pengembangan komunitas, koordinasi, dan arah kegiatan Creator Anime One.</p>
+</article>
+<article class="glass-card founder-card owner">
+<div class="founder-photo">
+<img alt="Foto Owner" onerror="this.remove()" src="owner.jpg"/>
+<span class="founder-placeholder">+ Add<br/>Image</span>
+</div>
+<span class="founder-role">Owner</span>
 <h3>Ridhz Tempesto</h3>
-<div class="tiktok-username">@ridhztempesto</div>
-<div class="tiktok-followers">👥 <span>Followers: isi manual</span></div>
-</div>
-<a class="btn btn-primary" href="https://www.tiktok.com/@ridhztempesto" target="_blank" rel="noopener noreferrer">Buka TikTok</a>
+<p>Pendiri utama Creator Anime One dan pusat identitas komunitas CAOFAMS.</p>
 </article>
-<article class="glass-card tiktok-card">
-<div>
-<div class="tiktok-avatar">
-<img alt="Profile TikTok Jojo Cijoo" onerror="this.remove()" src="tiktok-jojo.jpg"/>
-<span class="tiktok-placeholder">J</span>
+<article class="glass-card founder-card admin">
+<div class="founder-photo">
+<img alt="Foto Admin" onerror="this.remove()" src="admin.jpg"/>
+<span class="founder-placeholder">+ Add<br/>Image</span>
 </div>
-<h3>Jojo Cijoo</h3>
-<div class="tiktok-username">@jojojocijoo</div>
-<div class="tiktok-followers">👥 <span>Followers: isi manual</span></div>
-</div>
-<a class="btn btn-primary" href="https://www.tiktok.com/@jojojocijoo" target="_blank" rel="noopener noreferrer">Buka TikTok</a>
-</article>
-<article class="glass-card tiktok-card">
-<div>
-<div class="tiktok-avatar"><span class="tiktok-placeholder">+</span></div>
-<h3>Admin Slot 03</h3>
-<div class="tiktok-username">@username</div>
-<div class="tiktok-followers">👥 <span>Followers: -</span></div>
-</div>
-<a class="btn btn-secondary" href="#admin">Isi Akun</a>
-</article>
-<article class="glass-card tiktok-card">
-<div>
-<div class="tiktok-avatar"><span class="tiktok-placeholder">+</span></div>
-<h3>Admin Slot 04</h3>
-<div class="tiktok-username">@username</div>
-<div class="tiktok-followers">👥 <span>Followers: -</span></div>
-</div>
-<a class="btn btn-secondary" href="#admin">Isi Akun</a>
-</article>
-<article class="glass-card tiktok-card">
-<div>
-<div class="tiktok-avatar"><span class="tiktok-placeholder">+</span></div>
-<h3>Admin Slot 05</h3>
-<div class="tiktok-username">@username</div>
-<div class="tiktok-followers">👥 <span>Followers: -</span></div>
-</div>
-<a class="btn btn-secondary" href="#admin">Isi Akun</a>
-</article>
-<article class="glass-card tiktok-card">
-<div>
-<div class="tiktok-avatar"><span class="tiktok-placeholder">+</span></div>
-<h3>Admin Slot 06</h3>
-<div class="tiktok-username">@username</div>
-<div class="tiktok-followers">👥 <span>Followers: -</span></div>
-</div>
-<a class="btn btn-secondary" href="#admin">Isi Akun</a>
-</article>
-<article class="glass-card tiktok-card">
-<div>
-<div class="tiktok-avatar"><span class="tiktok-placeholder">+</span></div>
-<h3>Admin Slot 07</h3>
-<div class="tiktok-username">@username</div>
-<div class="tiktok-followers">👥 <span>Followers: -</span></div>
-</div>
-<a class="btn btn-secondary" href="#admin">Isi Akun</a>
-</article>
-<article class="glass-card tiktok-card">
-<div>
-<div class="tiktok-avatar"><span class="tiktok-placeholder">+</span></div>
-<h3>Admin Slot 08</h3>
-<div class="tiktok-username">@username</div>
-<div class="tiktok-followers">👥 <span>Followers: -</span></div>
-</div>
-<a class="btn btn-secondary" href="#admin">Isi Akun</a>
+<span class="founder-role">Admin</span>
+<h3>Admin</h3>
+<p>Pengurus yang membantu menjaga aktivitas, informasi, seleksi, dan dukungan untuk member komunitas.</p>
 </article>
 </div>
-<p class="tiktok-note">Catatan: jumlah followers di GitHub Pages ini dibuat manual. Kalau ingin otomatis real-time dari TikTok, perlu backend/API agar datanya bisa diperbarui aman.</p>
 </div>
 </section>
 <section id="rank">
