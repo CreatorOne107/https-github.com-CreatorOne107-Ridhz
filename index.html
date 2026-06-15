@@ -1,419 +1,371 @@
 <!DOCTYPE html>
-<html lang='id'>
+<html lang="id">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'/>
-
-    <title>Kagenou Family - Beranda</title>
-    <meta name='description' content='Mencari top 1 marga anime di TikTok? Kagenou Family adalah komunitas kreator paling kece dan paling rame di Indonesia. Join sekarang!'>
-    <meta name='keywords' content='Kagenou Family, KGN, Kreator & Editor'>
-    <meta name='robots' content='index, follow'>
-
-    <link rel='preconnect' href='https://fonts.googleapis.com'>
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-
-    <meta property='og:title' content='Kagenou Family'/>
-    <meta property='og:description' content='Sebuah marga para kreator anime.'/>
-    <meta property='og:image' content='https://kageen.my.id/assets/pfp-community.jpg'/>
-    <meta property='og:url' content='https://kageen.my.id'/>
-
-    <meta name='twitter:card' content='summary_large_image'>
-    <meta name='twitter:title' content='Kagenou Family'>
-    <meta name='twitter:description' content='Sebuah marga para kreator anime.'>
-    <meta name='twitter:image' content='https://kageen.my.id/assets/pfp-community.jpg'>
-
-    <link rel='sitemap' type='application/xml' href='https://kageen.my.id/sitemap.xml'/>
-
-    <link rel='canonical' href='https://kageen.my.id/'/>
-    <link rel='icon' type='image/jpeg' href='./assets/icon-website.png'>
-
-    <link href='https://fonts.cdnfonts.com/css/satoshi' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap' rel='stylesheet'>
-    <link rel='stylesheet' href='assets/index.css?v=2'>
-
-    <script type='application/ld+json'>
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Kagenou Family",
-        "url": "https://kageen.my.id",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://kageen.my.id/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Anime One</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --secondary: #2563eb;
+            --bg: #08080f;
+            --glass: rgba(255, 255, 255, .08);
+            --text: #ffffff;
+            --text-muted: #94a3b8;
         }
-    }
-    </script>
 
-    <script type='application/ld+json'>
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Kagenou Family",
-        "url": "https://kageen.my.id",
-        "logo": "https://kageen.my.id/assets/pfp-community.jpg",
-        "description": "Sebuah marga para kreator anime.",
-        "sameAs": ["https://www.tiktok.com/@kagenou.family"]
-    }
-    </script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-    <script type='application/ld+json'>
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Beranda",
-            "item": "https://kageen.my.id/"
-        }]
-    }
-    </script>
+        body {
+            background: 
+                radial-gradient(circle at top, rgba(124, 58, 237, .35), transparent 40%),
+                radial-gradient(circle at bottom, rgba(37, 99, 235, .25), transparent 40%),
+                var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 0 20px;
+        }
+
+        /* --- LAYOUT GLOBAL --- */
+        section {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 20px 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #ffffff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- STYLING GLASS CARD --- */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 58, 237, 0.3);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
+        }
+
+        /* --- 1. HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding-top: 100px;
+            margin-top: 0;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cards {
+            position: relative;
+            width: 200px;
+            height: 260px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Efek Tumpuk Tiga Kartu */
+        .card-1 { transform: rotate(-10deg) translateX(-20px); z-index: 1; }
+        .card-2 { transform: rotate(0deg); z-index: 2; }
+        .card-3 { transform: rotate(10deg) translateX(20px); z-index: 1; }
+
+        /* Hover Animasi Kartu Menyebar */
+        .cards:hover .card-1 { transform: rotate(-20deg) translateX(-70px); }
+        .cards:hover .card-3 { transform: rotate(20deg) translateX(70px); }
+        .cards:hover .card-2 { transform: scale(1.05); z-index: 3; }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(45deg, #ffffff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #6d28d9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(124, 58, 237, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* --- 2. TENTANG KOMUNITAS --- */
+        .about h3 { margin-bottom: 10px; color: var(--primary); }
+        .about p { color: var(--text-muted); line-height: 1.6; }
+
+        /* --- 3. STATISTIK MEMBER --- */
+        .stats { text-align: center; }
+        .stat-num { font-size: 2.5rem; font-weight: 800; color: var(--secondary); margin-bottom: 5px; }
+
+        /* --- 4. GENERATION (1, 2, 3) --- */
+        .gen-badge {
+            background: rgba(124, 58, 237, 0.2);
+            color: #a78bfa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* --- 5. TOP MEMBER & CREATOR --- */
+        .avatar-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* --- 6. GALERI EDIT ANIME --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            width: 100%;
+            height: 240px;
+            background: var(--glass);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- 7. FAQ SECTION --- */
+        .faq-item { margin-bottom: 15px; text-align: left; }
+        .faq-item h4 { margin-bottom: 5px; color: #fff; }
+        .faq-item p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- 8. FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
-<body class='no-scroll'>
-    <div id='pageLoader' class='page-loader'>
-        <div class='spinner'></div>
-    </div>
+<body>
 
-    <div class='hero-section'>
-        <div class='container'>
-            <div class='card-wrapper'>
-                <img src='assets/pfp-generation-1.jpg' class='card'>
-                <img src='assets/pfp-generation-2.jpg' class='card'>
-                <img src='assets/pfp-generation-3.jpg' class='card'>
-            </div>
-
-            <h1>Kagenou Family</h1>
-            <p>Sebuah marga editor para kreator anime.</p>
-
-            <div class='btn-wrapper'>
-                <a href='#konten' class='btn btn-primary btn-jelajah'>
-                    <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><polygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76'></polygon></svg>
-                    Jelajahi
-                </a>
-                <a href='#' class='btn btn-secondary'>
-                    <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9'></path><path d='M13.73 21a2 2 0 0 1-3.46 0'></path></svg>
-                    Info
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div id='modalInfo' class='modal'>
-        <div class='modal-content'>
-            <h2>Informasi Kagenou</h2>
-            <p>Selalu Open Member, Gas Join!</p>
-        </div>
-    </div>
-
-   <div id='konten'>
-    <div class='slider'>
-        <div class='slide active'>
-            <img src='assets/pfp-generation-1.jpg'>
-            <h2>Kagenou Family Gen 1</h2>
-            <p>Gen para sepuh. raja ini mah 🤧</p>
+    <!-- 1. HERO SECTION -->
+    <section class="hero">
+        <div class="cards">
+            <img src="assets/gen1.jpg" class="card card-1" alt="Gen 1">
+            <img src="assets/gen2.jpg" class="card card-2" alt="Gen 2">
+            <img src="assets/gen3.jpg" class="card card-3" alt="Gen 3">
         </div>
 
-        <div class='slide'>
-            <img src='assets/pfp-generation-2.jpg'>
-            <h2>Kagenou Family Gen 2</h2>
-            <p>Gen anomali njir. rame lagii 😹</p>
+        <h1>Creator Anime One</h1>
+        <p>Marganya Sepuh Anime.</p>
+
+        <div class="buttons">
+            <a href="#content" class="btn-primary">Jelajahi</a>
+            <a href="https://www.tiktok.com/@officialanimeone" target="_blank" class="btn-secondary">TikTok</a>
         </div>
-
-        <div class='slide'>
-            <img src='assets/pfp-generation-3.jpg'>
-            <h2>Kagenou Family Gen 3</h2>
-            <p>Gen newbie. para pemula abis 😖</p>
-        </div>
-
-       <button class='prev'>‹</button>
-       <button class='next'>›</button>
-    </div>
-
-    <section id='member-count'>
-        <h2>Jumlah Member Kagenou</h2>
-
-        <div class='glass-table'>
-            <table>
-            <tbody class='member-table-body'>
-            </tbody>
-            </table>
-        </div>
-
-        <button class='btn-daftar'>
-            <svg xmlns='http://www.w3.org/2000/svg'
-                width='18'
-                height='18'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                stroke-width='1.5'
-                stroke-linecap='round'
-                stroke-linejoin='round'>
-            <circle cx='12' cy='7' r='4'></circle>
-            <path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'></path>
-            </svg>Daftar Member
-        </button>
-
-        <a href='https://kageen.my.id/join' target='_blank' class='btn-join'>
-            <svg xmlns='http://www.w3.org/2000/svg'
-                width='18'
-                height='18'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                stroke-width='1.5'
-                stroke-linecap='round'
-                stroke-linejoin='round'>
-                <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'></path>
-                <polyline points='15 3 21 3 21 9'></polyline>
-                <line x1='10' y1='14' x2='21' y2='3'></line>
-            </svg>
-            Join
-        </a>
     </section>
-  </div>
 
-  <section class='hashtag-section'>
-    <h2>Hashtag Kagenou Family</h2>
-    <div class='hashtag-container'>
-        <div class='hashtag-group'>
-            <p class='hashtag-subtitle'>#margakagenou</p>
-            <div class='hashtag-wrapper'>
-                <div class='hashtag-card'>
-                    <h3 id='marga-views'>0</h3>
-                    <p>Jumlah Penonton</p>
-                </div>
-                <div class='hashtag-card'>
-                    <h3 id='marga-videos'>0</h3>
-                    <p>Jumlah Video</p>
-                </div>
+    <div id="content"></div>
+
+    <!-- 2. TENTANG KOMUNITAS & FOUNDER/ADMIN -->
+    <section class="about">
+        <h2>Tentang Creator Anime One</h2>
+        <div class="grid-3">
+            <div class="glass-card">
+                <h3>Founder</h3>
+                <p>Ridhz</p>
+            </div>
+            <div class="glass-card">
+                <h3>Admin</h3>
+                <p>Xyzoo</p>
+            </div>
+            <div class="glass-card">
+                <h3>Deskripsi</h3>
+                <p>Creator Anime One adalah komunitas kreator anime yang berisi editor, content creator, dan pecinta anime dari berbagai kalangan.</p>
             </div>
         </div>
-        <div class='hashtag-group'>
-            <p class='hashtag-subtitle'>#kagenoufamily</p>
-            <div class='hashtag-wrapper'>
-                <div class='hashtag-card'>
-                    <h3 id='family-views'>0</h3>
-                    <p>Jumlah Penonton</p>
-                </div>
-                <div class='hashtag-card'>
-                    <h3 id='family-videos'>0</h3>
-                    <p>Jumlah Video</p>
-                </div>
+    </section>
+
+    <!-- 3. STATISTIK MEMBER -->
+    <section class="stats">
+        <h2>Statistik Komunitas</h2>
+        <div class="grid-3">
+            <div class="glass-card">
+                <div class="stat-num">50+</div>
+                <p style="color: var(--text-muted);">Total Anggota Aktif</p>
+            </div>
+            <div class="glass-card">
+                <div class="stat-num">3</div>
+                <p style="color: var(--text-muted);">Generasi Tim</p>
+            </div>
+            <div class="glass-card">
+                <div class="stat-num">1M+</div>
+                <p style="color: var(--text-muted);">Total Tayangan Konten</p>
             </div>
         </div>
-    </div>
-  </section>
+    </section>
 
-  <div id='modalMember' class='modal'>
-    <div class='modal-content modal-member-content'>
-        <h2>Daftar Member Kagenou</h2>
-
-        <input 
-        type='text' 
-        class='member-search' 
-        placeholder='Cari username ...'
-        >
-
-        <div class='member-list-container'>
-        <ul class='member-list'></ul>
-        </div>
-
-        <p class='member-count-text'>
-            Jumlah Member Saat Ini : <span class='member-total'>0</span>
-        </p>
-        <p class='member-footer'>
-            Data ini dari Sumika, verifikasi jika tidak ada.
-        </p>
-    </div>
-  </div>
-
-  <div id='modalDetail' class='modal-detail'>
-    <div class='modal-content modal-detail-content'>
-        <h2 class='detail-title'>Informasi Member</h2>
-
-        <div class='detail-content'>
-            <img class='detail-avatar' src='' alt='avatar'>
-
-            <h3 class='detail-name'></h3>
-            <p class='detail-username'></p>
-
-            <p class='detail-bio'></p>
-
-            <div class='detail-stats'>
-                <p class='detail-followers'></p>
-                <p class='detail-following'></p>
-                <p class='detail-likes'></p>
-                <p class='detail-videos'></p>
+    <!-- 4. GENERATION 1, 2, 3 -->
+    <section class="generations">
+        <h2>Daftar Generasi</h2>
+        <div class="grid-3">
+            <div class="glass-card">
+                <span class="gen-badge">Gen 1</span>
+                <h3>Generasi Pertama</h3>
+                <p style="color: var(--text-muted); margin-top: 10px;">Para sepuh perintis berdirinya komunitas Creator Anime One.</p>
+            </div>
+            <div class="glass-card">
+                <span class="gen-badge">Gen 2</span>
+                <h3>Generasi Kedua</h3>
+                <p style="color: var(--text-muted); margin-top: 10px;">Penerus berbakat dengan karya-karya edit video yang variatif.</p>
+            </div>
+            <div class="glass-card">
+                <span class="gen-badge">Gen 3</span>
+                <h3>Generasi Ketiga</h3>
+                <p style="color: var(--text-muted); margin-top: 10px;">Anggota baru yang penuh semangat dan inovasi segar.</p>
             </div>
         </div>
-    </div>
-  </div>
+    </section>
 
-  <div id='loadingOverlay' class='loading-overlay'>
-    <div class='spinner'></div>
-  </div>
-
-  <section class='top-absensi-section'>
-    <h2>Top Absensi Kagenou</h2>
-    <p id='absensi-subtitle' class='absensi-subtitle'></p>
-    <ul id='top-absensi-list' class='top-member-list'></ul>
-  </section>
-
-  <section class='top-member-section'>
-    <h2>Top Member Kagenou</h2>
-    <div id='top-member-list' class='top-member-list'></div>
-  </section>
-
-  <section class='subadmin-section'>
-    <h2>Admin of Kagenou</h2>
-
-    <div class='subadmin-wrapper'>
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-aril.png'>
-            <h3>Kyuara </h3>
-            <p class='sub-role'>Collab & Select</p>
-            <p class='sub-tag'>𝗞𝘆𝘂𝗞𝘆𝗼𝗸𝗲𝗻 𝗳𝘁 𝗞𝗚𝗡</p>
+    <!-- 5. TOP MEMBER & TOP CREATOR -->
+    <section class="top-ranks">
+        <h2>Apresiasi Member</h2>
+        <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+            <div class="glass-card">
+                <h3 style="color: var(--secondary); margin-bottom: 15px;">🏆 Top Member Bulan Ini</h3>
+                <p style="color: var(--text-muted);">Member paling aktif berinteraksi dan berkontribusi di komunitas.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="color: var(--primary); margin-bottom: 15px;">🔥 Top Creator Terbaik</h3>
+                <p style="color: var(--text-muted);">Kreator dengan konten paling kreatif dan interaksi tertinggi.</p>
+            </div>
         </div>
+    </section>
 
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-rafly.png'>
-            <h3>Sung Kyuu</h3>
-            <p class='sub-role'>Selection Member</p>
-            <p class='sub-tag'>𝙎𝙪𝙣𝙜 𝙆𝙮𝙪𝙪 𝖋𝖙 𝙆𝙂𝙉</p>
+    <!-- 6. GALERI EDIT ANIME -->
+    <section class="gallery">
+        <h2>Galeri Edit Anime</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">🖼️ Karya Editor 1 (assets/edit1.mp4)</div>
+            <div class="gallery-item">🖼️ Karya Editor 2 (assets/edit2.mp4)</div>
+            <div class="gallery-item">🖼️ Karya Editor 3 (assets/edit3.mp4)</div>
+            <div class="gallery-item">🖼️ Karya Editor 4 (assets/edit4.mp4)</div>
         </div>
+    </section>
 
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-renz.png'>
-            <h3>Renz</h3>
-            <p class='sub-role'>Selection Member</p>
-            <p class='sub-tag'>𝙍𝙚𝙣𝙯𝙆𝙖𝙜𝙚𝙣𝙤𝙪 ࿐</p>
+    <!-- 7. FAQ SECTION -->
+    <section class="faq">
+        <h2>FAQ (Tanya Jawab)</h2>
+        <div class="glass-card" style="max-width: 700px; margin: 0 auto;">
+            <div class="faq-item">
+                <h4>❓ Bagaimana cara bergabung dengan Creator Anime One?</h4>
+                <p>Kamu bisa mendaftar saat pendaftaran generasi baru (Open Recruitment) dibuka melalui akun TikTok resmi kami.</p>
+            </div>
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.05); margin: 15px 0;">
+            <div class="faq-item">
+                <h4>❓ Apakah harus bisa mengedit video untuk masuk?</h4>
+                <p>Tidak wajib, kami juga merangkul para pecinta anime biasa, reviewer, maupun ilustrator!</p>
+            </div>
         </div>
+    </section>
 
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-marsel.png'>
-            <h3>Xell</h3>
-            <p class='sub-role'>Host & Select</p>
-            <p class='sub-tag'>𝐃𝐮𝐫𝐨𝐤𝐲𝐕𝐞𝐫𝐬𝐞࿔〆𝙆𝙂𝙉</p>
-        </div>
+    <!-- 8. FOOTER -->
+    <footer>
+        <p>© 2026 Creator Anime One. Dibuat dengan bangga oleh Komunitas Sepuh Anime.</p>
+    </footer>
 
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-rasyid.png'>
-            <h3>Sidzz</h3>
-            <p class='sub-role'>Collab & Select</p>
-            <p class='sub-tag'>𝙎𝙞𝙙𝙯𝙯𝙆𝙖𝙜𝙚𝙣𝙤𝙪メ</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-dimas.png'>
-            <h3>Riye</h3>
-            <p class='sub-role'>Collab & Select</p>
-            <p class='sub-tag'>𝙍𝙞𝙮𝙚𝙥𝙧𝙨𝙩 ft 𝙆𝙂𝙉</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-indra.png'>
-            <h3>Indra</h3>
-            <p class='sub-role'>Bot & Editor</p>
-            <p class='sub-tag'>Rizzuy〆𝙆𝙂𝙉</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-kepin.png'>
-            <h3>Vinz</h3>
-            <p class='sub-role'>Meme & Select</p>
-            <p class='sub-tag'>—𝗩𝗶𝗻𝘇 𝖋𝖙 𝙆𝙂𝙉</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-ajra.png'>
-            <h3>Sora Senpai</h3>
-            <p class='sub-role'>Bot & Security</p>
-            <p class='sub-tag'>𝙎𝙤𝙧𝙖𝙒𝙖𝙣𝙜𝙮𝙮 ft 𝗔𝗣</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-bima.png'>
-            <h3>Ryy Sensei</h3>
-            <p class='sub-role'>Owner Kagenou</p>
-            <p class='sub-tag'>𝙍𝙮𝙮𝙆𝙖𝙜𝙚𝙣𝙤𝙪`𝐍𝐂𝐀</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-ranz.png'>
-            <h3>Ranz Hengker</h3>
-            <p class='sub-role'>Bot & Security</p>
-            <p class='sub-tag'>𝙍𝙖𝙣𝙯𝙆𝙖𝙜𝙚𝙣𝙤𝙪`𝐍𝐂𝐀</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-ciel.png'>
-            <h3>Ciel</h3>
-            <p class='sub-role'>Collab & Select</p>
-            <p class='sub-tag'>𝘾𝙞𝙚𝙡𝙆𝙖𝙜𝙚𝙣𝙤𝙪`𝐍𝐂𝐀</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-frans.png'>
-            <h3>Frans</h3>
-            <p class='sub-role'>Collab & Select</p>
-            <p class='sub-tag'>𝙁𝙧𝙖𝙣𝙯𝙠𝙮𝙮〆𝙆𝙂𝙉✰</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-ikram.png'>
-            <h3>Kram</h3>
-            <p class='sub-role'>Collab & Select</p>
-            <p class='sub-tag'>𝙆𝙧𝙖𝙢 𝖋𝖙 𝙆𝙂𝙉</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-mahess.png'>
-            <h3>Mahess</h3>
-            <p class='sub-role'>Collab & Select</p>
-            <p class='sub-tag'>𝙆𝙂𝙉 | 𝐇𝙚𝙨𝙨`</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-ney.png'>
-            <h3>Neyy</h3>
-            <p class='sub-role'>Host & Select</p>
-            <p class='sub-tag'>𝙉𝙚𝙮 𝖋𝖙 𝙆𝙂𝙉</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-rakha.png'>
-            <h3>Rika</h3>
-            <p class='sub-role'>Selection Member</p>
-            <p class='sub-tag'>𝐑𝐢𝐤𝐚〆𝙆𝙂𝙉</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-lala.png'>
-            <h3>Jeyyaa</h3>
-            <p class='sub-role'>Selection Member</p>
-            <p class='sub-tag'>—𝐉𝐞𝐲𝐘𝐚𝐚〆𝙆𝙂𝙉</p>
-        </div>
-
-        <div class='subadmin-card'>
-            <img src='assets/admin/chibi-shin.png'>
-            <h3>Shin</h3>
-            <p class='sub-role'>Selection Member</p>
-            <p class='sub-tag'>Shin</p>
-        </div>
-    </div>
-  </section>
-
-  <footer class='kage-footer'>
-    <div class='footer-content'>
-        <p>2026 © Kagenou Family. All rights reserved.</p>
-        <p class='footer-credit'>
-        Made with ❤️ by <a href='https://www.tiktok.com/@sorawangyy' target='_blank' style='text-decoration: none; color: inherit;'>Jraa Hikari 愛</a>
-        </p>
-    </div>
-  </footer>
-
-  <script src='./assets/index.js'></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"075ebae6d3364773adfd0ee441b9c9d7","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0bdd72a4f22c6e5',t:'MTc4MTQ4NzM1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
+</html>
