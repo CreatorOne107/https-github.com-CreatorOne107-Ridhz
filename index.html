@@ -86,34 +86,42 @@
             align-items: center;
         }
 
+        
         .cards {
-            position: relative;
-            width: 200px;
-            height: 260px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px; 
             margin-bottom: 40px;
+            width: 100%;
+            max-width: 650px; 
         }
 
         .card {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            position: relative; 
+            width: 160px; 
+            height: 220px; 
             object-fit: cover;
             border-radius: 16px;
             border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: #111; /* fallback warna gelap sebelum gambar dimuat */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            background: #111;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Efek Tumpuk Tiga Kartu */
-        .card-1 { transform: rotate(-10deg) translateX(-20px); z-index: 1; }
-        .card-2 { transform: rotate(0deg); z-index: 2; }
-        .card-3 { transform: rotate(10deg) translateX(20px); z-index: 1; }
+        
+        .card-1, .card-2, .card-3 {
+            transform: none;
+            z-index: 1;
+        }
 
-        /* Hover Animasi Kartu Menyebar */
-        .cards:hover .card-1 { transform: rotate(-20deg) translateX(-70px); }
-        .cards:hover .card-3 { transform: rotate(20deg) translateX(70px); }
-        .cards:hover .card-2 { transform: scale(1.05); z-index: 3; }
+        
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.3);
+            z-index: 2;
+        }
 
         .hero h1 {
             font-size: 3.5rem;
