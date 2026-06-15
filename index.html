@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creator Anime One</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
-            --primary: #7c3aed;
-            --secondary: #2563eb;
-            --bg: #08080f;
-            --glass: rgba(255, 255, 255, .08);
+            --primary: #8b5cf6;
+            --primary-2: #7c3aed;
+            --secondary: #38bdf8;
+            --accent: #f472b6;
+            --bg: #090714;
+            --bg-soft: #130c2b;
+            --glass: rgba(255, 255, 255, .075);
+            --glass-strong: rgba(255, 255, 255, .12);
+            --line: rgba(255, 255, 255, .12);
             --text: #ffffff;
-            --text-muted: #94a3b8;
+            --text-muted: #b7aee7;
+            --text-soft: #8b84ad;
         }
 
         * {
@@ -26,332 +32,806 @@
         }
 
         body {
-            background: 
-                radial-gradient(circle at top, rgba(124, 58, 237, .35), transparent 40%),
-                radial-gradient(circle at bottom, rgba(37, 99, 235, .25), transparent 40%),
-                var(--bg);
-            color: var(--text);
             min-height: 100vh;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(139, 92, 246, .38), transparent 36%),
+                radial-gradient(circle at 0% 35%, rgba(244, 114, 182, .15), transparent 25%),
+                radial-gradient(circle at 100% 55%, rgba(56, 189, 248, .12), transparent 28%),
+                linear-gradient(180deg, #140828 0%, #090714 42%, #05040b 100%);
             overflow-x: hidden;
-            padding: 0 20px;
         }
 
-        section {
-            max-width: 1000px;
-            margin: 80px auto;
-            padding: 20px 0;
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,.8), transparent 75%);
         }
 
-        h2 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 40px;
-            background: linear-gradient(45deg, #ffffff, var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
         }
 
-        .grid-3 {
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            padding: 16px 0;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            background: rgba(9, 7, 20, .54);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: -.3px;
+        }
+
+        .brand-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 12px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            place-items: center;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            box-shadow: 0 10px 28px rgba(139, 92, 246, .35);
         }
 
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: .92rem;
         }
 
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(124, 58, 237, 0.3);
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
+        .nav-menu a {
+            padding: 9px 12px;
+            border-radius: 999px;
+            transition: .25s ease;
         }
 
-        /* --- 1. HERO SECTION --- */
+        .nav-menu a:hover {
+            color: #fff;
+            background: rgba(255,255,255,.08);
+        }
+
         .hero {
+            min-height: 86vh;
+            display: grid;
+            place-items: center;
             text-align: center;
-            padding-top: 100px;
-            margin-top: 0;
-            min-height: 85vh;
+            padding: 72px 0 40px;
+        }
+
+        .hero-content {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
         }
 
-        
         .cards {
-    position: relative;
-    width: 320px;
-    height: 260px;
-    margin: 0 auto 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+            position: relative;
+            width: 360px;
+            height: 255px;
+            margin: 0 auto 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: drop-shadow(0 28px 40px rgba(0,0,0,.42));
+        }
 
-.card {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 200px;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 16px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    transform-origin: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        .card {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 190px;
+            height: 255px;
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.14);
+            background: linear-gradient(160deg, rgba(139, 92, 246, .38), rgba(255,255,255,.05));
+            transform-origin: center;
+            transition: .45s cubic-bezier(.2, .8, .2, 1);
+        }
 
-/* Efek Tumpuk Tiga Kartu - posisi dipusatkan */
-.card-1 { transform: translateX(-50%) translateX(-45px) rotate(-10deg); z-index: 1; }
-.card-2 { transform: translateX(-50%) rotate(0deg); z-index: 2; }
-.card-3 { transform: translateX(-50%) translateX(45px) rotate(10deg); z-index: 1; }
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to bottom, rgba(255,255,255,.18), transparent 32%),
+                radial-gradient(circle at 50% 18%, rgba(255,255,255,.20), transparent 28%);
+            z-index: 1;
+            pointer-events: none;
+        }
 
-/* Hover Animasi Kartu Menyebar */
-.cards:hover .card-1 { transform: translateX(-50%) translateX(-90px) rotate(-20deg); }
-.cards:hover .card-3 { transform: translateX(-50%) translateX(90px) rotate(20deg); }
-.cards:hover .card-2 { transform: translateX(-50%) scale(1.05); z-index: 3; }
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-        
-        .hero h1 {
-            font-size: 3.5rem;
+        .card.no-img img { display: none; }
+        .card.no-img::after {
+            content: attr(data-label);
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-size: 1.15rem;
             font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(45deg, #ffffff, #a78bfa);
+            color: rgba(255,255,255,.88);
+            letter-spacing: .4px;
+        }
+
+        .card span {
+            position: absolute;
+            left: 14px;
+            bottom: 14px;
+            z-index: 2;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(0,0,0,.38);
+            border: 1px solid rgba(255,255,255,.16);
+            font-size: .75rem;
+            font-weight: 700;
+            backdrop-filter: blur(8px);
+        }
+
+        .card-1 { transform: translateX(-50%) translateX(-76px) rotate(-13deg); z-index: 1; }
+        .card-2 { transform: translateX(-50%) rotate(0deg); z-index: 3; }
+        .card-3 { transform: translateX(-50%) translateX(76px) rotate(13deg); z-index: 2; }
+
+        .cards:hover .card-1 { transform: translateX(-50%) translateX(-116px) rotate(-20deg); }
+        .cards:hover .card-2 { transform: translateX(-50%) translateY(-8px) scale(1.04); }
+        .cards:hover .card-3 { transform: translateX(-50%) translateX(116px) rotate(20deg); }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            color: #dfd6ff;
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.11);
+            font-weight: 700;
+            font-size: .86rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 5.4rem);
+            line-height: .96;
+            font-weight: 800;
+            letter-spacing: -3px;
+            max-width: 920px;
+            background: linear-gradient(90deg, #fff 0%, #c4b5fd 48%, #f9a8d4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            margin: 18px auto 34px;
+            max-width: 620px;
+            font-size: clamp(1rem, 2vw, 1.26rem);
             color: var(--text-muted);
-            margin-bottom: 35px;
+            line-height: 1.7;
         }
 
         .buttons {
             display: flex;
-            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
         }
 
-        .btn-primary, .btn-secondary {
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-width: 130px;
+            padding: 14px 24px;
+            border-radius: 15px;
+            font-weight: 800;
+            transition: .25s ease;
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
-        }
-
-        .btn-primary:hover {
-            background: #6d28d9;
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, var(--primary), var(--primary-2));
+            box-shadow: 0 16px 32px rgba(124, 58, 237, .35);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.12);
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--secondary);
-            transform: translateY(-2px);
+        .btn:hover { transform: translateY(-3px); }
+
+        section {
+            padding: 78px 0;
         }
 
-        /* --- 2. TENTANG KOMUNITAS --- */
-        .about h3 { margin-bottom: 10px; color: var(--primary); }
-        .about p { color: var(--text-muted); line-height: 1.6; }
-
-        /* --- 3. STATISTIK MEMBER --- */
-        .stats { text-align: center; }
-        .stat-num { font-size: 2.5rem; font-weight: 800; color: var(--secondary); margin-bottom: 5px; }
-
-        /* --- 4. GENERATION (1, 2, 3) --- */
-        .gen-badge {
-            background: rgba(124, 58, 237, 0.2);
-            color: #a78bfa;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin-bottom: 10px;
+        .section-head {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        /* --- 5. TOP MEMBER & CREATOR --- */
-        .rank-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+        .section-head h2 {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            letter-spacing: -1.2px;
+            margin-bottom: 12px;
         }
 
-        /* --- 6. GALERI EDIT ANIME --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .gallery-item {
-            width: 100%;
-            height: 240px;
-            background: var(--glass);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .section-head p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .panel {
+            background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.045));
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: 0 24px 70px rgba(0,0,0,.26);
             overflow: hidden;
         }
 
-        /* --- 7. FAQ SECTION --- */
-        .faq-item { margin-bottom: 15px; text-align: left; }
-        .faq-item h4 { margin-bottom: 5px; color: #fff; }
-        .faq-item p { color: var(--text-muted); font-size: 0.95rem; }
+        .info-banner {
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
+            gap: 0;
+            min-height: 310px;
+        }
 
-        /* --- 8. FOOTER --- */
-        footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 40px 0;
-            text-align: center;
+        .info-copy {
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-copy h3 {
+            font-size: clamp(1.8rem, 3vw, 3rem);
+            letter-spacing: -1.2px;
+            margin-bottom: 12px;
+        }
+
+        .info-copy p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .info-visual {
+            min-height: 280px;
+            position: relative;
+            background:
+                radial-gradient(circle at center, rgba(139, 92, 246, .45), transparent 36%),
+                linear-gradient(135deg, rgba(139, 92, 246, .14), rgba(244, 114, 182, .12));
+            display: grid;
+            place-items: center;
+        }
+
+        .orb {
+            width: 150px;
+            height: 150px;
+            border-radius: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: grid;
+            place-items: center;
+            font-size: 3.6rem;
+            transform: rotate(-10deg);
+            box-shadow: 0 22px 60px rgba(139, 92, 246, .42);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: 24px;
+            padding: 26px;
+            min-height: 170px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: .25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, .22), transparent 35%);
+            pointer-events: none;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(196, 181, 253, .28);
+            background: rgba(255,255,255,.105);
+        }
+
+        .glass-card > * { position: relative; z-index: 1; }
+
+        .badge {
+            display: inline-flex;
+            padding: 7px 11px;
+            border-radius: 999px;
+            color: #d8ccff;
+            background: rgba(139, 92, 246, .18);
+            border: 1px solid rgba(139, 92, 246, .25);
+            font-size: .78rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .glass-card h3 {
+            font-size: 1.12rem;
+            margin-bottom: 10px;
+        }
+
+        .glass-card p {
+            color: var(--text-muted);
+            line-height: 1.65;
+            font-size: .95rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .count-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 34px;
+        }
+
+        .count-number {
+            font-size: clamp(4rem, 10vw, 7rem);
+            line-height: 1;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .hashtag-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .hashtag {
+            padding: 26px;
+        }
+
+        .hashtag strong {
+            display: block;
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 18px;
+        }
+
+        .mini-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .mini-stat {
+            padding: 14px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .mini-stat b {
+            display: block;
+            font-size: 1.4rem;
+        }
+
+        .mini-stat span {
+            color: var(--text-soft);
+            font-size: .8rem;
+        }
+
+        .member-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            color: var(--text-muted);
+        }
+
+        .member-list {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .member-card {
+            padding: 18px;
+            border-radius: 22px;
+            background: rgba(255,255,255,.065);
+            border: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            gap: 13px;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 46px;
+            height: 46px;
+            flex: 0 0 46px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            background: linear-gradient(135deg, rgba(139,92,246,.9), rgba(244,114,182,.75));
+            border: 1px solid rgba(255,255,255,.18);
+        }
+
+        .member-card h4 {
+            font-size: .96rem;
+            margin-bottom: 4px;
+        }
+
+        .member-card p {
+            color: var(--text-soft);
+            font-size: .8rem;
+        }
+
+        .rank-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .rank-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.055);
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .rank-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .rank-num {
+            width: 34px;
+            height: 34px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            background: rgba(139,92,246,.22);
+            color: #ddd6fe;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .admin-card {
+            text-align: center;
+            padding: 28px 20px;
+        }
+
+        .admin-card .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 24px;
+            margin: 0 auto 16px;
+            font-size: 1.25rem;
+        }
+
+        .admin-card small {
+            color: var(--text-soft);
+        }
+
+        footer {
+            padding: 42px 0 58px;
+            text-align: center;
+            color: var(--text-soft);
+            border-top: 1px solid rgba(255,255,255,.07);
+        }
+
+        @media (max-width: 880px) {
+            .nav-menu { display: none; }
+            .info-banner, .stats-grid, .rank-grid { grid-template-columns: 1fr; }
+            .grid-3, .admin-grid { grid-template-columns: 1fr; }
+            .member-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .hashtag-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 540px) {
+            .container { width: min(100% - 26px, 1120px); }
+            .hero h1 { letter-spacing: -1.5px; }
+            .cards { width: 280px; height: 220px; margin-bottom: 34px; }
+            .card { width: 162px; height: 220px; }
+            .card-1 { transform: translateX(-50%) translateX(-54px) rotate(-12deg); }
+            .card-3 { transform: translateX(-50%) translateX(54px) rotate(12deg); }
+            .cards:hover .card-1 { transform: translateX(-50%) translateX(-70px) rotate(-18deg); }
+            .cards:hover .card-3 { transform: translateX(-50%) translateX(70px) rotate(18deg); }
+            .info-copy { padding: 26px; }
+            .member-list { grid-template-columns: 1fr; }
+            section { padding: 56px 0; }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a class="brand" href="#home">
+                <span class="brand-mark">⚡</span>
+                <span>Creator Anime One</span>
+            </a>
 
-    <section class="hero">
-        <div class="cards">
-            <img src="assets/gen1.jpg?v=1" class="card card-1" alt="Gen 1">
-            <img src="assets/gen2.jpg?v=1" class="card card-2" alt="Gen 2">
-            <img src="assets/gen3.jpg?v=1" class="card card-3" alt="Gen 3">
-        </div>
-
-        <h1>Creator Anime One</h1>
-        <p>Marganya Sepuh Anime.</p>
-
-        <div class="buttons">
-            <a href="#about" class="btn-primary">Jelajahi</a>
-            <a href="https://www.tiktok.com/@officialanimeone" target="_blank" class="btn-secondary">TikTok</a>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <h2>Tentang Creator Anime One</h2>
-        <div class="grid-3">
-            <div class="glass-card">
-                <h3>Founder</h3>
-                <p>Ridhz</p>
-            </div>
-            <div class="glass-card">
-                <h3>Admin</h3>
-                <p>Xyzoo</p>
-            </div>
-            <div class="glass-card">
-                <h3>Deskripsi</h3>
-                <p>Creator Anime One adalah komunitas kreator anime yang berisi editor, content creator, dan pecinta anime dari berbagai kalangan.</p>
+            <div class="nav-menu">
+                <a href="#info">Info</a>
+                <a href="#generation">Gen</a>
+                <a href="#member">Member</a>
+                <a href="#admin">Admin</a>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <section class="stats">
-        <h2>Statistik Komunitas</h2>
-        <div class="grid-3">
-            <div class="glass-card">
-                <div class="stat-num">50+</div>
-                <p>Total Anggota Aktif</p>
+    <main id="home" class="hero">
+        <div class="container hero-content">
+            <div class="cards" aria-label="Kartu generasi Creator Anime One">
+                <figure class="card card-1" data-label="Gen 1">
+                    <img src="assets/gen1.jpg" alt="Creator Anime One Gen 1" onerror="this.parentElement.classList.add('no-img')">
+                    <span>Gen 1</span>
+                </figure>
+                <figure class="card card-2" data-label="Gen 2">
+                    <img src="assets/gen2.jpg" alt="Creator Anime One Gen 2" onerror="this.parentElement.classList.add('no-img')">
+                    <span>Gen 2</span>
+                </figure>
+                <figure class="card card-3" data-label="Gen 3">
+                    <img src="assets/gen3.jpg" alt="Creator Anime One Gen 3" onerror="this.parentElement.classList.add('no-img')">
+                    <span>Gen 3</span>
+                </figure>
             </div>
-            <div class="glass-card">
-                <div class="stat-num">3</div>
-                <p>Generation Tim</p>
-            </div>
-            <div class="glass-card">
-                <div class="stat-num">1M+</div>
-                <p>Total Views Konten</p>
+
+            <div class="eyebrow">✦ Marga sepuh anime editor</div>
+            <h1>Creator Anime One</h1>
+            <p>Marganya Sepuh Anime. Tempat kreator, editor, dan pecinta anime berkumpul untuk berkarya bareng, saling support, dan naik level bersama.</p>
+
+            <div class="buttons">
+                <a href="#info" class="btn btn-primary">Jelajahi</a>
+                <a href="https://www.tiktok.com/@officialanimeone" target="_blank" class="btn btn-secondary">TikTok</a>
             </div>
         </div>
-    </section>
+    </main>
 
-    <section class="generations">
-        <h2>Daftar Generasi</h2>
-        <div class="grid-3">
-            <div class="glass-card">
-                <span class="gen-badge">Gen 1</span>
-                <h3>Generation 1</h3>
-                <p style="margin-top: 10px;">Para sepuh perintis pertama yang membangun dasar awal komunitas.</p>
+    <section id="info">
+        <div class="container">
+            <div class="section-head">
+                <h2>Informasi Creator Anime One</h2>
+                <p>Komunitas kreator anime yang terus berkembang dan terbuka untuk member yang ingin aktif, kreatif, dan solid.</p>
             </div>
-            <div class="glass-card">
-                <span class="gen-badge">Gen 2</span>
-                <h3>Generation 2</h3>
-                <p style="margin-top: 10px;">Kreator berbakat penerus generasi pertama dengan gaya edit yang fresh.</p>
-            </div>
-            <div class="glass-card">
-                <span class="gen-badge">Gen 3</span>
-                <h3>Generation 3</h3>
-                <p style="margin-top: 10px;">Anggota terbaru pendatang baru yang penuh ambisi dan semangat tinggi.</p>
+
+            <div class="panel info-banner">
+                <div class="info-copy">
+                    <span class="badge">Open Member</span>
+                    <h3>Gas Join, Tunjukkan Karyamu!</h3>
+                    <p>Creator Anime One berisi editor, content creator, reviewer, dan pecinta anime. Fokus kami adalah membangun komunitas yang aktif, rapi, dan punya semangat berkarya.</p>
+                    <div class="buttons" style="justify-content: flex-start;">
+                        <a href="#member" class="btn btn-primary">Lihat Member</a>
+                        <a href="#generation" class="btn btn-secondary">Lihat Gen</a>
+                    </div>
+                </div>
+                <div class="info-visual">
+                    <div class="orb">🎴</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="top-members">
-        <h2>Apresiasi Tertinggi</h2>
-        <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
-            <div class="glass-card">
-                <h3 style="color: var(--secondary); margin-bottom: 15px;">🏆 Top Member</h3>
-                <p>Member teraktif dalam obrolan komunitas dan paling sering berkontribusi bulan ini.</p>
+    <section id="generation">
+        <div class="container">
+            <div class="section-head">
+                <h2>Creator Anime One Gen</h2>
+                <p>Tiga generasi dengan karakter masing-masing: perintis, penerus, dan pendatang baru yang penuh energi.</p>
             </div>
-            <div class="glass-card">
-                <h3 style="color: var(--primary); margin-bottom: 15px;">🔥 Top Creator</h3>
-                <p>Kreator video dengan editan paling konsisten, kreatif, dan mendapat engagement terbaik.</p>
+
+            <div class="grid-3">
+                <article class="glass-card">
+                    <span class="badge">Gen 1</span>
+                    <h3>Generasi Pertama</h3>
+                    <p>Para sepuh perintis berdirinya Creator Anime One. Pondasi awal komunitas dan arah perkembangan marga.</p>
+                </article>
+                <article class="glass-card">
+                    <span class="badge">Gen 2</span>
+                    <h3>Generasi Kedua</h3>
+                    <p>Penerus kreatif dengan gaya edit variatif, aktif, dan menjadi penggerak interaksi komunitas.</p>
+                </article>
+                <article class="glass-card">
+                    <span class="badge">Gen 3</span>
+                    <h3>Generasi Ketiga</h3>
+                    <p>Member baru yang membawa warna segar, semangat tinggi, dan karya yang terus berkembang.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <section class="gallery">
-        <h2>Galeri Edit Anime</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">🎬 Video Edit 1 (assets/edit1.mp4)</div>
-            <div class="gallery-item">🎬 Video Edit 2 (assets/edit2.mp4)</div>
-            <div class="gallery-item">🎬 Video Edit 3 (assets/edit3.mp4)</div>
-            <div class="gallery-item">🎬 Video Edit 4 (assets/edit4.mp4)</div>
+    <section id="statistik">
+        <div class="container">
+            <div class="section-head">
+                <h2>Jumlah Member & Hashtag</h2>
+                <p>Ringkasan komunitas dan hashtag yang bisa dipakai untuk memperkuat identitas Creator Anime One.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="panel count-card">
+                    <div class="count-number">50+</div>
+                    <h3>Jumlah Member</h3>
+                    <p style="color: var(--text-muted); margin-top: 8px;">Anggota aktif saat ini</p>
+                </div>
+
+                <div class="hashtag-grid">
+                    <div class="panel hashtag">
+                        <strong>#creatoranimeone</strong>
+                        <div class="mini-stats">
+                            <div class="mini-stat"><b>1M+</b><span>Jumlah Penonton</span></div>
+                            <div class="mini-stat"><b>100+</b><span>Jumlah Video</span></div>
+                        </div>
+                    </div>
+                    <div class="panel hashtag">
+                        <strong>#margasepuhanime</strong>
+                        <div class="mini-stats">
+                            <div class="mini-stat"><b>500K+</b><span>Jumlah Penonton</span></div>
+                            <div class="mini-stat"><b>50+</b><span>Jumlah Video</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="faq">
-        <h2>FAQ</h2>
-        <div class="glass-card" style="max-width: 750px; margin: 0 auto;">
-            <div class="faq-item">
-                <h4>❓ Bagaimana cara masuk komunitas Creator Anime One?</h4>
-                <p>Pantau info Open Recruitment generasi berikutnya lewat akun resmi TikTok kami.</p>
+    <section id="member">
+        <div class="container">
+            <div class="section-head">
+                <h2>Daftar Member Creator Anime One</h2>
+                <p>Data member bisa kamu ubah langsung di bagian HTML sesuai nama asli member komunitas.</p>
             </div>
-            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.05); margin: 15px 0;">
-            <div class="faq-item">
-                <h4>❓ Apakah komunitas ini khusus untuk editor saja?</h4>
-                <p>Tidak, semua pecinta anime, content creator, reviewer, ataupun wibu biasa boleh bergabung saat pendaftaran dibuka!</p>
+
+            <div class="panel" style="padding: 24px;">
+                <div class="member-toolbar">
+                    <strong>Jumlah Member Saat Ini: 50+</strong>
+                    <span>Verifikasi data jika ada perubahan.</span>
+                </div>
+
+                <div class="member-list">
+                    <article class="member-card"><div class="avatar">R</div><div><h4>Ridhz</h4><p>Founder</p></div></article>
+                    <article class="member-card"><div class="avatar">X</div><div><h4>Xyzoo</h4><p>Admin</p></div></article>
+                    <article class="member-card"><div class="avatar">A</div><div><h4>Anime Editor</h4><p>Gen 1</p></div></article>
+                    <article class="member-card"><div class="avatar">C</div><div><h4>Creator One</h4><p>Gen 2</p></div></article>
+                    <article class="member-card"><div class="avatar">S</div><div><h4>Sepuh AMV</h4><p>Gen 2</p></div></article>
+                    <article class="member-card"><div class="avatar">N</div><div><h4>Newbie Edit</h4><p>Gen 3</p></div></article>
+                    <article class="member-card"><div class="avatar">K</div><div><h4>Kreator Anime</h4><p>Gen 3</p></div></article>
+                    <article class="member-card"><div class="avatar">O</div><div><h4>One Team</h4><p>Member</p></div></article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rank">
+        <div class="container">
+            <div class="section-head">
+                <h2>Informasi Member</h2>
+                <p>Bagian ranking dibuat seperti halaman komunitas: top absensi dan top creator/member.</p>
+            </div>
+
+            <div class="rank-grid">
+                <div class="panel" style="padding: 24px;">
+                    <h3 style="margin-bottom: 18px;">🏆 Top Absensi</h3>
+                    <div class="rank-list">
+                        <div class="rank-item"><div class="rank-left"><span class="rank-num">1</span><span>Ridhz</span></div><strong>Aktif</strong></div>
+                        <div class="rank-item"><div class="rank-left"><span class="rank-num">2</span><span>Xyzoo</span></div><strong>Aktif</strong></div>
+                        <div class="rank-item"><div class="rank-left"><span class="rank-num">3</span><span>Creator One</span></div><strong>Aktif</strong></div>
+                    </div>
+                </div>
+
+                <div class="panel" style="padding: 24px;">
+                    <h3 style="margin-bottom: 18px;">🔥 Top Member</h3>
+                    <div class="rank-list">
+                        <div class="rank-item"><div class="rank-left"><span class="rank-num">1</span><span>Anime Editor</span></div><strong>AMV</strong></div>
+                        <div class="rank-item"><div class="rank-left"><span class="rank-num">2</span><span>Sepuh AMV</span></div><strong>Edit</strong></div>
+                        <div class="rank-item"><div class="rank-left"><span class="rank-num">3</span><span>Newbie Edit</span></div><strong>Rising</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admin">
+        <div class="container">
+            <div class="section-head">
+                <h2>Admin of Creator Anime One</h2>
+                <p>Tim pengelola komunitas yang membantu seleksi, kolaborasi, dan aktivitas member.</p>
+            </div>
+
+            <div class="admin-grid">
+                <article class="glass-card admin-card">
+                    <div class="avatar">R</div>
+                    <h3>Ridhz</h3>
+                    <small>Founder</small>
+                </article>
+                <article class="glass-card admin-card">
+                    <div class="avatar">X</div>
+                    <h3>Xyzoo</h3>
+                    <small>Admin & Selection</small>
+                </article>
+                <article class="glass-card admin-card">
+                    <div class="avatar">C</div>
+                    <h3>Creator Team</h3>
+                    <small>Collab & Support</small>
+                </article>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 Creator Anime One. All Rights Reserved.</p>
+        <div class="container">
+            <p>2026 © Creator Anime One. All rights reserved.</p>
+            <p style="margin-top: 8px;">Made with ❤️ for Komunitas Sepuh Anime.</p>
+        </div>
     </footer>
-
 </body>
+</html>
 </html>
