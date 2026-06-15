@@ -1734,6 +1734,65 @@
             }
         }
 
+    
+
+        /* =========================================================
+           UPDATE V3: MOBILE FOUNDER DISTANCE CLOSER
+           - Card Co-Owner/Admin dibuat lebih dekat ke Owner.
+           - Tidak overlap, tapi sisi card tetap kelihatan agar user sadar bisa digeser.
+        ========================================================= */
+        @media (max-width: 880px) {
+            #member .section-head {
+                margin-bottom: 22px !important;
+            }
+
+            .founder-podium {
+                gap: clamp(10px, 2.8vw, 18px) !important;
+                padding-top: 18px !important;
+                padding-bottom: 36px !important;
+            }
+
+            .founder-card {
+                flex-basis: min(292px, 72vw) !important;
+                transform: scale(.95) !important;
+                opacity: .94 !important;
+            }
+
+            .founder-card:hover {
+                transform: scale(.95) translateY(-4px) !important;
+            }
+
+            .founder-card.owner {
+                flex-basis: min(365px, 82vw) !important;
+                transform: scale(1) !important;
+            }
+
+            .founder-card.owner:hover {
+                transform: scale(1) translateY(-5px) !important;
+            }
+        }
+
+        @media (max-width: 540px) {
+            #member .section-head {
+                margin-bottom: 16px !important;
+            }
+
+            .founder-podium {
+                gap: 10px !important;
+                min-height: 420px !important;
+                padding-top: 14px !important;
+                padding-bottom: 32px !important;
+            }
+
+            .founder-card {
+                flex-basis: min(268px, 72vw) !important;
+            }
+
+            .founder-card.owner {
+                flex-basis: min(336px, 84vw) !important;
+            }
+        }
+
     </style>
 </head>
 <body>
