@@ -1213,7 +1213,7 @@
 </article>
 <article class="glass-card admin-card">
 <div class="admin-photo">
-<img alt="Foto Admin Slot 06" onerror="this.remove()" src="xyzoo.jpg"/>
+<img alt="Foto Admin Slot 06" onerror="this.remove()" src="xyzoo.png"/>
 </div>
 <h3>Xyzoo</h3>
 <small>Admin Website</small>
@@ -1232,6 +1232,13 @@
 <h3>Kaishi</h3>
 <small>Admin Collab2</small>
 </article>
+<article class="glass-card admin-card">
+<div class="admin-photo">
+<img alt="Foto Admin Slot 06" onerror="this.remove()" src="nixa.png"/>
+</div>
+<h3>Nixara</h3>
+<small>Admin Seleksi</small>
+</article>
 </div>
 </div>
 </div>
@@ -1240,52 +1247,9 @@
 <footer>
 <div class="container">
 <p>2026 © Creator Anime One. All rights reserved.</p>
-<p style="margin-top: 8px;">Made with ❤️ for Creator Anime One Community .</p>
+<p style="margin-top: 8px;">Creator Anime One Community .</p>
 </div>
 </footer>
-
-<script>
-    const nomorBot = "6281234567890";
-    // GANTI dengan nomor bot WhatsApp kamu. Contoh: 089567890000 menjadi 6289567890000
-
-    function bukaBot(command) {
-        const pesan = encodeURIComponent(command);
-        window.open(`https://wa.me/${nomorBot}?text=${pesan}`, "_blank");
-    }
-
-
-    const adminSlider = document.getElementById("adminSlider");
-    if (adminSlider) {
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        adminSlider.addEventListener("mousedown", (e) => {
-            isDown = true;
-            adminSlider.classList.add("dragging");
-            startX = e.pageX - adminSlider.offsetLeft;
-            scrollLeft = adminSlider.scrollLeft;
-        });
-
-        adminSlider.addEventListener("mouseleave", () => {
-            isDown = false;
-            adminSlider.classList.remove("dragging");
-        });
-
-        adminSlider.addEventListener("mouseup", () => {
-            isDown = false;
-            adminSlider.classList.remove("dragging");
-        });
-
-        adminSlider.addEventListener("mousemove", (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - adminSlider.offsetLeft;
-            const walk = (x - startX) * 1.5;
-            adminSlider.scrollLeft = scrollLeft - walk;
-        });
-    }
-
 </script>
 </body>
 </html>
