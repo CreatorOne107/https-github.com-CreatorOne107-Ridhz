@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creator Anime One</title>
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
@@ -37,7 +36,6 @@
             padding: 0 20px;
         }
 
-        /* --- LAYOUT GLOBAL --- */
         section {
             max-width: 1000px;
             margin: 80px auto;
@@ -51,7 +49,6 @@
             background: linear-gradient(45deg, #ffffff, var(--text-muted));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            position: relative;
         }
 
         .grid-3 {
@@ -60,7 +57,6 @@
             gap: 25px;
         }
 
-        /* --- STYLING GLASS CARD --- */
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(12px);
@@ -83,7 +79,7 @@
             text-align: center;
             padding-top: 100px;
             margin-top: 0;
-            min-height: 90vh;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -106,6 +102,7 @@
             border: 2px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: #111; /* fallback warna gelap sebelum gambar dimuat */
         }
 
         /* Efek Tumpuk Tiga Kartu */
@@ -156,7 +153,6 @@
         .btn-primary:hover {
             background: #6d28d9;
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(124, 58, 237, 0.6);
         }
 
         .btn-secondary {
@@ -191,16 +187,10 @@
         }
 
         /* --- 5. TOP MEMBER & CREATOR --- */
-        .avatar-box {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
+        .rank-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
         }
 
         /* --- 6. GALERI EDIT ANIME --- */
@@ -221,7 +211,6 @@
             color: var(--text-muted);
             font-size: 0.9rem;
             overflow: hidden;
-            position: relative;
         }
 
         /* --- 7. FAQ SECTION --- */
@@ -241,27 +230,23 @@
 </head>
 <body>
 
-    <!-- 1. HERO SECTION -->
     <section class="hero">
         <div class="cards">
-            <img src="assets/gen1.jpg" class="card card-1" alt="Gen 1">
-            <img src="assets/gen2.jpg" class="card card-2" alt="Gen 2">
-            <img src="assets/gen3.jpg" class="card card-3" alt="Gen 3">
+            <img src="assets/gen1.jpg?v=1" class="card card-1" alt="Gen 1">
+            <img src="assets/gen2.jpg?v=1" class="card card-2" alt="Gen 2">
+            <img src="assets/gen3.jpg?v=1" class="card card-3" alt="Gen 3">
         </div>
 
         <h1>Creator Anime One</h1>
         <p>Marganya Sepuh Anime.</p>
 
         <div class="buttons">
-            <a href="#content" class="btn-primary">Jelajahi</a>
+            <a href="#about" class="btn-primary">Jelajahi</a>
             <a href="https://www.tiktok.com/@officialanimeone" target="_blank" class="btn-secondary">TikTok</a>
         </div>
     </section>
 
-    <div id="content"></div>
-
-    <!-- 2. TENTANG KOMUNITAS & FOUNDER/ADMIN -->
-    <section class="about">
+    <section id="about" class="about">
         <h2>Tentang Creator Anime One</h2>
         <div class="grid-3">
             <div class="glass-card">
@@ -279,92 +264,86 @@
         </div>
     </section>
 
-    <!-- 3. STATISTIK MEMBER -->
     <section class="stats">
         <h2>Statistik Komunitas</h2>
         <div class="grid-3">
             <div class="glass-card">
                 <div class="stat-num">50+</div>
-                <p style="color: var(--text-muted);">Total Anggota Aktif</p>
+                <p>Total Anggota Aktif</p>
             </div>
             <div class="glass-card">
                 <div class="stat-num">3</div>
-                <p style="color: var(--text-muted);">Generasi Tim</p>
+                <p>Generation Tim</p>
             </div>
             <div class="glass-card">
                 <div class="stat-num">1M+</div>
-                <p style="color: var(--text-muted);">Total Tayangan Konten</p>
+                <p>Total Views Konten</p>
             </div>
         </div>
     </section>
 
-    <!-- 4. GENERATION 1, 2, 3 -->
     <section class="generations">
         <h2>Daftar Generasi</h2>
         <div class="grid-3">
             <div class="glass-card">
                 <span class="gen-badge">Gen 1</span>
-                <h3>Generasi Pertama</h3>
-                <p style="color: var(--text-muted); margin-top: 10px;">Para sepuh perintis berdirinya komunitas Creator Anime One.</p>
+                <h3>Generation 1</h3>
+                <p style="margin-top: 10px;">Para sepuh perintis pertama yang membangun dasar awal komunitas.</p>
             </div>
             <div class="glass-card">
                 <span class="gen-badge">Gen 2</span>
-                <h3>Generasi Kedua</h3>
-                <p style="color: var(--text-muted); margin-top: 10px;">Penerus berbakat dengan karya-karya edit video yang variatif.</p>
+                <h3>Generation 2</h3>
+                <p style="margin-top: 10px;">Kreator berbakat penerus generasi pertama dengan gaya edit yang fresh.</p>
             </div>
             <div class="glass-card">
                 <span class="gen-badge">Gen 3</span>
-                <h3>Generasi Ketiga</h3>
-                <p style="color: var(--text-muted); margin-top: 10px;">Anggota baru yang penuh semangat dan inovasi segar.</p>
+                <h3>Generation 3</h3>
+                <p style="margin-top: 10px;">Anggota terbaru pendatang baru yang penuh ambisi dan semangat tinggi.</p>
             </div>
         </div>
     </section>
 
-    <!-- 5. TOP MEMBER & TOP CREATOR -->
-    <section class="top-ranks">
-        <h2>Apresiasi Member</h2>
-        <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+    <section class="top-members">
+        <h2>Apresiasi Tertinggi</h2>
+        <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
             <div class="glass-card">
-                <h3 style="color: var(--secondary); margin-bottom: 15px;">🏆 Top Member Bulan Ini</h3>
-                <p style="color: var(--text-muted);">Member paling aktif berinteraksi dan berkontribusi di komunitas.</p>
+                <h3 style="color: var(--secondary); margin-bottom: 15px;">🏆 Top Member</h3>
+                <p>Member teraktif dalam obrolan komunitas dan paling sering berkontribusi bulan ini.</p>
             </div>
             <div class="glass-card">
-                <h3 style="color: var(--primary); margin-bottom: 15px;">🔥 Top Creator Terbaik</h3>
-                <p style="color: var(--text-muted);">Kreator dengan konten paling kreatif dan interaksi tertinggi.</p>
+                <h3 style="color: var(--primary); margin-bottom: 15px;">🔥 Top Creator</h3>
+                <p>Kreator video dengan editan paling konsisten, kreatif, dan mendapat engagement terbaik.</p>
             </div>
         </div>
     </section>
 
-    <!-- 6. GALERI EDIT ANIME -->
     <section class="gallery">
         <h2>Galeri Edit Anime</h2>
         <div class="gallery-grid">
-            <div class="gallery-item">🖼️ Karya Editor 1 (assets/edit1.mp4)</div>
-            <div class="gallery-item">🖼️ Karya Editor 2 (assets/edit2.mp4)</div>
-            <div class="gallery-item">🖼️ Karya Editor 3 (assets/edit3.mp4)</div>
-            <div class="gallery-item">🖼️ Karya Editor 4 (assets/edit4.mp4)</div>
+            <div class="gallery-item">🎬 Video Edit 1 (assets/edit1.mp4)</div>
+            <div class="gallery-item">🎬 Video Edit 2 (assets/edit2.mp4)</div>
+            <div class="gallery-item">🎬 Video Edit 3 (assets/edit3.mp4)</div>
+            <div class="gallery-item">🎬 Video Edit 4 (assets/edit4.mp4)</div>
         </div>
     </section>
 
-    <!-- 7. FAQ SECTION -->
     <section class="faq">
-        <h2>FAQ (Tanya Jawab)</h2>
-        <div class="glass-card" style="max-width: 700px; margin: 0 auto;">
+        <h2>FAQ</h2>
+        <div class="glass-card" style="max-width: 750px; margin: 0 auto;">
             <div class="faq-item">
-                <h4>❓ Bagaimana cara bergabung dengan Creator Anime One?</h4>
-                <p>Kamu bisa mendaftar saat pendaftaran generasi baru (Open Recruitment) dibuka melalui akun TikTok resmi kami.</p>
+                <h4>❓ Bagaimana cara masuk komunitas Creator Anime One?</h4>
+                <p>Pantau info Open Recruitment generasi berikutnya lewat akun resmi TikTok kami.</p>
             </div>
             <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.05); margin: 15px 0;">
             <div class="faq-item">
-                <h4>❓ Apakah harus bisa mengedit video untuk masuk?</h4>
-                <p>Tidak wajib, kami juga merangkul para pecinta anime biasa, reviewer, maupun ilustrator!</p>
+                <h4>❓ Apakah komunitas ini khusus untuk editor saja?</h4>
+                <p>Tidak, semua pecinta anime, content creator, reviewer, ataupun wibu biasa boleh bergabung saat pendaftaran dibuka!</p>
             </div>
         </div>
     </section>
 
-    <!-- 8. FOOTER -->
     <footer>
-        <p>© 2026 Creator Anime One. Dibuat dengan bangga oleh Komunitas Sepuh Anime.</p>
+        <p>© 2026 Creator Anime One. All Rights Reserved.</p>
     </footer>
 
 </body>
