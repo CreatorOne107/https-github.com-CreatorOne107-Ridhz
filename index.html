@@ -1123,6 +1123,154 @@
             .admin-track, .admin-set { gap: 14px; }
             section { padding: 56px 0; }
         }
+    
+
+        /* --- FIX INFORMASI MEMBER ---
+           Struktur rank dirapikan dan dibuat sebagai pajangan saja, tanpa onclick/bot. */
+        #rank .section-head {
+            margin-bottom: 34px;
+        }
+
+        #rank .section-head p {
+            margin-top: 10px;
+        }
+
+        #rank .member-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        #rank .rank-panel {
+            padding: 24px;
+            overflow: visible;
+            cursor: default;
+        }
+
+        #rank .rank-panel h3 {
+            margin: 0 0 18px;
+            font-size: 1.18rem;
+            line-height: 1.3;
+            letter-spacing: -.35px;
+        }
+
+        #rank .rank-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        #rank .rank-item {
+            min-height: 64px;
+            padding: 14px 16px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.055);
+            border: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        #rank .rank-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        #rank .rank-left span:last-child {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        #rank .rank-num {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            background: rgba(139,92,246,.28);
+            color: #eee9ff;
+            border: 1px solid rgba(196,181,253,.12);
+        }
+
+        #rank .rank-item strong {
+            flex: 0 0 auto;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        @media (max-width: 880px) {
+            #rank .member-info-grid {
+                grid-template-columns: 1fr;
+                max-width: 620px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 540px) {
+            #rank {
+                padding: 64px 0;
+            }
+
+            #rank .section-head {
+                margin-bottom: 24px;
+            }
+
+            #rank .section-head h2 {
+                font-size: clamp(1.9rem, 9vw, 2.7rem);
+                line-height: 1.08;
+            }
+
+            #rank .section-head p {
+                font-size: .92rem;
+                line-height: 1.55;
+            }
+
+            #rank .rank-panel {
+                padding: 18px;
+                border-radius: 24px;
+            }
+
+            #rank .rank-panel h3 {
+                font-size: 1.45rem;
+                margin-bottom: 16px;
+            }
+
+            #rank .rank-list {
+                gap: 12px;
+            }
+
+            #rank .rank-item {
+                min-height: 72px;
+                border-radius: 22px;
+                padding: 14px;
+                gap: 10px;
+            }
+
+            #rank .rank-left {
+                gap: 12px;
+            }
+
+            #rank .rank-num {
+                width: 42px;
+                height: 42px;
+                flex-basis: 42px;
+                border-radius: 14px;
+                font-size: 1.05rem;
+            }
+
+            #rank .rank-left span:last-child,
+            #rank .rank-item strong {
+                font-size: clamp(.95rem, 4.3vw, 1.25rem);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1286,24 +1434,27 @@
 </section>
 <section id="rank">
 <div class="container">
-<div class="section-head" onclick="bukaBot('/member')" style="cursor: pointer;">
+<div class="section-head">
 <h2>Informasi Member</h2>
+<p>Ringkasan member yang ditampilkan sebagai pajangan informasi komunitas.</p>
 </div>
-<div class="rank-grid">
-<h3 style="margin-bottom: 18px;">🏆 Top Absensi</h3>
+<div class="rank-grid member-info-grid">
+<article class="panel rank-panel">
+<h3>🏆 Top Absensi</h3>
 <div class="rank-list">
 <div class="rank-item"><div class="rank-left"><span class="rank-num">1</span><span>Ridhz</span></div><strong>Aktif</strong></div>
 <div class="rank-item"><div class="rank-left"><span class="rank-num">2</span><span>Xyzoo</span></div><strong>Aktif</strong></div>
 <div class="rank-item"><div class="rank-left"><span class="rank-num">3</span><span>Creator One</span></div><strong>Aktif</strong></div>
 </div>
-</div>
-<h3 style="margin-bottom: 18px;">🔥 Top Member</h3>
+</article>
+<article class="panel rank-panel">
+<h3>🔥 Top Member</h3>
 <div class="rank-list">
 <div class="rank-item"><div class="rank-left"><span class="rank-num">1</span><span>Anime Editor</span></div><strong>AMV</strong></div>
 <div class="rank-item"><div class="rank-left"><span class="rank-num">2</span><span>Sepuh AMV</span></div><strong>Edit</strong></div>
 <div class="rank-item"><div class="rank-left"><span class="rank-num">3</span><span>Newbie Edit</span></div><strong>Rising</strong></div>
 </div>
-</div>
+</article>
 </div>
 </div>
 </section>
@@ -1391,14 +1542,6 @@
 </div>
 </footer>
 <script>
-        // Ganti nomor ini dengan nomor bot WhatsApp kamu, contoh: 6281234567890
-        const NOMOR_BOT = "6281234567890";
-
-        function bukaBot(perintah) {
-            const pesan = encodeURIComponent(perintah);
-            window.open(`https://wa.me/${NOMOR_BOT}?text=${pesan}`, "_blank");
-        }
-
         // Mouse drag untuk slider admin di desktop/laptop
         const adminSlider = document.getElementById("adminSlider");
 
