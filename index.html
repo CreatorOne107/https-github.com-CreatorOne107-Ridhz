@@ -87,57 +87,41 @@
         }
 
         
-        /* --- UPDATE CSS KARTU SEJAJAR + ANIMASI MELAYANG --- */
         .cards {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px; /* Jarak antar kartu biar gak terlalu rapat */
-            margin-bottom: 40px;
-            width: 100%;
-            max-width: 650px;
-        }
+    position: relative;
+    width: 320px;
+    height: 260px;
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .card {
-            position: relative;
-            width: 160px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            background: #111;
-            
-            /* Animasi melayang otomatis naik-turun */
-            animation: melayang 4s ease-in-out infinite;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
+.card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 200px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transform-origin: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-        /* Variasi waktu animasi biar gerakannya gak barengan (efek estetik) */
-        .card-1 { animation-delay: 0s; }
-        .card-2 { animation-delay: 0.5s; }
-        .card-3 { animation-delay: 1s; }
+/* Efek Tumpuk Tiga Kartu - posisi dipusatkan */
+.card-1 { transform: translateX(-50%) translateX(-45px) rotate(-10deg); z-index: 1; }
+.card-2 { transform: translateX(-50%) rotate(0deg); z-index: 2; }
+.card-3 { transform: translateX(-50%) translateX(45px) rotate(10deg); z-index: 1; }
 
-        /* Efek saat kursor menyentuh kartu (Hover) */
-        .card:hover {
-            transform: scale(1.1); /* Kartu membesar pas didekati */
-            border-color: var(--primary);
-            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.4);
-            z-index: 10;
-            animation-play-state: paused; /* Gerakan melayang berhenti pas disentuh */
-        }
+/* Hover Animasi Kartu Menyebar */
+.cards:hover .card-1 { transform: translateX(-50%) translateX(-90px) rotate(-20deg); }
+.cards:hover .card-3 { transform: translateX(-50%) translateX(90px) rotate(20deg); }
+.cards:hover .card-2 { transform: translateX(-50%) scale(1.05); z-index: 3; }
 
-        /* Rumus pergerakan animasi naik turun halus */
-        @keyframes melayang {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px); /* Naik ke atas 10 pixel */
-            }
-        }
-        }
-
+        
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 800;
