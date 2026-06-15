@@ -1271,13 +1271,282 @@
             }
         }
 
+    
+
+        /* =========================================================
+           CUSTOM THEME + MOBILE FOUNDER LAYOUT
+           Tema: biru tua, ungu tua, putih, dan hitam
+        ========================================================= */
+
+        :root {
+            --primary: #7c3aed;
+            --primary-2: #4f46e5;
+            --secondary: #38bdf8;
+            --accent: #ffffff;
+            --bg: #02030a;
+            --bg-soft: #0b1027;
+            --glass: rgba(255, 255, 255, .07);
+            --glass-strong: rgba(255, 255, 255, .13);
+            --line: rgba(255, 255, 255, .13);
+            --text: #ffffff;
+            --text-muted: #cbc6ff;
+            --text-soft: #9b96bd;
+        }
+
+        html {
+            background: #02030a;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 18% 8%, rgba(56, 189, 248, .26), transparent 28%),
+                radial-gradient(circle at 78% 4%, rgba(124, 58, 237, .38), transparent 31%),
+                radial-gradient(circle at 48% 58%, rgba(255, 255, 255, .055), transparent 33%),
+                linear-gradient(145deg, #010208 0%, #070a1a 31%, #120827 63%, #010106 100%) !important;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,.10) 0 1px, transparent 2px),
+                radial-gradient(circle at 70% 35%, rgba(255,255,255,.07) 0 1px, transparent 2px),
+                radial-gradient(circle at 40% 80%, rgba(56,189,248,.08) 0 1px, transparent 2px);
+            background-size: 120px 120px, 180px 180px, 150px 150px;
+            opacity: .55;
+        }
+
+        .navbar {
+            background: rgba(2, 3, 12, .66);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .brand-mark {
+            overflow: hidden;
+            padding: 5px;
+            background:
+                radial-gradient(circle at 35% 25%, rgba(255,255,255,.24), transparent 35%),
+                linear-gradient(135deg, #1d4ed8 0%, #7c3aed 54%, #111827 100%);
+            border: 1px solid rgba(255,255,255,.14);
+            box-shadow:
+                0 10px 28px rgba(79, 70, 229, .36),
+                inset 0 1px 0 rgba(255,255,255,.22);
+        }
+
+        .brand-mark img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .panel,
+        .glass-card,
+        .founder-card,
+        .admin-card,
+        .rank-item,
+        .mini-stat {
+            box-shadow:
+                0 22px 60px rgba(0,0,0,.32),
+                inset 0 1px 0 rgba(255,255,255,.06);
+        }
+
+        .hero h1 {
+            background: linear-gradient(90deg, #ffffff 0%, #dbeafe 32%, #c4b5fd 68%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #7c3aed 58%, #111827);
+            box-shadow: 0 16px 36px rgba(37, 99, 235, .24), 0 16px 36px rgba(124, 58, 237, .22);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,.065);
+            border: 1px solid rgba(255,255,255,.15);
+        }
+
+        .founder-card.owner {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(37, 99, 235, .25), transparent 31%),
+                radial-gradient(circle at 88% 12%, rgba(124, 58, 237, .26), transparent 34%),
+                rgba(255,255,255,.09);
+        }
+
+        /*
+           Mobile Pendiri Creator Anime One:
+           - PC tetap mengikuti CSS lama.
+           - HP dibuat seperti preview: owner di tengah, card kiri/kanan mengintip.
+        */
+        @media (max-width: 880px) {
+            #member {
+                overflow: hidden;
+                padding-top: 72px;
+            }
+
+            #member .container {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            #member .section-head {
+                width: min(100% - 26px, 1120px);
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 30px;
+                transform: none;
+            }
+
+            .founder-podium {
+                display: flex;
+                grid-template-columns: unset;
+                gap: 0;
+                width: 100%;
+                max-width: none;
+                min-height: 460px;
+                margin: 0;
+                padding: 26px max(22px, calc((100vw - min(370px, 82vw)) / 2)) 42px;
+                align-items: center;
+                overflow-x: auto;
+                overflow-y: visible;
+                scroll-snap-type: x mandatory;
+                scroll-padding-inline: max(22px, calc((100vw - min(370px, 82vw)) / 2));
+                -webkit-overflow-scrolling: touch;
+                mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+                -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            }
+
+            .founder-podium::-webkit-scrollbar {
+                display: none;
+            }
+
+            .founder-card {
+                flex: 0 0 min(305px, 74vw);
+                min-height: 360px;
+                padding: 18px;
+                margin: 0 -22px;
+                scroll-snap-align: center;
+                transform: scale(.92);
+                opacity: .88;
+                z-index: 1;
+                border-radius: 26px;
+            }
+
+            .founder-card:hover {
+                transform: scale(.92) translateY(-4px);
+            }
+
+            .founder-card.co-owner {
+                order: 1;
+            }
+
+            .founder-card.owner {
+                order: 2;
+                flex-basis: min(370px, 82vw);
+                min-height: 430px;
+                padding: 22px;
+                margin: 0 -20px;
+                transform: scale(1.04);
+                opacity: 1;
+                z-index: 4;
+                box-shadow:
+                    0 34px 90px rgba(0,0,0,.44),
+                    0 24px 70px rgba(79, 70, 229, .20),
+                    inset 0 1px 0 rgba(255,255,255,.08);
+            }
+
+            .founder-card.owner:hover {
+                transform: scale(1.04) translateY(-5px);
+            }
+
+            .founder-card.admin {
+                order: 3;
+            }
+
+            .founder-photo {
+                aspect-ratio: 16 / 10;
+                border-radius: 19px;
+                margin-bottom: 15px;
+            }
+
+            .founder-card.owner .founder-photo {
+                aspect-ratio: 16 / 11;
+                border-radius: 21px;
+                margin-bottom: 18px;
+            }
+
+            .founder-role {
+                margin-bottom: 12px;
+            }
+
+            .founder-card h3 {
+                font-size: 1.12rem;
+                line-height: 1.2;
+                margin-bottom: 8px;
+            }
+
+            .founder-card.owner h3 {
+                font-size: clamp(1.75rem, 7vw, 2.25rem);
+            }
+
+            .founder-card p {
+                font-size: .9rem;
+            }
+
+            .founder-card.owner p {
+                font-size: .98rem;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .brand-mark {
+                width: 36px;
+                height: 36px;
+                border-radius: 13px;
+            }
+
+            .founder-podium {
+                min-height: 420px;
+                padding-top: 18px;
+                padding-bottom: 34px;
+            }
+
+            .founder-card {
+                flex-basis: min(278px, 75vw);
+                min-height: 330px;
+                padding: 16px;
+                margin: 0 -18px;
+                border-radius: 24px;
+            }
+
+            .founder-card.owner {
+                flex-basis: min(350px, 84vw);
+                min-height: 394px;
+                padding: 18px;
+                margin: 0 -18px;
+            }
+
+            .founder-card h3 {
+                font-size: 1rem;
+            }
+
+            .founder-card.owner h3 {
+                font-size: clamp(1.55rem, 7.8vw, 2rem);
+            }
+        }
+
     </style>
 </head>
 <body>
 <nav class="navbar">
 <div class="container nav-inner">
 <a class="brand" href="#home">
-<span class="brand-mark">⚡</span>
+<span class="brand-mark"><img src="cao-logo.png?v=1" alt="favicon.png"></span>
 <span>Creator Anime One</span>
 </a>
 <div class="nav-menu">
@@ -1575,6 +1844,29 @@
                 adminSlider.scrollLeft = scrollLeft - walk;
             });
         }
+
+
+        // Auto-center card Owner di bagian Pendiri saat tampilan HP
+        const founderPodium = document.querySelector(".founder-podium");
+        const founderOwner = document.querySelector(".founder-card.owner");
+
+        function centerFounderOwner() {
+            if (!founderPodium || !founderOwner) return;
+
+            if (window.innerWidth <= 880) {
+                const targetLeft = founderOwner.offsetLeft - (founderPodium.clientWidth - founderOwner.clientWidth) / 2;
+                founderPodium.scrollTo({ left: Math.max(targetLeft, 0), behavior: "auto" });
+            } else {
+                founderPodium.scrollTo({ left: 0, behavior: "auto" });
+            }
+        }
+
+        window.addEventListener("load", centerFounderOwner);
+        window.addEventListener("resize", () => {
+            window.clearTimeout(window.__founderResizeTimer);
+            window.__founderResizeTimer = window.setTimeout(centerFounderOwner, 120);
+        });
+
 </script>
 </body>
 </html>
