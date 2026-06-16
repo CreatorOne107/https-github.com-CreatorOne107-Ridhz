@@ -1878,6 +1878,100 @@
             }
         }
 
+
+        /* =========================================================
+           UPDATE V5: CUSTOM IMAGE TIKTOK BUTTON UNTUK PENDIRI
+           - Logo TikTok memakai file gambar: tiktok-logo.png?v=1
+           - Bisa diganti/custom cukup dengan mengganti file tiktok-logo.png
+           - Posisi dibuat rapi di pojok kanan bawah setiap card pendiri
+        ========================================================= */
+        .founder-card {
+            padding-bottom: 92px !important;
+        }
+
+        .founder-social {
+            position: absolute;
+            right: 18px;
+            bottom: 18px;
+            z-index: 8;
+            width: 76px;
+            height: 76px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            transition: transform .25s ease, filter .25s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .founder-social img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            pointer-events: none;
+            filter: drop-shadow(0 16px 24px rgba(0,0,0,.30));
+        }
+
+        .founder-social:hover {
+            transform: translateY(-4px) scale(1.06);
+            filter: brightness(1.08);
+        }
+
+        .founder-card.owner .founder-social {
+            width: 92px;
+            height: 92px;
+            right: 24px;
+            bottom: 24px;
+        }
+
+        @media (max-width: 880px) {
+            .founder-card {
+                padding-bottom: 86px !important;
+            }
+
+            .founder-social {
+                width: 70px;
+                height: 70px;
+                right: 16px;
+                bottom: 16px;
+            }
+
+            .founder-card.owner {
+                padding-bottom: 104px !important;
+            }
+
+            .founder-card.owner .founder-social {
+                width: 90px;
+                height: 90px;
+                right: 20px;
+                bottom: 20px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .founder-card {
+                padding-bottom: 78px !important;
+            }
+
+            .founder-social {
+                width: 62px;
+                height: 62px;
+                right: 14px;
+                bottom: 14px;
+            }
+
+            .founder-card.owner {
+                padding-bottom: 96px !important;
+            }
+
+            .founder-card.owner .founder-social {
+                width: 82px;
+                height: 82px;
+                right: 16px;
+                bottom: 16px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -2017,7 +2111,10 @@
 <span class="founder-role">Co-Owner</span>
 <h3>RIDHZ</h3>
 <p>Yang Paling Berkuasa</p>
-</article>
+
+<a class="founder-social tiktok-social" href="https://www.tiktok.com/@ridhztempesto="_blank" rel="noopener noreferrer" aria-label="Buka TikTok RIDHZ">
+<img src="tiktok-logo.png?v=1" alt="TikTok RIDHZ"/>
+</a></article>
 <article class="glass-card founder-card owner">
 <div class="founder-photo">
 <img alt="Foto Owner" onerror="this.remove()" src="chibiarmy.png"/>
@@ -2026,7 +2123,10 @@
 <span class="founder-role">Owner</span>
 <h3>ARMY</h3>
 <p>Pendiri Sekaligus Tetua</p>
-</article>
+
+<a class="founder-social tiktok-social" href="https://www.tiktok.com/@armyone100="_blank" rel="noopener noreferrer" aria-label="Buka TikTok ARMY">
+<img src="tiktok-logo.png?v=1" alt="TikTok ARMY"/>
+</a></article>
 <article class="glass-card founder-card admin">
 <div class="founder-photo">
 <img alt="Foto Admin" onerror="this.remove()" src="chibicelz.png"/>
@@ -2035,7 +2135,10 @@
 <span class="founder-role">Admin</span>
 <h3>CELZ</h3>
 <p>Leader of Admin</p>
-</article>
+
+<a class="founder-social tiktok-social" href="https://www.tiktok.com/@celzpreset" target="_blank" rel="noopener noreferrer" aria-label="Buka TikTok CELZ">
+<img src="tiktok-logo.png?v=1" alt="TikTok CELZ"/>
+</a></article>
 </div>
 </div>
 </section>
@@ -2050,7 +2153,7 @@
 <h3>🏆 Top Absensi</h3>
 <div class="rank-list">
 <div class="rank-item"><div class="rank-left"><span class="rank-num">#1</span><span>Ridhz</span></div><strong>30X</strong></div>
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#2</span><span>Xyzoo</span></div><strong>30Xf</strong></div>
+<div class="rank-item"><div class="rank-left"><span class="rank-num">#2</span><span>Xyzoo</span></div><strong>30X</strong></div>
 <div class="rank-item"><div class="rank-left"><span class="rank-num">#3</span><span>Army</span></div><strong>30X</strong></div>
 </div>
 </article>
@@ -2208,5 +2311,11 @@
         });
 
 </script>
+<!--
+Catatan custom TikTok:
+1. Ganti file tiktok-logo.png jika ingin memakai gambar/logo TikTok lain.
+2. Ganti href pada .founder-social jika tiap pendiri punya akun TikTok masing-masing.
+-->
+
 </body>
 </html>
