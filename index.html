@@ -1793,6 +1793,91 @@
             }
         }
 
+
+
+        /* =========================================================
+           UPDATE V4: FIX STATISTIK DI HP MODE DESKTOP
+           - Mencegah card hashtag terpotong saat browser HP memakai mode desktop.
+           - Layout statistik turun jadi lebih lega di layar sedang.
+           - Angka hashtag dibuat fleksibel supaya tidak keluar dari box.
+        ========================================================= */
+        #statistik .stats-grid,
+        #statistik .hashtag-grid,
+        #statistik .mini-stats,
+        #statistik .panel,
+        #statistik .hashtag,
+        #statistik .mini-stat {
+            min-width: 0;
+        }
+
+        #statistik .hashtag {
+            overflow: hidden;
+        }
+
+        #statistik .mini-stat b {
+            font-size: clamp(1.05rem, 1.9vw, 1.4rem);
+            line-height: 1.08;
+            white-space: nowrap;
+        }
+
+        #statistik .mini-stat span {
+            display: block;
+            line-height: 1.32;
+        }
+
+        @media (max-width: 1100px) {
+            #statistik .stats-grid {
+                grid-template-columns: 1fr !important;
+                gap: 18px !important;
+            }
+
+            #statistik .count-card {
+                min-height: 210px;
+            }
+
+            #statistik .hashtag-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+
+            #statistik .hashtag {
+                padding: 24px !important;
+            }
+
+            #statistik .mini-stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 12px !important;
+            }
+        }
+
+        @media (max-width: 720px) {
+            #statistik .hashtag-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            #statistik .count-card {
+                padding: 28px 20px !important;
+            }
+        }
+
+        @media (max-width: 420px) {
+            #statistik .mini-stats {
+                gap: 10px !important;
+            }
+
+            #statistik .hashtag {
+                padding: 20px !important;
+            }
+
+            #statistik .mini-stat {
+                padding: 12px !important;
+                border-radius: 16px !important;
+            }
+
+            #statistik .mini-stat b {
+                font-size: clamp(.98rem, 5vw, 1.25rem) !important;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1862,26 +1947,26 @@
 <section id="generation">
 <div class="container">
 <div class="section-head">
-<h2>Daftar Gen-V</h2>
+<h2>Daftar Generasi</h2>
 
 </div>
 <div class="grid-3">
 <article class="glass-card">
-<img alt="CAOFAMS V1" class="gen-card-img" src="gen1.jpg"/>
-<span class="badge">V1</span>
-<h3>Gen-V1</h3>
-<p>Berisi 166+ Member</p>
-</article>
-<article class="glass-card">
 <img alt="CAOFAMS V2" class="gen-card-img" src="gen2.jpg"/>
 <span class="badge">V2</span>
-<h3>Gen-V2</h3>
-<p>Berisi 210+ Member</p>
+<h3>Generasi Kedua</h3>
+<p>Berisi 208 Member</p>
+</article>
+<article class="glass-card">
+<img alt="CAOFAMS V1" class="gen-card-img" src="gen1.jpg"/>
+<span class="badge">V1</span>
+<h3>Generasi Pertama</h3>
+<p>Berisi 166 Member</p>
 </article>
 <article class="glass-card">
 <img alt="CAOFAMS V3" class="gen-card-img" src="gen3.jpg"/>
 <span class="badge">V3</span>
-<h3>Gen-V3</h3>
+<h3>Generasi Ketiga</h3>
 <p>Coming Soon</p>
 </article>
 </div>
@@ -1904,14 +1989,14 @@
 <strong>#creatoranimeone</strong>
 <div class="mini-stats">
 <div class="mini-stat"><b>2,3M+</b><span>Jumlah Penonton</span></div>
-<div class="mini-stat"><b>28,6RB+</b><span>Jumlah Video</span></div>
+<div class="mini-stat"><b>28,6K+</b><span>Jumlah Video</span></div>
 </div>
 </div>
 <div class="panel hashtag">
 <strong>#caofams</strong>
 <div class="mini-stats">
 <div class="mini-stat"><b>956jt+</b><span>Jumlah Penonton</span></div>
-<div class="mini-stat"><b>8RB+</b><span>Jumlah Video</span></div>
+<div class="mini-stat"><b>8K+</b><span>Jumlah Video</span></div>
 </div>
 </div>
 </div>
@@ -1931,7 +2016,7 @@
 </div>
 <span class="founder-role">Co-Owner</span>
 <h3>RIDHZ</h3>
-<p>Yang Paling Berkuasa</p>
+<p>Co-Owner</p>
 </article>
 <article class="glass-card founder-card owner">
 <div class="founder-photo">
@@ -1940,7 +2025,7 @@
 </div>
 <span class="founder-role">Owner</span>
 <h3>ARMY</h3>
-<p>Pendiri Sekaligus Tetua</p>
+<p>Owner Of Cao</p>
 </article>
 <article class="glass-card founder-card admin">
 <div class="founder-photo">
@@ -1958,23 +2043,23 @@
 <div class="container">
 <div class="section-head">
 <h2>Informasi Member</h2>
-<p>Top Member Dengan Peforma Gokil.</p>
+<p>Ringkasan member yang ditampilkan sebagai pajangan informasi komunitas.</p>
 </div>
 <div class="rank-grid member-info-grid">
 <article class="panel rank-panel">
 <h3>🏆 Top Absensi</h3>
 <div class="rank-list">
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#1</span><span>Ridhz</span></div><strong>30X</strong></div>
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#2</span><span>Xyzoo</span></div><strong>30X</strong></div>
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#3</span><span>Army</span></div><strong>29X</strong></div>
+<div class="rank-item"><div class="rank-left"><span class="rank-num">1</span><span>Ridhz</span></div><strong>Aktif</strong></div>
+<div class="rank-item"><div class="rank-left"><span class="rank-num">2</span><span>Xyzoo</span></div><strong>Aktif</strong></div>
+<div class="rank-item"><div class="rank-left"><span class="rank-num">3</span><span>Creator One</span></div><strong>Aktif</strong></div>
 </div>
 </article>
 <article class="panel rank-panel">
 <h3>🔥 Top Member</h3>
 <div class="rank-list">
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#1</span><span>Celz</span></div><strong>Prst</strong></div>
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#2</span><span>Zenn</span></div><strong>Pro</strong></div>
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#3</span><span>Caine</span></div><strong>Live</strong></div>
+<div class="rank-item"><div class="rank-left"><span class="rank-num">1</span><span>Anime Editor</span></div><strong>AMV</strong></div>
+<div class="rank-item"><div class="rank-left"><span class="rank-num">2</span><span>Sepuh AMV</span></div><strong>Edit</strong></div>
+<div class="rank-item"><div class="rank-left"><span class="rank-num">3</span><span>Newbie Edit</span></div><strong>Rising</strong></div>
 </div>
 </article>
 </div>
@@ -2026,13 +2111,6 @@
 </article>
 <article class="glass-card admin-card">
 <div class="admin-photo">
-<img alt="Foto Admin Slot 06" onerror="this.remove()" src="nano.png"/>
-</div>
-<h3>Nano</h3>
-<small>Admin Collab2</small>
-</article>
-<article class="glass-card admin-card">
-<div class="admin-photo">
 <img alt="Foto Admin Slot 06" onerror="this.remove()" src="xyzoo.png"/>
 </div>
 <h3>Xyzoo</h3>
@@ -2050,7 +2128,7 @@
 <img alt="Foto Admin Slot 06" onerror="this.remove()" src="kaishi1.png"/>
 </div>
 <h3>Kaishi</h3>
-<small>Admin Collab3</small>
+<small>Admin Collab2</small>
 </article>
 <article class="glass-card admin-card">
 <div class="admin-photo">
@@ -2066,10 +2144,8 @@
 </section>
 <footer>
 <div class="container">
-<p>2025 -2026 © Creator Anime One. All rights reserved</p>
-<p class='footer-credit'>
-        Made with ❤️ by <a href='https://www.tiktok.com/@jojojocijoo' target='_blank' style='text-decoration: none; color: inherit;'>Xyzoo</a>
-        </p>
+<p>2026 © Creator Anime One. All rights reserved.</p>
+<p style="margin-top: 8px;">Creator Anime One Community .</p>
 </div>
 </footer>
 <script>
