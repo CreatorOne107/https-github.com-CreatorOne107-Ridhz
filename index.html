@@ -1972,9 +1972,71 @@
             }
         }
 
+    
+
+        /* =========================================================
+           PROTEKSI ANTI COPY RINGAN
+           Catatan: proteksi frontend tidak bisa 100% anti salin,
+           tapi ini membuat klik kanan, seleksi, drag, dan shortcut
+           umum lebih sulit dipakai.
+        ========================================================= */
+        html, body,
+        body *:not(input):not(textarea):not([contenteditable="true"]) {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
+        }
+
+        input,
+        textarea,
+        [contenteditable="true"] {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+
+        img,
+        video,
+        svg {
+            -webkit-user-drag: none !important;
+            user-drag: none !important;
+        }
+
+        .copy-protection-toast {
+            position: fixed;
+            left: 50%;
+            top: 18px;
+            transform: translateX(-50%) translateY(-10px);
+            z-index: 999999;
+            width: min(calc(100% - 28px), 520px);
+            padding: 14px 18px;
+            border-radius: 16px;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 800;
+            line-height: 1.45;
+            background: rgba(9, 0, 20, .92);
+            border: 1px solid rgba(233, 213, 255, .24);
+            box-shadow: 0 20px 48px rgba(0,0,0,.38), 0 0 28px rgba(168,85,247,.26);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            opacity: 0;
+            pointer-events: none;
+            transition: .25s ease;
+        }
+
+        .copy-protection-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
     </style>
 </head>
-<body>
+<body oncontextmenu="return false">
 <nav class="navbar">
 <div class="container nav-inner">
 <a class="brand" href="#home">
@@ -2112,7 +2174,7 @@
 <h3>RIDHZ</h3>
 <p>Yang Paling Berkuasa</p>
 
-<a class="founder-social tiktok-social" href="https://www.tiktok.com/@ridhztempesto"_blank" rel="noopener noreferrer" aria-label="Buka TikTok RIDHZ">
+<a class="founder-social tiktok-social" href="https://www.tiktok.com/@ridhztempesto" target="_blank" rel="noopener noreferrer" aria-label="Buka TikTok RIDHZ">
 <img src="tiktok-logo.png?v=1" alt="TikTok RIDHZ"/>
 </a></article>
 <article class="glass-card founder-card owner">
@@ -2124,7 +2186,7 @@
 <h3>ARMY</h3>
 <p>Pendiri Sekaligus Tetua</p>
 
-<a class="founder-social tiktok-social" href="https://www.tiktok.com/@armyone100"_blank" rel="noopener noreferrer" aria-label="Buka TikTok ARMY">
+<a class="founder-social tiktok-social" href="https://www.tiktok.com/@armyone100" target="_blank" rel="noopener noreferrer" aria-label="Buka TikTok ARMY">
 <img src="tiktok-logo.png?v=1" alt="TikTok ARMY"/>
 </a></article>
 <article class="glass-card founder-card admin">
@@ -2316,6 +2378,88 @@ Catatan custom TikTok:
 1. Ganti file tiktok-logo.png jika ingin memakai gambar/logo TikTok lain.
 2. Ganti href pada .founder-social jika tiap pendiri punya akun TikTok masing-masing.
 -->
+
+
+
+<script>
+/* =========================================================
+   PROTEKSI ANTI COPY RINGAN - Creator Anime One
+   Ditempel sebelum </body>.
+   Tetap ingat: HTML/CSS/JS publik tidak bisa 100% anti salin.
+========================================================= */
+(function () {
+    const blockedMessage = "Konten Creator Anime One dilindungi. Dilarang menyalin tanpa izin.";
+
+    function showProtectionToast() {
+        let toast = document.querySelector(".copy-protection-toast");
+
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.className = "copy-protection-toast";
+            toast.textContent = blockedMessage;
+            document.body.appendChild(toast);
+        }
+
+        toast.classList.add("show");
+        window.clearTimeout(window.__copyProtectionToastTimer);
+        window.__copyProtectionToastTimer = window.setTimeout(function () {
+            toast.classList.remove("show");
+        }, 2200);
+    }
+
+    function blockEvent(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        showProtectionToast();
+        return false;
+    }
+
+    document.addEventListener("contextmenu", blockEvent, { capture: true });
+    document.addEventListener("copy", blockEvent, { capture: true });
+    document.addEventListener("cut", blockEvent, { capture: true });
+    document.addEventListener("dragstart", blockEvent, { capture: true });
+    document.addEventListener("selectstart", function (event) {
+        const target = event.target;
+        const allowed = target && (
+            target.tagName === "INPUT" ||
+            target.tagName === "TEXTAREA" ||
+            target.isContentEditable
+        );
+
+        if (!allowed) {
+            return blockEvent(event);
+        }
+    }, { capture: true });
+
+    document.addEventListener("keydown", function (event) {
+        const key = String(event.key || "").toLowerCase();
+
+        const blockedShortcut =
+            event.key === "F12" ||
+            (event.ctrlKey && key === "u") ||
+            (event.ctrlKey && key === "s") ||
+            (event.ctrlKey && key === "c") ||
+            (event.ctrlKey && key === "x") ||
+            (event.ctrlKey && key === "a") ||
+            (event.ctrlKey && key === "p") ||
+            (event.ctrlKey && event.shiftKey && key === "i") ||
+            (event.ctrlKey && event.shiftKey && key === "j") ||
+            (event.ctrlKey && event.shiftKey && key === "c") ||
+            (event.metaKey && key === "u") ||
+            (event.metaKey && key === "s") ||
+            (event.metaKey && key === "c") ||
+            (event.metaKey && key === "x") ||
+            (event.metaKey && key === "a") ||
+            (event.metaKey && key === "p") ||
+            (event.metaKey && event.altKey && key === "i");
+
+        if (blockedShortcut) {
+            return blockEvent(event);
+        }
+    }, { capture: true });
+})();
+</script>
+
 
 </body>
 </html>
