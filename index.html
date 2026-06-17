@@ -2669,6 +2669,148 @@
             }
         }
 
+        /* =========================================================
+           UPDATE ABSEN V5: TOP 1-3 SELALU TERLIHAT DI HP
+           - Tidak perlu geser kanan/kiri.
+           - Ukuran podium diperkecil otomatis pada layar kecil.
+        ========================================================= */
+        #absen .leaderboard-card {
+            overflow: visible !important;
+        }
+
+        @media (max-width: 680px) {
+            #absen .absen-top-podium {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr) minmax(0, 1fr) !important;
+                grid-template-areas: "rank2 rank1 rank3" !important;
+                gap: 6px !important;
+                overflow: visible !important;
+                min-height: 320px !important;
+                padding: 18px 0 10px !important;
+                margin: 4px 0 20px !important;
+                scroll-snap-type: none !important;
+            }
+
+            #absen .absen-top-podium::-webkit-scrollbar {
+                display: none !important;
+            }
+
+            #absen .podium-member {
+                flex: none !important;
+                width: 100% !important;
+                min-width: 0 !important;
+                scroll-snap-align: unset !important;
+            }
+
+            #absen .podium-member.rank-2 {
+                grid-area: rank2 !important;
+                order: 0 !important;
+                transform: translateY(28px) !important;
+            }
+
+            #absen .podium-member.rank-1 {
+                grid-area: rank1 !important;
+                order: 0 !important;
+                transform: translateY(-8px) !important;
+                z-index: 3 !important;
+            }
+
+            #absen .podium-member.rank-3 {
+                grid-area: rank3 !important;
+                order: 0 !important;
+                transform: translateY(28px) !important;
+            }
+
+            #absen .podium-character {
+                width: clamp(70px, 23vw, 106px) !important;
+                height: clamp(88px, 30vw, 132px) !important;
+                margin-bottom: -18px !important;
+                border-radius: 18px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-character {
+                width: clamp(86px, 28vw, 134px) !important;
+                height: clamp(112px, 38vw, 172px) !important;
+                margin-bottom: -20px !important;
+            }
+
+            #absen .podium-character.no-image::after {
+                width: clamp(50px, 16vw, 70px) !important;
+                height: clamp(50px, 16vw, 70px) !important;
+                font-size: clamp(1.3rem, 6vw, 1.9rem) !important;
+                border-width: 3px !important;
+            }
+
+            #absen .podium-card {
+                min-height: 112px !important;
+                border-radius: 20px !important;
+                padding: 11px 6px 10px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-card {
+                min-height: 132px !important;
+                border-radius: 22px !important;
+                padding-top: 12px !important;
+            }
+
+            #absen .podium-number {
+                left: 8px !important;
+                top: 9px !important;
+                font-size: clamp(1rem, 5vw, 1.45rem) !important;
+            }
+
+            #absen .podium-crown {
+                top: -34px !important;
+                width: clamp(38px, 13vw, 58px) !important;
+                height: clamp(30px, 10vw, 46px) !important;
+                font-size: clamp(1.9rem, 9vw, 2.8rem) !important;
+            }
+
+            #absen .podium-avatar {
+                width: clamp(42px, 13vw, 54px) !important;
+                height: clamp(42px, 13vw, 54px) !important;
+                margin-bottom: 6px !important;
+                font-size: clamp(1.1rem, 5vw, 1.45rem) !important;
+                border-width: 3px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-avatar {
+                width: clamp(52px, 16vw, 66px) !important;
+                height: clamp(52px, 16vw, 66px) !important;
+                font-size: clamp(1.3rem, 6vw, 1.7rem) !important;
+            }
+
+            #absen .podium-name {
+                font-size: clamp(.78rem, 3.6vw, 1.08rem) !important;
+                letter-spacing: -.35px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-name {
+                font-size: clamp(.95rem, 4.8vw, 1.38rem) !important;
+            }
+
+            #absen .podium-count {
+                margin-top: 5px !important;
+                font-size: clamp(.74rem, 3.6vw, .98rem) !important;
+            }
+        }
+
+        @media (max-width: 390px) {
+            #absen .absen-top-podium {
+                gap: 4px !important;
+                min-height: 292px !important;
+            }
+
+            #absen .podium-card {
+                border-radius: 18px !important;
+                min-height: 104px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-card {
+                min-height: 124px !important;
+            }
+        }
+
 
     </style>
 </head>
@@ -2965,7 +3107,7 @@
 <div class="section-head">
 <span class="eyebrow">✦ Bot Absen CAO</span>
 <h2>Bot Absen Member</h2>
-<p>Ketik nama yang sudah disetujui admin, lalu tekan absen. Setiap nama hanya bisa absen 1 kali dalam 24 jam, masuk ke leaderboard peringkat 1–10, dan data otomatis reset setiap awal bulan.</p>
+<p>Ketik nama yang sudah disetujui admin, lalu tekan absen. Setiap nama hanya bisa absen 1 kali dalam 24 jam, masuk ke leaderboard peringkat 1–10, dan data otomatis reset setiap awal bulan. Bisa disambungkan ke Firebase agar tampil sama untuk semua user.</p>
 </div>
 <div class="absen-layout">
 <article class="panel absen-card" aria-label="Form absen member">
@@ -2985,7 +3127,7 @@
 <div class="absen-stat-box"><b id="totalNamaAbsen">0</b><span>Total nama absen</span></div>
 <div class="absen-stat-box"><b id="totalAbsenMasuk">0</b><span>Total absen masuk</span></div>
 </div>
-<p class="absen-note">Daftar nama yang diizinkan bisa diatur di bagian APPROVED_MEMBER_NAMES pada script HTML. Mode satu file ini memakai penyimpanan browser; leaderboard global semua HP/member tetap perlu database seperti Firebase atau Supabase.</p>
+<p class="absen-note">Daftar nama yang diizinkan bisa diatur di bagian APPROVED_MEMBER_NAMES. Untuk leaderboard global semua HP/member, isi FIREBASE_CONFIG pada script HTML. Jika FIREBASE_CONFIG masih kosong, data hanya tersimpan di browser masing-masing.</p>
 </article>
 <article class="panel leaderboard-card" aria-label="Leaderboard absen member">
 <div class="leaderboard-head">
@@ -2993,7 +3135,7 @@
 <h3>Leaderboard Top 10</h3>
 <p>Top 1–3 tampil sebagai podium transparan. Peringkat 4–10 tampil dalam daftar di bawahnya.</p>
 </div>
-<span class="badge">Nama Tersetujui</span>
+<span class="badge" id="absenModeBadge">Menyiapkan...</span>
 </div>
 <div class="absen-rank-list" id="absenLeaderboardList"></div>
 </article>
@@ -3068,26 +3210,46 @@
 
 </script>
 
+
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-database-compat.js"></script>
 <script>
 /* =========================================================
    BOT ABSEN CAO - 1 HTML / GitHub Pages
-   - Data tersimpan di localStorage browser pengguna.
-   - Otomatis reset saat pergantian bulan.
+   - Bisa global semua user memakai Firebase Realtime Database.
+   - Jika FIREBASE_CONFIG belum diisi, otomatis fallback ke localStorage browser.
+   - Cooldown 24 jam per nama.
+   - Reset tampilan setiap bulan lewat pemisahan data per bulan.
    - Nama wajib masuk daftar izin admin sebelum bisa absen.
-   - Podium memakai custom image dengan background area transparan.
 ========================================================= */
 (function () {
-    const STORAGE_KEY = "cao_absen_leaderboard_v3_monthly_approved";
-    const OLD_STORAGE_KEYS = ["cao_absen_leaderboard_v2_monthly", "cao_absen_leaderboard_v1"];
+    const STORAGE_KEY = "cao_absen_leaderboard_v5_firebase_ready";
     const COOLDOWN_MS = 24 * 60 * 60 * 1000;
+    const FIREBASE_ROOT_PATH = "cao_absen";
+
+    /* =====================================================
+       FIREBASE CONFIG UNTUK LEADERBOARD GLOBAL
+       Cara isi:
+       1. Buat project Firebase.
+       2. Aktifkan Realtime Database.
+       3. Buka Project Settings > Web App.
+       4. Copy firebaseConfig, lalu tempel nilainya di bawah.
+       Jika bagian ini masih kosong, data hanya tersimpan di browser sendiri.
+    ===================================================== */
+    const FIREBASE_CONFIG = {
+        apiKey: "",
+        authDomain: "",
+        databaseURL: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: "",
+        appId: ""
+    };
 
     /* =====================================================
        DAFTAR NAMA YANG DIIZINKAN ABSEN
-       Cara pakai:
-       1. Tambahkan nama member di dalam array ini.
-       2. Upload ulang index.html ke GitHub.
-       3. Member tinggal input nama yang sama, tidak perlu izin lagi.
-       Contoh: "Ridhz", "Xyzoo", "Army"
+       Tambahkan nama member di sini, lalu upload ulang index.html.
+       Member hanya bisa absen memakai nama yang ada di daftar ini.
     ===================================================== */
     const APPROVED_MEMBER_NAMES = [
         "Ridhz",
@@ -3123,8 +3285,15 @@
     const leaderboardList = document.getElementById("absenLeaderboardList");
     const totalNamaAbsen = document.getElementById("totalNamaAbsen");
     const totalAbsenMasuk = document.getElementById("totalAbsenMasuk");
+    const modeBadge = document.getElementById("absenModeBadge");
 
     if (!inputNama || !btnAbsen || !btnCek || !statusBox || !leaderboardList) return;
+
+    let firebaseEnabled = false;
+    let firebaseDb = null;
+    let firebaseRef = null;
+    let cachedGlobalData = [];
+    let activeMonthKey = getMonthKey();
 
     function getMonthKey(date = new Date()) {
         const year = date.getFullYear();
@@ -3138,13 +3307,6 @@
         return date.toLocaleDateString("id-ID", { month: "long", year: "numeric" });
     }
 
-    function getBlankStore() {
-        return {
-            monthKey: getMonthKey(),
-            data: []
-        };
-    }
-
     function normalizeName(value) {
         return String(value || "")
             .trim()
@@ -3153,7 +3315,7 @@
     }
 
     function nameKey(value) {
-        return normalizeName(value).toLowerCase();
+        return normalizeName(value).toLowerCase().replace(/[^a-z0-9_-]+/gi, "_").replace(/^_+|_+$/g, "");
     }
 
     const APPROVED_NAME_MAP = new Map(
@@ -3169,8 +3331,30 @@
         return APPROVED_NAME_MAP.get(nameKey(value)) || null;
     }
 
+    function escapeHTML(value) {
+        return String(value ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function escapeAttr(value) {
+        return escapeHTML(value).replace(/`/g, "&#096;");
+    }
+
+    function getInitial(name) {
+        const clean = normalizeName(name);
+        return clean ? clean.charAt(0).toUpperCase() : "?";
+    }
+
     function sanitizeData(data) {
         const merged = new Map();
+
+        if (data && !Array.isArray(data) && typeof data === "object") {
+            data = Object.values(data);
+        }
 
         (Array.isArray(data) ? data : []).forEach(function (item) {
             if (!item) return;
@@ -3202,81 +3386,54 @@
         return Array.from(merged.values());
     }
 
-    function readStore() {
+    function readLocalStore() {
         const thisMonth = getMonthKey();
 
         try {
             const raw = localStorage.getItem(STORAGE_KEY);
             if (raw) {
                 const parsed = JSON.parse(raw);
-
-                if (parsed && parsed.monthKey === thisMonth && Array.isArray(parsed.data)) {
-                    const cleanData = sanitizeData(parsed.data);
-                    if (cleanData.length !== parsed.data.length) {
-                        localStorage.setItem(STORAGE_KEY, JSON.stringify({ monthKey: thisMonth, data: cleanData }));
-                    }
-                    return { monthKey: thisMonth, data: cleanData };
+                if (parsed && parsed.monthKey === thisMonth) {
+                    return {
+                        monthKey: thisMonth,
+                        data: sanitizeData(parsed.data)
+                    };
                 }
-
-                const freshStore = getBlankStore();
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(freshStore));
-                return freshStore;
-            }
-
-            for (const oldKey of OLD_STORAGE_KEYS) {
-                const oldRaw = localStorage.getItem(oldKey);
-                if (!oldRaw) continue;
-
-                const oldParsed = JSON.parse(oldRaw);
-                const oldData = Array.isArray(oldParsed) ? oldParsed : (oldParsed && Array.isArray(oldParsed.data) ? oldParsed.data : []);
-                const sameMonthData = oldData.filter(function (item) {
-                    return item && item.lastAbsentAt && getMonthKey(new Date(Number(item.lastAbsentAt))) === thisMonth;
-                });
-                const migratedStore = { monthKey: thisMonth, data: sanitizeData(sameMonthData) };
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(migratedStore));
-                return migratedStore;
             }
         } catch (error) {
-            // Jika localStorage rusak, sistem dibuat mulai ulang agar halaman tetap jalan.
+            console.warn("Gagal membaca data absen lokal:", error);
         }
 
-        const blank = getBlankStore();
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(blank));
+        const blank = { monthKey: thisMonth, data: [] };
+        saveLocalData(blank.data);
         return blank;
     }
 
-    function loadData() {
-        return sanitizeData(readStore().data);
-    }
-
-    function saveData(data) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    function saveLocalData(data) {
+        const store = {
             monthKey: getMonthKey(),
             data: sanitizeData(data)
-        }));
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
     }
 
-    function escapeHTML(value) {
-        return String(value)
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
+    function loadData() {
+        if (firebaseEnabled) return sanitizeData(cachedGlobalData);
+        return readLocalStore().data;
     }
 
-    function escapeAttr(value) {
-        return escapeHTML(value).replaceAll("`", "&#096;");
-    }
-
-    function getInitial(name) {
-        const clean = normalizeName(name);
-        return clean ? clean.charAt(0).toUpperCase() : "?";
+    function getSortedData() {
+        return loadData().sort(function (a, b) {
+            const countDiff = Number(b.count || 0) - Number(a.count || 0);
+            if (countDiff !== 0) return countDiff;
+            return Number(a.firstAbsentAt || 0) - Number(b.firstAbsentAt || 0);
+        });
     }
 
     function formatDate(timestamp) {
-        if (!timestamp) return "-";
-        return new Date(Number(timestamp)).toLocaleString("id-ID", {
+        const date = new Date(Number(timestamp || 0));
+        if (Number.isNaN(date.getTime())) return "-";
+        return date.toLocaleDateString("id-ID", {
             day: "2-digit",
             month: "short",
             year: "numeric",
@@ -3303,12 +3460,21 @@
         statusBox.textContent = message;
     }
 
-    function getSortedData() {
-        return loadData().sort(function (a, b) {
-            const countDiff = Number(b.count || 0) - Number(a.count || 0);
-            if (countDiff !== 0) return countDiff;
-            return Number(a.firstAbsentAt || 0) - Number(b.firstAbsentAt || 0);
-        });
+    function setButtonsBusy(isBusy) {
+        btnAbsen.disabled = Boolean(isBusy);
+        btnCek.disabled = Boolean(isBusy);
+        btnAbsen.style.opacity = isBusy ? ".65" : "";
+        btnCek.style.opacity = isBusy ? ".65" : "";
+        btnAbsen.style.cursor = isBusy ? "wait" : "";
+        btnCek.style.cursor = isBusy ? "wait" : "";
+    }
+
+    function updateModeBadge() {
+        if (!modeBadge) return;
+        modeBadge.textContent = firebaseEnabled ? "Global Aktif" : "Mode Browser";
+        modeBadge.title = firebaseEnabled
+            ? "Leaderboard tersimpan di Firebase dan terlihat untuk semua user."
+            : "FIREBASE_CONFIG belum diisi, jadi data masih tersimpan di browser masing-masing.";
     }
 
     function getPodiumCharacterMarkup(rank, initial) {
@@ -3358,7 +3524,7 @@
     }
 
     function renderLeaderboard() {
-        const store = readStore();
+        const monthKey = firebaseEnabled ? activeMonthKey : readLocalStore().monthKey;
         const data = getSortedData();
         const totalCount = data.reduce((sum, item) => sum + Number(item.count || 0), 0);
 
@@ -3372,14 +3538,14 @@
         if (topTen.length === 0) {
             leaderboardList.innerHTML = `
                 <div class="absen-podium-empty">
-                    Belum ada nama yang absen untuk periode ${escapeHTML(getMonthLabel(store.monthKey))}. Nama harus masuk daftar izin admin dulu sebelum bisa muncul di leaderboard.
+                    Belum ada nama yang absen untuk periode ${escapeHTML(getMonthLabel(monthKey))}. Nama harus masuk daftar izin admin dulu sebelum bisa muncul di leaderboard.
                 </div>
             `;
             return;
         }
 
         const podiumHTML = topThree.length ? `
-            <div class="absen-rank-subtitle">Podium Top 1–3 • ${escapeHTML(getMonthLabel(store.monthKey))}</div>
+            <div class="absen-rank-subtitle">Podium Top 1–3 • ${escapeHTML(getMonthLabel(monthKey))}</div>
             <div class="absen-top-podium">
                 ${topThree.map(renderPodiumItem).join("")}
             </div>
@@ -3437,24 +3603,67 @@
         };
     }
 
-    function handleAbsen() {
-        const cleanName = normalizeName(inputNama.value);
+    function firebaseIsConfigured() {
+        return Boolean(
+            window.firebase &&
+            FIREBASE_CONFIG &&
+            FIREBASE_CONFIG.apiKey &&
+            FIREBASE_CONFIG.databaseURL &&
+            FIREBASE_CONFIG.projectId
+        );
+    }
 
-        if (!cleanName) {
-            setStatus("Nama belum diisi. Ketik nama dulu untuk absen.", "danger");
-            inputNama.focus();
+    function getFirebaseMembersPath(monthKey = getMonthKey()) {
+        return `${FIREBASE_ROOT_PATH}/monthly/${monthKey}/members`;
+    }
+
+    function startFirebaseListener() {
+        if (!firebaseDb) return;
+
+        activeMonthKey = getMonthKey();
+        if (firebaseRef) firebaseRef.off();
+
+        firebaseRef = firebaseDb.ref(getFirebaseMembersPath(activeMonthKey));
+        firebaseRef.on("value", function (snapshot) {
+            cachedGlobalData = sanitizeData(snapshot.val() || {});
+            renderLeaderboard();
+        }, function (error) {
+            console.error("Firebase read error:", error);
+            setStatus("Firebase belum bisa dibaca. Cek FIREBASE_CONFIG dan rules Realtime Database.", "danger");
+        });
+    }
+
+    function initFirebaseOrLocal() {
+        if (!firebaseIsConfigured()) {
+            firebaseEnabled = false;
+            updateModeBadge();
+            renderLeaderboard();
+            setStatus("Mode browser aktif. Agar leaderboard tampil sama untuk semua user, isi FIREBASE_CONFIG di script HTML.", "warning");
             return;
         }
 
-        const approvedName = getApprovedName(cleanName);
-        if (!approvedName) {
-            setStatus(`Nama "${cleanName}" belum disetujui admin, jadi tidak bisa masuk leaderboard. Minta admin menambahkan nama ini ke APPROVED_MEMBER_NAMES.`, "danger");
-            inputNama.focus();
-            return;
-        }
+        try {
+            if (!window.firebase.apps.length) {
+                window.firebase.initializeApp(FIREBASE_CONFIG);
+            }
 
+            firebaseDb = window.firebase.database();
+            firebaseEnabled = true;
+            updateModeBadge();
+            startFirebaseListener();
+            setStatus("Mode global aktif. Data absen akan tampil untuk semua user yang membuka website.", "success");
+        } catch (error) {
+            console.error("Firebase init error:", error);
+            firebaseEnabled = false;
+            updateModeBadge();
+            renderLeaderboard();
+            setStatus("Firebase gagal aktif, jadi sementara memakai mode browser. Periksa FIREBASE_CONFIG.", "danger");
+        }
+    }
+
+    function saveLocalAbsent(approvedName) {
         const key = nameKey(approvedName);
-        const data = loadData();
+        const data = readLocalStore().data;
         const existingIndex = data.findIndex(item => item.key === key);
         const now = Date.now();
 
@@ -3482,10 +3691,88 @@
             });
         }
 
-        saveData(data);
+        saveLocalData(data);
         renderLeaderboard();
         setStatus(`Berhasil! ${approvedName} masuk absen bulan ini. Cooldown 24 jam dimulai sekarang.`, "success");
         inputNama.value = "";
+    }
+
+    function saveGlobalAbsent(approvedName) {
+        if (!firebaseDb) {
+            saveLocalAbsent(approvedName);
+            return;
+        }
+
+        const key = nameKey(approvedName);
+        const memberRef = firebaseDb.ref(`${getFirebaseMembersPath(getMonthKey())}/${key}`);
+        let blockedInfo = null;
+
+        setButtonsBusy(true);
+
+        memberRef.transaction(function (current) {
+            const now = Date.now();
+
+            if (current && current.lastAbsentAt) {
+                const elapsed = now - Number(current.lastAbsentAt || 0);
+                const remaining = COOLDOWN_MS - elapsed;
+
+                if (remaining > 0) {
+                    blockedInfo = {
+                        name: current.name || approvedName,
+                        remaining: remaining
+                    };
+                    return;
+                }
+            }
+
+            return {
+                key: key,
+                name: approvedName,
+                count: Number(current && current.count ? current.count : 0) + 1,
+                firstAbsentAt: Number(current && current.firstAbsentAt ? current.firstAbsentAt : now),
+                lastAbsentAt: now
+            };
+        }, function (error, committed) {
+            setButtonsBusy(false);
+
+            if (error) {
+                console.error("Firebase transaction error:", error);
+                setStatus("Absen global gagal tersimpan. Cek koneksi, FIREBASE_CONFIG, dan rules Firebase.", "danger");
+                return;
+            }
+
+            if (!committed) {
+                const remaining = blockedInfo ? blockedInfo.remaining : getCooldownInfo(approvedName).remaining;
+                setStatus(`${approvedName} sudah absen hari ini. Bisa absen lagi dalam ${formatRemaining(remaining)}.`, "warning");
+                return;
+            }
+
+            setStatus(`Berhasil! ${approvedName} masuk absen global bulan ini. Semua user bisa melihat leaderboard terbaru.`, "success");
+            inputNama.value = "";
+        }, false);
+    }
+
+    function handleAbsen() {
+        const cleanName = normalizeName(inputNama.value);
+
+        if (!cleanName) {
+            setStatus("Nama belum diisi. Ketik nama dulu untuk absen.", "danger");
+            inputNama.focus();
+            return;
+        }
+
+        const approvedName = getApprovedName(cleanName);
+        if (!approvedName) {
+            setStatus(`Nama "${cleanName}" belum disetujui admin, jadi tidak bisa masuk leaderboard. Minta admin menambahkan nama ini ke APPROVED_MEMBER_NAMES.`, "danger");
+            inputNama.focus();
+            return;
+        }
+
+        if (firebaseEnabled) {
+            saveGlobalAbsent(approvedName);
+        } else {
+            saveLocalAbsent(approvedName);
+        }
     }
 
     function handleCekCooldown() {
@@ -3526,6 +3813,11 @@
     });
 
     setInterval(function () {
+        const monthNow = getMonthKey();
+        if (firebaseEnabled && monthNow !== activeMonthKey) {
+            startFirebaseListener();
+        }
+
         const cleanName = normalizeName(inputNama.value);
         if (!cleanName) return;
 
@@ -3535,7 +3827,7 @@
         }
     }, 1000);
 
-    renderLeaderboard();
+    initFirebaseOrLocal();
 })();
 </script>
 
