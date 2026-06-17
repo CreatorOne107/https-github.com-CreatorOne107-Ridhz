@@ -3325,7 +3325,6 @@
 </div>
 </div>
 <div class="absen-status" id="absenStatus">Masukkan nama yang sudah disetujui admin, lalu klik absen.</div>
-<div class="allowed-name-hint">🔒 Hanya nama yang ada di daftar izin admin yang bisa masuk absen.</div>
 <div class="absen-mini-info">
 <div class="absen-stat-box"><b id="totalNamaAbsen">0</b><span>Total nama absen</span></div>
 <div class="absen-stat-box"><b id="totalAbsenMasuk">0</b><span>Total absen masuk</span></div>
@@ -3849,7 +3848,7 @@
             firebaseEnabled = true;
             updateModeBadge();
             startFirebaseListener();
-            setStatus("Mode global aktif. Data absen akan tampil untuk semua user yang membuka website.", "success");
+            setStatus("Kontak admin di whatsapp untuk menambahkan namamu.", "success");
         } catch (error) {
             console.error("Firebase init error:", error);
             firebaseEnabled = false;
