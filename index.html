@@ -2812,7 +2812,210 @@
         }
 
 
-    </style>
+    
+
+        /* =========================================================
+           UPDATE ABSEN V8: PODIUM CLEAN TANPA MAHKOTA/LABEL
+           - Karakter berada di belakang card agar potongan bawah tidak terlihat.
+           - Mahkota dan label #1, #2, #3 di dalam card dihapus.
+           - Mobile tetap menampilkan #2 kiri, #1 tengah, #3 kanan tanpa geser.
+        ========================================================= */
+        #absen .leaderboard-card {
+            overflow: hidden !important;
+        }
+
+        #absen .absen-top-podium {
+            display: grid !important;
+            grid-template-columns: .9fr 1.08fr .9fr !important;
+            grid-template-areas: "rank2 rank1 rank3" !important;
+            gap: clamp(8px, 2vw, 18px) !important;
+            align-items: end !important;
+            overflow: visible !important;
+            min-height: clamp(360px, 44vw, 500px) !important;
+            padding: clamp(52px, 7vw, 86px) 0 24px !important;
+            margin: 8px 0 18px !important;
+            scroll-snap-type: none !important;
+            -webkit-overflow-scrolling: auto !important;
+        }
+
+        #absen .podium-member {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-end !important;
+            align-items: center !important;
+            min-width: 0 !important;
+            position: relative !important;
+            overflow: visible !important;
+            scroll-snap-align: unset !important;
+        }
+
+        #absen .podium-member.rank-1 {
+            grid-area: rank1 !important;
+            order: 0 !important;
+            transform: translateY(-18px) !important;
+            z-index: 4 !important;
+        }
+
+        #absen .podium-member.rank-2 {
+            grid-area: rank2 !important;
+            order: 0 !important;
+            transform: translateY(24px) !important;
+            z-index: 2 !important;
+        }
+
+        #absen .podium-member.rank-3 {
+            grid-area: rank3 !important;
+            order: 0 !important;
+            transform: translateY(24px) !important;
+            z-index: 2 !important;
+        }
+
+        #absen .podium-character {
+            position: relative !important;
+            z-index: 1 !important;
+            width: clamp(118px, 14vw, 190px) !important;
+            height: clamp(160px, 21vw, 255px) !important;
+            margin-bottom: clamp(-74px, -6vw, -44px) !important;
+            overflow: visible !important;
+            pointer-events: none !important;
+            border-radius: 0 !important;
+        }
+
+        #absen .podium-member.rank-1 .podium-character {
+            width: clamp(160px, 19vw, 260px) !important;
+            height: clamp(220px, 29vw, 340px) !important;
+            margin-bottom: clamp(-92px, -7vw, -58px) !important;
+        }
+
+        #absen .podium-character.has-image img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+            object-position: center bottom !important;
+            position: relative !important;
+            z-index: 1 !important;
+            display: block !important;
+            filter: drop-shadow(0 18px 28px rgba(0,0,0,.32)) !important;
+        }
+
+        #absen .podium-card {
+            position: relative !important;
+            z-index: 5 !important;
+            width: 100% !important;
+            min-height: clamp(132px, 15vw, 168px) !important;
+            padding: clamp(16px, 2.3vw, 22px) clamp(10px, 2vw, 16px) clamp(14px, 2vw, 18px) !important;
+        }
+
+        #absen .podium-member.rank-1 .podium-card {
+            min-height: clamp(156px, 18vw, 196px) !important;
+        }
+
+        #absen .podium-crown,
+        #absen .podium-number {
+            display: none !important;
+        }
+
+        @media (max-width: 680px) {
+            #absen .absen-top-podium {
+                display: grid !important;
+                grid-template-columns: .86fr 1.08fr .86fr !important;
+                grid-template-areas: "rank2 rank1 rank3" !important;
+                gap: 8px !important;
+                min-height: 390px !important;
+                padding: 62px 0 18px !important;
+                overflow: visible !important;
+            }
+
+            #absen .podium-member {
+                flex: initial !important;
+                flex-basis: auto !important;
+                width: auto !important;
+            }
+
+            #absen .podium-character {
+                width: clamp(82px, 26vw, 118px) !important;
+                height: clamp(112px, 32vw, 160px) !important;
+                margin-bottom: -48px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-character {
+                width: clamp(112px, 34vw, 158px) !important;
+                height: clamp(154px, 43vw, 220px) !important;
+                margin-bottom: -64px !important;
+            }
+
+            #absen .podium-card {
+                min-height: 122px !important;
+                border-radius: 22px !important;
+                padding: 14px 8px 13px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-card {
+                min-height: 146px !important;
+                border-radius: 24px !important;
+            }
+
+            #absen .podium-avatar {
+                width: clamp(54px, 14vw, 66px) !important;
+                height: clamp(54px, 14vw, 66px) !important;
+                font-size: clamp(1.25rem, 6vw, 1.7rem) !important;
+                border-width: 3px !important;
+                margin-bottom: 8px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-avatar {
+                width: clamp(64px, 17vw, 78px) !important;
+                height: clamp(64px, 17vw, 78px) !important;
+                font-size: clamp(1.55rem, 7vw, 2rem) !important;
+            }
+
+            #absen .podium-name {
+                font-size: clamp(.86rem, 4.4vw, 1.28rem) !important;
+                letter-spacing: -.3px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-name {
+                font-size: clamp(1.08rem, 5.4vw, 1.62rem) !important;
+            }
+
+            #absen .podium-count {
+                font-size: clamp(.82rem, 4vw, 1.12rem) !important;
+                margin-top: 6px !important;
+            }
+        }
+
+        @media (max-width: 420px) {
+            #absen .absen-top-podium {
+                min-height: 360px !important;
+                gap: 6px !important;
+                padding-top: 54px !important;
+            }
+
+            #absen .podium-character {
+                width: clamp(70px, 25vw, 98px) !important;
+                height: clamp(96px, 31vw, 132px) !important;
+                margin-bottom: -42px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-character {
+                width: clamp(96px, 34vw, 135px) !important;
+                height: clamp(132px, 43vw, 190px) !important;
+                margin-bottom: -58px !important;
+            }
+
+            #absen .podium-card {
+                min-height: 112px !important;
+                border-radius: 20px !important;
+                padding-left: 6px !important;
+                padding-right: 6px !important;
+            }
+
+            #absen .podium-member.rank-1 .podium-card {
+                min-height: 136px !important;
+            }
+        }
+
+</style>
 </head>
 <body oncontextmenu="return false">
 <nav class="navbar">
@@ -3133,7 +3336,7 @@
 <div class="leaderboard-head">
 <div>
 <h3>Leaderboard Top 10</h3>
-<p>Top 1–3 tampil sebagai podium transparan. Peringkat 4–10 tampil dalam daftar di bawahnya.</p>
+<p>Top 1–3 tampil sebagai podium rapi tanpa label ranking di dalam card. Peringkat 4–10 tampil dalam daftar di bawahnya.</p>
 </div>
 <span class="badge" id="absenModeBadge">Menyiapkan...</span>
 </div>
@@ -3238,7 +3441,7 @@
     ===================================================== */
     const FIREBASE_CONFIG = {
         apiKey: "AIzaSyAFjfJHRLhvVoVI59MjiFpXm0ig6hfTkw4",
-        authDomain: "caoone.firebaseapp.com",
+        authDomain: "caoone.firebasestorage.app",
         databaseURL: "https://caoone-default-rtdb.asia-southeast1.firebasedatabase.app/",
         projectId: "caoone",
         storageBucket: "caoone.firebasestorage.app",
@@ -3262,19 +3465,19 @@
        CUSTOM IMAGE PODIUM
        Upload file gambar ke folder yang sama dengan index.html.
        Lebih bagus pakai PNG transparan.
+       Karakter podium akan otomatis berada di belakang card.
        Kosongkan dengan "" kalau tidak ingin pakai gambar.
     ===================================================== */
     const PODIUM_ASSETS = {
-        crown: "podium-crown.png",
         characters: {
             1: "podium-top1.png",
             2: "podium-top2.png",
             3: "podium-top3.png"
         },
         avatars: {
-            1: "podium-avatar1.png",
-            2: "podium-avatar2.png",
-            3: "podium-avatar3.png"
+            1: "podium-avatar1.jpg",
+            2: "podium-avatar1.jpg",
+            3: "podium-avatar1.jpg"
         }
     };
 
@@ -3491,10 +3694,7 @@
     }
 
     function getPodiumCrownMarkup(rank) {
-        if (rank !== 1) return "";
-        const src = PODIUM_ASSETS.crown ? String(PODIUM_ASSETS.crown) : "";
-        if (!src) return '<div class="podium-crown" aria-hidden="true">👑</div>';
-        return `<div class="podium-crown" aria-hidden="true"><img src="${escapeAttr(src)}" alt="" onerror="this.parentElement.textContent='👑'; this.remove();"></div>`;
+        return "";
     }
 
     function getPodiumAvatarMarkup(rank, initial) {
@@ -3513,8 +3713,6 @@
             <div class="podium-member rank-${rank}">
                 ${getPodiumCharacterMarkup(rank, initial)}
                 <div class="podium-card">
-                    ${getPodiumCrownMarkup(rank)}
-                    <span class="podium-number">#${rank}</span>
                     ${getPodiumAvatarMarkup(rank, initial)}
                     <strong class="podium-name">${safeName}</strong>
                     <span class="podium-count">${count}x</span>
