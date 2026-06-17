@@ -1123,153 +1123,7 @@
             .admin-track, .admin-set { gap: 14px; }
             section { padding: 56px 0; }
         }
-    
 
-        /* --- FIX INFORMASI MEMBER ---
-           Struktur rank dirapikan dan dibuat sebagai pajangan saja, tanpa onclick/bot */
-        #rank .section-head {
-            margin-bottom: 34px;
-        }
-
-        #rank .section-head p {
-            margin-top: 10px;
-        }
-
-        #rank .member-info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-            align-items: stretch;
-        }
-
-        #rank .rank-panel {
-            padding: 24px;
-            overflow: visible;
-            cursor: default;
-        }
-
-        #rank .rank-panel h3 {
-            margin: 0 0 18px;
-            font-size: 1.18rem;
-            line-height: 1.3;
-            letter-spacing: -.35px;
-        }
-
-        #rank .rank-list {
-            display: grid;
-            gap: 12px;
-        }
-
-        #rank .rank-item {
-            min-height: 64px;
-            padding: 14px 16px;
-            border-radius: 18px;
-            background: rgba(255,255,255,.055);
-            border: 1px solid rgba(255,255,255,.08);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 14px;
-        }
-
-        #rank .rank-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            min-width: 0;
-        }
-
-        #rank .rank-left span:last-child {
-            min-width: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        #rank .rank-num {
-            width: 38px;
-            height: 38px;
-            flex: 0 0 38px;
-            border-radius: 13px;
-            display: grid;
-            place-items: center;
-            font-weight: 800;
-            background: rgba(139,92,246,.28);
-            color: #eee9ff;
-            border: 1px solid rgba(196,181,253,.12);
-        }
-
-        #rank .rank-item strong {
-            flex: 0 0 auto;
-            color: #fff;
-            font-weight: 800;
-        }
-
-        @media (max-width: 880px) {
-            #rank .member-info-grid {
-                grid-template-columns: 1fr;
-                max-width: 620px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 540px) {
-            #rank {
-                padding: 64px 0;
-            }
-
-            #rank .section-head {
-                margin-bottom: 24px;
-            }
-
-            #rank .section-head h2 {
-                font-size: clamp(1.9rem, 9vw, 2.7rem);
-                line-height: 1.08;
-            }
-
-            #rank .section-head p {
-                font-size: .92rem;
-                line-height: 1.55;
-            }
-
-            #rank .rank-panel {
-                padding: 18px;
-                border-radius: 24px;
-            }
-
-            #rank .rank-panel h3 {
-                font-size: 1.45rem;
-                margin-bottom: 16px;
-            }
-
-            #rank .rank-list {
-                gap: 12px;
-            }
-
-            #rank .rank-item {
-                min-height: 72px;
-                border-radius: 22px;
-                padding: 14px;
-                gap: 10px;
-            }
-
-            #rank .rank-left {
-                gap: 12px;
-            }
-
-            #rank .rank-num {
-                width: 42px;
-                height: 42px;
-                flex-basis: 42px;
-                border-radius: 14px;
-                font-size: 1.05rem;
-            }
-
-            #rank .rank-left span:last-child,
-            #rank .rank-item strong {
-                font-size: clamp(.95rem, 4.3vw, 1.25rem);
-            }
-        }
 
     
 
@@ -3187,6 +3041,47 @@
             color: #fff !important;
         }
 
+
+        /* =========================================================
+           UPDATE ABSEN V10: FIX POSISI WARNA + HAPUS INFO MEMBER
+           - Podium kiri dikunci merah galaxy.
+           - Podium tengah dikunci biru tua galaxy.
+           - Podium kanan dikunci ungu galaxy.
+           - Section info ranking lama sudah dihapus dari HTML.
+        ========================================================= */
+        #absen .leaderboard-card {
+            background:
+                radial-gradient(circle at 14% 26%, rgba(239, 68, 68, .42), transparent 25%),
+                radial-gradient(circle at 50% 14%, rgba(30, 64, 175, .52), transparent 30%),
+                radial-gradient(circle at 88% 28%, rgba(147, 51, 234, .48), transparent 26%),
+                radial-gradient(circle at 52% 78%, rgba(255,255,255,.06), transparent 32%),
+                linear-gradient(135deg, #170307 0%, #03112f 47%, #1b052d 100%) !important;
+        }
+
+        #absen .podium-member.rank-2 .podium-card {
+            background:
+                radial-gradient(circle at 18% 10%, rgba(248,113,113,.46), transparent 34%),
+                radial-gradient(circle at 84% 72%, rgba(127,29,29,.48), transparent 42%),
+                linear-gradient(180deg, rgba(88, 12, 22, .99), rgba(28, 4, 8, .99)) !important;
+            border-color: rgba(252,165,165,.36) !important;
+            box-shadow:
+                0 28px 55px rgba(0,0,0,.34),
+                0 0 40px rgba(239,68,68,.28),
+                inset 0 1px 0 rgba(255,255,255,.14) !important;
+        }
+
+        #absen .podium-member.rank-3 .podium-card {
+            background:
+                radial-gradient(circle at 80% 12%, rgba(216,180,254,.46), transparent 34%),
+                radial-gradient(circle at 22% 82%, rgba(107,33,168,.45), transparent 38%),
+                linear-gradient(180deg, rgba(57, 16, 108, .99), rgba(19, 4, 38, .99)) !important;
+            border-color: rgba(216,180,254,.36) !important;
+            box-shadow:
+                0 28px 55px rgba(0,0,0,.34),
+                0 0 40px rgba(147,51,234,.28),
+                inset 0 1px 0 rgba(255,255,255,.14) !important;
+        }
+
 </style>
 </head>
 <body oncontextmenu="return false">
@@ -3359,32 +3254,7 @@
 </div>
 </div>
 </section>
-<section id="rank">
-<div class="container">
-<div class="section-head">
-<h2>Informasi Member</h2>
-<p>Member Aktif Dengan Peforma Gokill.</p>
-</div>
-<div class="rank-grid member-info-grid">
-<article class="panel rank-panel">
-<h3>🏆 Top Absensi</h3>
-<div class="rank-list">
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#1</span><span>Ridhz</span></div><strong>16X</strong></div>
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#2</span><span>Xyzoo</span></div><strong>16X</strong></div>
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#3</span><span>Army</span></div><strong>16X</strong></div>
-</div>
-</article>
-<article class="panel rank-panel">
-<h3>🔥 Top Member</h3>
-<div class="rank-list">
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#1</span><span>Celz</span></div><strong>Prst</strong></div>
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#2</span><span>Zenn</span></div><strong>Pro</strong></div>
-<div class="rank-item"><div class="rank-left"><span class="rank-num">#3</span><span>Caine</span></div><strong>Live</strong></div>
-</div>
-</article>
-</div>
-</div>
-</section>
+
 <section id="admin">
 <div class="container">
 <div class="section-head">
@@ -3482,7 +3352,7 @@
 <div class="section-head">
 <span class="eyebrow">✦ Bot Absen CAO</span>
 <h2>Bot Absen Member</h2>
-<p>Ketik nama yang sudah disetujui admin, lalu tekan absen. Setiap nama hanya bisa absen 1 kali per periode absen, reset harian pukul 16.00 WIB, masuk ke leaderboard sampai peringkat 99.</p>
+<p>Ketik nama yang sudah disetujui admin, lalu tekan absen. Setiap nama hanya bisa absen 1 kali per periode absen, reset harian pukul 16.00 WIB, masuk ke leaderboard sampai peringkat 99, dan data tetap tersimpan per bulan.</p>
 </div>
 <div class="absen-layout">
 <article class="panel absen-card" aria-label="Form absen member">
@@ -3506,8 +3376,8 @@
 <article class="panel leaderboard-card" aria-label="Leaderboard absen member">
 <div class="leaderboard-head">
 <div>
-<h3>Leaderboard Top 10</h3>
-<p>Top 1–3 tampil sebagai podium. Peringkat 4–99 tampil di bawahnya.</p>
+<h3>Leaderboard</h3>
+<p>Top 1–3 tampil sebagai Big three. Peringkat 4–99 tampil di bawahnya.</p>
 </div>
 <span class="badge" id="absenModeBadge">Menyiapkan...</span>
 </div>
