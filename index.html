@@ -2034,6 +2034,642 @@
             transform: translateX(-50%) translateY(0);
         }
 
+
+
+        /* =========================================================
+           BOT ABSEN DALAM 1 HTML
+           - Tanpa login
+           - Cooldown 24 jam per nama
+           - Leaderboard top 1-10 via localStorage browser
+        ========================================================= */
+        #absen {
+            padding: 86px 0;
+        }
+
+        #absen .absen-layout {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        #absen .absen-card,
+        #absen .leaderboard-card {
+            padding: 28px;
+            border-radius: 28px;
+        }
+
+        #absen .absen-card h3,
+        #absen .leaderboard-card h3 {
+            font-size: clamp(1.45rem, 3vw, 2rem);
+            letter-spacing: -.7px;
+            margin-bottom: 10px;
+        }
+
+        #absen .absen-card p,
+        #absen .leaderboard-card p {
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        #absen .absen-form {
+            display: grid;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        #absen .absen-label {
+            color: #f3e8ff;
+            font-size: .9rem;
+            font-weight: 800;
+        }
+
+        #absen .absen-input {
+            width: 100%;
+            min-height: 56px;
+            border: 1px solid rgba(233,213,255,.18);
+            border-radius: 18px;
+            color: #fff;
+            background: rgba(255,255,255,.075);
+            outline: none;
+            padding: 0 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: .25s ease;
+        }
+
+        #absen .absen-input:focus {
+            border-color: rgba(192,132,252,.75);
+            box-shadow: 0 0 0 4px rgba(168,85,247,.16);
+            background: rgba(255,255,255,.105);
+        }
+
+        #absen .absen-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 2px;
+        }
+
+        #absen .absen-btn {
+            width: 100%;
+            min-height: 56px;
+            border: 0;
+            border-radius: 18px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 900;
+            transition: .25s ease;
+            background: linear-gradient(135deg, #c084fc 0%, #9333ea 48%, #4c1d95 100%);
+            box-shadow: 0 18px 40px rgba(147, 51, 234, .34);
+        }
+
+        #absen .absen-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+
+        #absen .absen-btn.secondary {
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(233,213,255,.16);
+            box-shadow: none;
+        }
+
+        #absen .absen-status {
+            margin-top: 18px;
+            padding: 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,.055);
+            border: 1px solid rgba(255,255,255,.09);
+            color: var(--text-muted);
+            line-height: 1.55;
+            min-height: 56px;
+        }
+
+        #absen .absen-status.success {
+            color: #86efac;
+            border-color: rgba(134,239,172,.28);
+            background: rgba(34,197,94,.08);
+        }
+
+        #absen .absen-status.warning {
+            color: #facc15;
+            border-color: rgba(250,204,21,.30);
+            background: rgba(250,204,21,.08);
+        }
+
+        #absen .absen-status.danger {
+            color: #fb7185;
+            border-color: rgba(251,113,133,.28);
+            background: rgba(251,113,133,.08);
+        }
+
+        #absen .absen-mini-info {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        #absen .absen-stat-box {
+            padding: 14px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        #absen .absen-stat-box b {
+            display: block;
+            font-size: 1.35rem;
+            color: #fff;
+        }
+
+        #absen .absen-stat-box span {
+            color: var(--text-soft);
+            font-size: .8rem;
+        }
+
+        #absen .leaderboard-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        #absen .absen-rank-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        #absen .absen-rank-item {
+            min-height: 74px;
+            padding: 14px 16px;
+            border-radius: 22px;
+            background: rgba(255,255,255,.055);
+            border: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            transition: .25s ease;
+        }
+
+        #absen .absen-rank-item:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,.08);
+        }
+
+        #absen .absen-rank-left {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            min-width: 0;
+        }
+
+        #absen .absen-rank-num {
+            width: 44px;
+            height: 44px;
+            flex: 0 0 44px;
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            background: rgba(168,85,247,.28);
+            color: #f3e8ff;
+            border: 1px solid rgba(196,181,253,.16);
+        }
+
+        #absen .absen-rank-name {
+            min-width: 0;
+        }
+
+        #absen .absen-rank-name strong {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+
+        #absen .absen-rank-name small {
+            display: block;
+            color: var(--text-soft);
+            margin-top: 4px;
+            font-size: .78rem;
+        }
+
+        #absen .absen-rank-count {
+            flex: 0 0 auto;
+            text-align: right;
+        }
+
+        #absen .absen-rank-count b {
+            display: block;
+            font-size: 1.35rem;
+        }
+
+        #absen .absen-rank-count span {
+            color: var(--text-soft);
+            font-size: .78rem;
+        }
+
+        #absen .absen-empty-state {
+            padding: 28px;
+            border-radius: 24px;
+            text-align: center;
+            color: var(--text-muted);
+            background: rgba(255,255,255,.045);
+            border: 1px dashed rgba(233,213,255,.20);
+            line-height: 1.7;
+        }
+
+        #absen .absen-note {
+            margin-top: 18px;
+            color: var(--text-soft);
+            font-size: .86rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 880px) {
+            #absen .absen-layout {
+                grid-template-columns: 1fr;
+            }
+
+            #absen .leaderboard-head {
+                display: block;
+            }
+
+            #absen .leaderboard-head p {
+                margin-top: 8px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            #absen {
+                padding: 64px 0;
+            }
+
+            #absen .absen-card,
+            #absen .leaderboard-card {
+                padding: 20px;
+                border-radius: 24px;
+            }
+
+            #absen .absen-actions,
+            #absen .absen-mini-info {
+                grid-template-columns: 1fr;
+            }
+
+            #absen .absen-rank-item {
+                min-height: 78px;
+                padding: 13px;
+                gap: 10px;
+            }
+
+            #absen .absen-rank-num {
+                width: 40px;
+                height: 40px;
+                flex-basis: 40px;
+            }
+
+            #absen .absen-rank-count b {
+                font-size: 1.15rem;
+            }
+        }
+
+
+        /* =========================================================
+           UPDATE ABSEN V4: PODIUM CUSTOM IMAGE + TRANSPARENT AREA
+           - Area belakang karakter dibuat transparan.
+           - Top 1 selalu di tengah: #2 kiri, #1 tengah, #3 kanan.
+           - Mahkota, karakter, dan avatar bisa diganti file gambar.
+        ========================================================= */
+        #absen .leaderboard-card {
+            overflow: hidden;
+        }
+
+        #absen .absen-top-podium {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            grid-template-areas: "rank2 rank1 rank3";
+            gap: 16px;
+            align-items: end;
+            min-height: 470px;
+            padding: 30px 6px 18px;
+            margin: 4px 0 18px;
+            position: relative;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        #absen .absen-top-podium::before,
+        #absen .absen-top-podium::after {
+            content: none !important;
+            display: none !important;
+        }
+
+        #absen .podium-member {
+            position: relative;
+            z-index: 1;
+            min-width: 0;
+            display: grid;
+            justify-items: center;
+            align-items: end;
+        }
+
+        #absen .podium-member.rank-1 {
+            grid-area: rank1;
+            transform: translateY(-28px);
+            z-index: 3;
+        }
+
+        #absen .podium-member.rank-2 {
+            grid-area: rank2;
+            transform: translateY(22px);
+        }
+
+        #absen .podium-member.rank-3 {
+            grid-area: rank3;
+            transform: translateY(22px);
+        }
+
+        #absen .podium-character {
+            width: clamp(126px, 15vw, 175px);
+            height: clamp(150px, 20vw, 224px);
+            margin-bottom: -34px;
+            border-radius: 26px;
+            display: grid;
+            place-items: center;
+            position: relative;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            overflow: visible;
+        }
+
+        #absen .podium-member.rank-1 .podium-character {
+            width: clamp(165px, 19vw, 240px);
+            height: clamp(205px, 26vw, 305px);
+        }
+
+        #absen .podium-character.no-image::before {
+            content: none !important;
+            display: none !important;
+        }
+
+        #absen .podium-character.no-image::after {
+            content: attr(data-initial);
+            position: relative;
+            z-index: 1;
+            width: 82px;
+            height: 82px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7e22ce, #ec4899);
+            border: 4px solid rgba(255,255,255,.72);
+            box-shadow: 0 16px 35px rgba(0,0,0,.32);
+        }
+
+        #absen .podium-character.has-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 18px 30px rgba(0,0,0,.30));
+            pointer-events: none;
+        }
+
+        #absen .podium-card {
+            width: 100%;
+            min-height: 155px;
+            border-radius: 28px;
+            padding: 18px 16px 16px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(180deg, rgba(210, 125, 193, .96), rgba(192, 98, 174, .96));
+            border: 1px solid rgba(255,255,255,.20);
+            box-shadow: 0 28px 55px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.18);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+        }
+
+        #absen .podium-member.rank-1 .podium-card {
+            min-height: 184px;
+            border-radius: 30px;
+            background: linear-gradient(180deg, rgba(211, 126, 193, .97), rgba(190, 94, 172, .97));
+        }
+
+        #absen .podium-number {
+            position: absolute;
+            left: 16px;
+            top: 14px;
+            font-size: clamp(1.25rem, 2.7vw, 2rem);
+            line-height: 1;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 4px 16px rgba(0,0,0,.20);
+        }
+
+        #absen .podium-crown {
+            position: absolute;
+            left: 50%;
+            top: -60px;
+            transform: translateX(-50%) rotate(-4deg);
+            width: clamp(72px, 7vw, 104px);
+            height: clamp(56px, 5.5vw, 82px);
+            display: grid;
+            place-items: center;
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            line-height: 1;
+            filter: drop-shadow(0 14px 16px rgba(0,0,0,.35));
+            z-index: 4;
+        }
+
+        #absen .podium-crown img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            pointer-events: none;
+        }
+
+        #absen .podium-avatar {
+            width: 74px;
+            height: 74px;
+            margin: 0 auto 10px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            font-size: 1.85rem;
+            font-weight: 900;
+            color: #fff;
+            background: linear-gradient(135deg, #5b21b6, #ec4899);
+            border: 4px solid rgba(255,255,255,.62);
+            box-shadow: 0 13px 24px rgba(0,0,0,.24);
+        }
+
+        #absen .podium-member.rank-1 .podium-avatar {
+            width: 86px;
+            height: 86px;
+            font-size: 2.1rem;
+        }
+
+        #absen .podium-avatar.has-image {
+            background: rgba(255,255,255,.10);
+        }
+
+        #absen .podium-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+
+        #absen .podium-name {
+            display: block;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #fff;
+            font-size: clamp(1.15rem, 2.7vw, 2.05rem);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -.8px;
+            text-shadow: 0 5px 18px rgba(0,0,0,.18);
+        }
+
+        #absen .podium-member.rank-1 .podium-name {
+            font-size: clamp(1.6rem, 3.3vw, 2.65rem);
+        }
+
+        #absen .podium-count {
+            display: block;
+            margin-top: 10px;
+            color: #fff;
+            font-size: clamp(1rem, 2.2vw, 1.55rem);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        #absen .absen-rank-subtitle {
+            margin: 10px 0 12px;
+            color: var(--text-muted);
+            font-size: .92rem;
+            font-weight: 800;
+        }
+
+        #absen .absen-podium-empty {
+            padding: 36px 18px;
+            border-radius: 28px;
+            text-align: center;
+            color: var(--text-muted);
+            background: rgba(255,255,255,.045);
+            border: 1px dashed rgba(233,213,255,.20);
+            line-height: 1.7;
+        }
+
+        #absen .allowed-name-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 16px;
+            color: #f3e8ff;
+            background: rgba(168,85,247,.12);
+            border: 1px solid rgba(233,213,255,.16);
+            font-size: .84rem;
+            font-weight: 800;
+            line-height: 1.45;
+        }
+
+        @media (max-width: 920px) {
+            #absen .absen-top-podium {
+                min-height: 430px;
+                gap: 10px;
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 680px) {
+            #absen .absen-top-podium {
+                display: flex;
+                gap: 14px;
+                overflow-x: auto;
+                min-height: 400px;
+                padding: 28px 10px 24px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            #absen .absen-top-podium::-webkit-scrollbar {
+                display: none;
+            }
+
+            #absen .podium-member {
+                flex: 0 0 225px;
+                scroll-snap-align: center;
+            }
+
+            #absen .podium-member.rank-2 {
+                order: 1;
+                transform: translateY(18px);
+            }
+
+            #absen .podium-member.rank-1 {
+                order: 2;
+                transform: translateY(-18px);
+            }
+
+            #absen .podium-member.rank-3 {
+                order: 3;
+                transform: translateY(18px);
+            }
+
+            #absen .podium-card {
+                min-height: 150px;
+            }
+
+            #absen .podium-member.rank-1 .podium-card {
+                min-height: 174px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            #absen .podium-member {
+                flex-basis: 205px;
+            }
+
+            #absen .podium-card {
+                border-radius: 24px;
+            }
+
+            #absen .podium-avatar {
+                width: 66px;
+                height: 66px;
+                font-size: 1.6rem;
+            }
+
+            #absen .podium-member.rank-1 .podium-avatar {
+                width: 76px;
+                height: 76px;
+            }
+        }
+
+
     </style>
 </head>
 <body oncontextmenu="return false">
@@ -2048,6 +2684,7 @@
 <a href="#generation">Gen</a>
 <a href="#member">Pendiri</a>
 <a href="#admin">Admin</a>
+<a href="#absen">Absen</a>
 </div>
 </div>
 </nav>
@@ -2073,6 +2710,7 @@
 <div class="buttons">
 <a class="btn btn-primary" href="#info">Jelajahi</a>
 <a class="btn btn-secondary" href="https://www.tiktok.com/@officialanimeone" target="_blank">TikTok</a>
+<a class="btn btn-secondary" href="#absen">Absen</a>
 </div>
 </div>
 </main>
@@ -2321,6 +2959,48 @@
 </div>
 </div>
 </section>
+
+<section id="absen">
+<div class="container">
+<div class="section-head">
+<span class="eyebrow">✦ Bot Absen CAO</span>
+<h2>Bot Absen Member</h2>
+<p>Ketik nama yang sudah disetujui admin, lalu tekan absen. Setiap nama hanya bisa absen 1 kali dalam 24 jam, masuk ke leaderboard peringkat 1–10, dan data otomatis reset setiap awal bulan.</p>
+</div>
+<div class="absen-layout">
+<article class="panel absen-card" aria-label="Form absen member">
+<h3>Isi Absen</h3>
+<p>Tanpa login. Nama harus masuk daftar izin admin agar tidak ada nickname jorok/jelek yang muncul di leaderboard.</p>
+<div class="absen-form">
+<label class="absen-label" for="absenNama">Nama Member</label>
+<input class="absen-input" id="absenNama" maxlength="32" placeholder="Contoh: Ridhz" autocomplete="off"/>
+<div class="absen-actions">
+<button class="absen-btn" id="btnAbsen" type="button">Absen Sekarang</button>
+<button class="absen-btn secondary" id="btnCekCooldown" type="button">Cek Cooldown</button>
+</div>
+</div>
+<div class="absen-status" id="absenStatus">Masukkan nama yang sudah disetujui admin, lalu klik absen.</div>
+<div class="allowed-name-hint">🔒 Hanya nama yang ada di daftar izin admin yang bisa masuk absen.</div>
+<div class="absen-mini-info">
+<div class="absen-stat-box"><b id="totalNamaAbsen">0</b><span>Total nama absen</span></div>
+<div class="absen-stat-box"><b id="totalAbsenMasuk">0</b><span>Total absen masuk</span></div>
+</div>
+<p class="absen-note">Daftar nama yang diizinkan bisa diatur di bagian APPROVED_MEMBER_NAMES pada script HTML. Mode satu file ini memakai penyimpanan browser; leaderboard global semua HP/member tetap perlu database seperti Firebase atau Supabase.</p>
+</article>
+<article class="panel leaderboard-card" aria-label="Leaderboard absen member">
+<div class="leaderboard-head">
+<div>
+<h3>Leaderboard Top 10</h3>
+<p>Top 1–3 tampil sebagai podium transparan. Peringkat 4–10 tampil dalam daftar di bawahnya.</p>
+</div>
+<span class="badge">Nama Tersetujui</span>
+</div>
+<div class="absen-rank-list" id="absenLeaderboardList"></div>
+</article>
+</div>
+</div>
+</section>
+
 <footer>
 <footer class='kage-footer'>
     <div class='footer-content'>
@@ -2387,6 +3067,478 @@
         });
 
 </script>
+
+<script>
+/* =========================================================
+   BOT ABSEN CAO - 1 HTML / GitHub Pages
+   - Data tersimpan di localStorage browser pengguna.
+   - Otomatis reset saat pergantian bulan.
+   - Nama wajib masuk daftar izin admin sebelum bisa absen.
+   - Podium memakai custom image dengan background area transparan.
+========================================================= */
+(function () {
+    const STORAGE_KEY = "cao_absen_leaderboard_v3_monthly_approved";
+    const OLD_STORAGE_KEYS = ["cao_absen_leaderboard_v2_monthly", "cao_absen_leaderboard_v1"];
+    const COOLDOWN_MS = 24 * 60 * 60 * 1000;
+
+    /* =====================================================
+       DAFTAR NAMA YANG DIIZINKAN ABSEN
+       Cara pakai:
+       1. Tambahkan nama member di dalam array ini.
+       2. Upload ulang index.html ke GitHub.
+       3. Member tinggal input nama yang sama, tidak perlu izin lagi.
+       Contoh: "Ridhz", "Xyzoo", "Army"
+    ===================================================== */
+    const APPROVED_MEMBER_NAMES = [
+        "Ridhz",
+        "Xyzoo",
+        "Army",
+        "Celz"
+    ];
+
+    /* =====================================================
+       CUSTOM IMAGE PODIUM
+       Upload file gambar ke folder yang sama dengan index.html.
+       Lebih bagus pakai PNG transparan.
+       Kosongkan dengan "" kalau tidak ingin pakai gambar.
+    ===================================================== */
+    const PODIUM_ASSETS = {
+        crown: "podium-crown.png",
+        characters: {
+            1: "podium-top1.png",
+            2: "podium-top2.png",
+            3: "podium-top3.png"
+        },
+        avatars: {
+            1: "podium-avatar1.png",
+            2: "podium-avatar2.png",
+            3: "podium-avatar3.png"
+        }
+    };
+
+    const inputNama = document.getElementById("absenNama");
+    const btnAbsen = document.getElementById("btnAbsen");
+    const btnCek = document.getElementById("btnCekCooldown");
+    const statusBox = document.getElementById("absenStatus");
+    const leaderboardList = document.getElementById("absenLeaderboardList");
+    const totalNamaAbsen = document.getElementById("totalNamaAbsen");
+    const totalAbsenMasuk = document.getElementById("totalAbsenMasuk");
+
+    if (!inputNama || !btnAbsen || !btnCek || !statusBox || !leaderboardList) return;
+
+    function getMonthKey(date = new Date()) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        return `${year}-${month}`;
+    }
+
+    function getMonthLabel(monthKey = getMonthKey()) {
+        const [year, month] = String(monthKey).split("-").map(Number);
+        const date = new Date(year, month - 1, 1);
+        return date.toLocaleDateString("id-ID", { month: "long", year: "numeric" });
+    }
+
+    function getBlankStore() {
+        return {
+            monthKey: getMonthKey(),
+            data: []
+        };
+    }
+
+    function normalizeName(value) {
+        return String(value || "")
+            .trim()
+            .replace(/\s+/g, " ")
+            .slice(0, 32);
+    }
+
+    function nameKey(value) {
+        return normalizeName(value).toLowerCase();
+    }
+
+    const APPROVED_NAME_MAP = new Map(
+        APPROVED_MEMBER_NAMES
+            .map(normalizeName)
+            .filter(Boolean)
+            .map(function (name) {
+                return [nameKey(name), name];
+            })
+    );
+
+    function getApprovedName(value) {
+        return APPROVED_NAME_MAP.get(nameKey(value)) || null;
+    }
+
+    function sanitizeData(data) {
+        const merged = new Map();
+
+        (Array.isArray(data) ? data : []).forEach(function (item) {
+            if (!item) return;
+
+            const approvedName = getApprovedName(item.name || item.key);
+            if (!approvedName) return;
+
+            const key = nameKey(approvedName);
+            const existing = merged.get(key);
+            const cleanItem = {
+                key: key,
+                name: approvedName,
+                count: Math.max(0, Number(item.count || 0)),
+                firstAbsentAt: Number(item.firstAbsentAt || item.lastAbsentAt || Date.now()),
+                lastAbsentAt: Number(item.lastAbsentAt || 0)
+            };
+
+            if (!existing) {
+                merged.set(key, cleanItem);
+                return;
+            }
+
+            existing.count += cleanItem.count;
+            existing.firstAbsentAt = Math.min(existing.firstAbsentAt || cleanItem.firstAbsentAt, cleanItem.firstAbsentAt || existing.firstAbsentAt);
+            existing.lastAbsentAt = Math.max(existing.lastAbsentAt || 0, cleanItem.lastAbsentAt || 0);
+            merged.set(key, existing);
+        });
+
+        return Array.from(merged.values());
+    }
+
+    function readStore() {
+        const thisMonth = getMonthKey();
+
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+
+                if (parsed && parsed.monthKey === thisMonth && Array.isArray(parsed.data)) {
+                    const cleanData = sanitizeData(parsed.data);
+                    if (cleanData.length !== parsed.data.length) {
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify({ monthKey: thisMonth, data: cleanData }));
+                    }
+                    return { monthKey: thisMonth, data: cleanData };
+                }
+
+                const freshStore = getBlankStore();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(freshStore));
+                return freshStore;
+            }
+
+            for (const oldKey of OLD_STORAGE_KEYS) {
+                const oldRaw = localStorage.getItem(oldKey);
+                if (!oldRaw) continue;
+
+                const oldParsed = JSON.parse(oldRaw);
+                const oldData = Array.isArray(oldParsed) ? oldParsed : (oldParsed && Array.isArray(oldParsed.data) ? oldParsed.data : []);
+                const sameMonthData = oldData.filter(function (item) {
+                    return item && item.lastAbsentAt && getMonthKey(new Date(Number(item.lastAbsentAt))) === thisMonth;
+                });
+                const migratedStore = { monthKey: thisMonth, data: sanitizeData(sameMonthData) };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(migratedStore));
+                return migratedStore;
+            }
+        } catch (error) {
+            // Jika localStorage rusak, sistem dibuat mulai ulang agar halaman tetap jalan.
+        }
+
+        const blank = getBlankStore();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(blank));
+        return blank;
+    }
+
+    function loadData() {
+        return sanitizeData(readStore().data);
+    }
+
+    function saveData(data) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            monthKey: getMonthKey(),
+            data: sanitizeData(data)
+        }));
+    }
+
+    function escapeHTML(value) {
+        return String(value)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+    function escapeAttr(value) {
+        return escapeHTML(value).replaceAll("`", "&#096;");
+    }
+
+    function getInitial(name) {
+        const clean = normalizeName(name);
+        return clean ? clean.charAt(0).toUpperCase() : "?";
+    }
+
+    function formatDate(timestamp) {
+        if (!timestamp) return "-";
+        return new Date(Number(timestamp)).toLocaleString("id-ID", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+    }
+
+    function formatRemaining(ms) {
+        const safeMs = Math.max(0, Number(ms) || 0);
+        const totalSeconds = Math.ceil(safeMs / 1000);
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        if (hours > 0) return `${hours} jam ${minutes} menit ${seconds} detik`;
+        if (minutes > 0) return `${minutes} menit ${seconds} detik`;
+        return `${seconds} detik`;
+    }
+
+    function setStatus(message, type) {
+        statusBox.className = "absen-status";
+        if (type) statusBox.classList.add(type);
+        statusBox.textContent = message;
+    }
+
+    function getSortedData() {
+        return loadData().sort(function (a, b) {
+            const countDiff = Number(b.count || 0) - Number(a.count || 0);
+            if (countDiff !== 0) return countDiff;
+            return Number(a.firstAbsentAt || 0) - Number(b.firstAbsentAt || 0);
+        });
+    }
+
+    function getPodiumCharacterMarkup(rank, initial) {
+        const src = PODIUM_ASSETS.characters && PODIUM_ASSETS.characters[rank] ? String(PODIUM_ASSETS.characters[rank]) : "";
+        if (!src) {
+            return `<div class="podium-character no-image" data-initial="${initial}" aria-hidden="true"></div>`;
+        }
+
+        return `
+            <div class="podium-character has-image" data-initial="${initial}" aria-hidden="true">
+                <img src="${escapeAttr(src)}" alt="" onerror="this.parentElement.classList.remove('has-image'); this.parentElement.classList.add('no-image'); this.remove();">
+            </div>
+        `;
+    }
+
+    function getPodiumCrownMarkup(rank) {
+        if (rank !== 1) return "";
+        const src = PODIUM_ASSETS.crown ? String(PODIUM_ASSETS.crown) : "";
+        if (!src) return '<div class="podium-crown" aria-hidden="true">👑</div>';
+        return `<div class="podium-crown" aria-hidden="true"><img src="${escapeAttr(src)}" alt="" onerror="this.parentElement.textContent='👑'; this.remove();"></div>`;
+    }
+
+    function getPodiumAvatarMarkup(rank, initial) {
+        const src = PODIUM_ASSETS.avatars && PODIUM_ASSETS.avatars[rank] ? String(PODIUM_ASSETS.avatars[rank]) : "";
+        if (!src) return `<div class="podium-avatar">${initial}</div>`;
+        return `<div class="podium-avatar has-image"><img src="${escapeAttr(src)}" alt="" onerror="this.parentElement.classList.remove('has-image'); this.parentElement.textContent='${initial}'; this.remove();"></div>`;
+    }
+
+    function renderPodiumItem(item, index) {
+        const rank = index + 1;
+        const safeName = escapeHTML(item.name);
+        const initial = escapeHTML(getInitial(item.name));
+        const count = Number(item.count || 0);
+
+        return `
+            <div class="podium-member rank-${rank}">
+                ${getPodiumCharacterMarkup(rank, initial)}
+                <div class="podium-card">
+                    ${getPodiumCrownMarkup(rank)}
+                    <span class="podium-number">#${rank}</span>
+                    ${getPodiumAvatarMarkup(rank, initial)}
+                    <strong class="podium-name">${safeName}</strong>
+                    <span class="podium-count">${count}x</span>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderLeaderboard() {
+        const store = readStore();
+        const data = getSortedData();
+        const totalCount = data.reduce((sum, item) => sum + Number(item.count || 0), 0);
+
+        totalNamaAbsen.textContent = data.length;
+        totalAbsenMasuk.textContent = totalCount;
+
+        const topTen = data.slice(0, 10);
+        const topThree = topTen.slice(0, 3);
+        const remaining = topTen.slice(3);
+
+        if (topTen.length === 0) {
+            leaderboardList.innerHTML = `
+                <div class="absen-podium-empty">
+                    Belum ada nama yang absen untuk periode ${escapeHTML(getMonthLabel(store.monthKey))}. Nama harus masuk daftar izin admin dulu sebelum bisa muncul di leaderboard.
+                </div>
+            `;
+            return;
+        }
+
+        const podiumHTML = topThree.length ? `
+            <div class="absen-rank-subtitle">Podium Top 1–3 • ${escapeHTML(getMonthLabel(store.monthKey))}</div>
+            <div class="absen-top-podium">
+                ${topThree.map(renderPodiumItem).join("")}
+            </div>
+        ` : "";
+
+        const remainingHTML = remaining.length ? `
+            <div class="absen-rank-subtitle">Peringkat 4–10</div>
+            <div class="absen-rank-list compact">
+                ${remaining.map(function (item, offset) {
+                    const rank = offset + 4;
+                    return `
+                        <div class="absen-rank-item">
+                            <div class="absen-rank-left">
+                                <span class="absen-rank-num">#${rank}</span>
+                                <span class="absen-rank-name">
+                                    <strong>${escapeHTML(item.name)}</strong>
+                                    <small>Terakhir absen: ${formatDate(item.lastAbsentAt)}</small>
+                                </span>
+                            </div>
+                            <div class="absen-rank-count">
+                                <b>${Number(item.count || 0)}x</b>
+                                <span>absen</span>
+                            </div>
+                        </div>
+                    `;
+                }).join("")}
+            </div>
+        ` : "";
+
+        leaderboardList.innerHTML = podiumHTML + remainingHTML;
+    }
+
+    function getCooldownInfo(name) {
+        const approvedName = getApprovedName(name);
+        if (!approvedName) {
+            return { approvedName: null, found: null, remaining: 0, canAbsent: false, notApproved: true };
+        }
+
+        const key = nameKey(approvedName);
+        const data = loadData();
+        const found = data.find(item => item.key === key);
+
+        if (!found || !found.lastAbsentAt) {
+            return { approvedName, found: null, remaining: 0, canAbsent: true };
+        }
+
+        const elapsed = Date.now() - Number(found.lastAbsentAt || 0);
+        const remaining = COOLDOWN_MS - elapsed;
+
+        return {
+            approvedName,
+            found,
+            remaining,
+            canAbsent: remaining <= 0
+        };
+    }
+
+    function handleAbsen() {
+        const cleanName = normalizeName(inputNama.value);
+
+        if (!cleanName) {
+            setStatus("Nama belum diisi. Ketik nama dulu untuk absen.", "danger");
+            inputNama.focus();
+            return;
+        }
+
+        const approvedName = getApprovedName(cleanName);
+        if (!approvedName) {
+            setStatus(`Nama "${cleanName}" belum disetujui admin, jadi tidak bisa masuk leaderboard. Minta admin menambahkan nama ini ke APPROVED_MEMBER_NAMES.`, "danger");
+            inputNama.focus();
+            return;
+        }
+
+        const key = nameKey(approvedName);
+        const data = loadData();
+        const existingIndex = data.findIndex(item => item.key === key);
+        const now = Date.now();
+
+        if (existingIndex >= 0) {
+            const member = data[existingIndex];
+            const elapsed = now - Number(member.lastAbsentAt || 0);
+            const remaining = COOLDOWN_MS - elapsed;
+
+            if (remaining > 0) {
+                setStatus(`${member.name} sudah absen hari ini. Bisa absen lagi dalam ${formatRemaining(remaining)}.`, "warning");
+                return;
+            }
+
+            member.name = approvedName;
+            member.count = Number(member.count || 0) + 1;
+            member.lastAbsentAt = now;
+            data[existingIndex] = member;
+        } else {
+            data.push({
+                key: key,
+                name: approvedName,
+                count: 1,
+                firstAbsentAt: now,
+                lastAbsentAt: now
+            });
+        }
+
+        saveData(data);
+        renderLeaderboard();
+        setStatus(`Berhasil! ${approvedName} masuk absen bulan ini. Cooldown 24 jam dimulai sekarang.`, "success");
+        inputNama.value = "";
+    }
+
+    function handleCekCooldown() {
+        const cleanName = normalizeName(inputNama.value);
+
+        if (!cleanName) {
+            setStatus("Ketik nama dulu untuk cek cooldown.", "danger");
+            inputNama.focus();
+            return;
+        }
+
+        const info = getCooldownInfo(cleanName);
+
+        if (info.notApproved) {
+            setStatus(`Nama "${cleanName}" belum masuk daftar izin admin. Nama ini belum bisa absen.`, "danger");
+            return;
+        }
+
+        if (!info.found) {
+            setStatus(`${info.approvedName} sudah disetujui admin dan bisa absen sekarang untuk periode ${getMonthLabel()}.`, "success");
+            return;
+        }
+
+        if (info.canAbsent) {
+            setStatus(`${info.found.name} sudah bebas cooldown dan bisa absen sekarang.`, "success");
+        } else {
+            setStatus(`${info.found.name} masih cooldown. Sisa waktu: ${formatRemaining(info.remaining)}.`, "warning");
+        }
+    }
+
+    btnAbsen.addEventListener("click", handleAbsen);
+    btnCek.addEventListener("click", handleCekCooldown);
+
+    inputNama.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            handleAbsen();
+        }
+    });
+
+    setInterval(function () {
+        const cleanName = normalizeName(inputNama.value);
+        if (!cleanName) return;
+
+        const info = getCooldownInfo(cleanName);
+        if (info.found && !info.canAbsent && statusBox.classList.contains("warning")) {
+            setStatus(`${info.found.name} masih cooldown. Sisa waktu: ${formatRemaining(info.remaining)}.`, "warning");
+        }
+    }, 1000);
+
+    renderLeaderboard();
+})();
+</script>
+
 <!--
 Catatan custom TikTok:
 1. Ganti file tiktok-logo.png jika ingin memakai gambar/logo TikTok lain.
