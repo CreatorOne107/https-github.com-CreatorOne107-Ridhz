@@ -2040,7 +2040,7 @@
            BOT ABSEN DALAM 1 HTML
            - Tanpa login
            - Cooldown 24 jam per nama
-           - Leaderboard top 1-10 via localStorage browser
+           - Leaderboard podium top 1-3 + daftar peringkat 4-99
         ========================================================= */
         #absen {
             padding: 86px 0;
@@ -3015,6 +3015,178 @@
             }
         }
 
+
+        /* =========================================================
+           UPDATE ABSEN V9: GALAXY LEADERBOARD + RANK 4-99 + RESET 16.00 WIB
+           - Podium kiri merah, tengah biru tua, kanan ungu.
+           - Daftar bawah menampilkan peringkat 4 sampai 99.
+           - Badge reset absen ditampilkan jelas.
+        ========================================================= */
+        #absen .leaderboard-card {
+            position: relative;
+            overflow: hidden !important;
+            border: 1px solid rgba(255,255,255,.16) !important;
+            background:
+                radial-gradient(circle at 16% 25%, rgba(239, 68, 68, .34), transparent 24%),
+                radial-gradient(circle at 50% 14%, rgba(30, 64, 175, .46), transparent 28%),
+                radial-gradient(circle at 88% 28%, rgba(147, 51, 234, .42), transparent 25%),
+                radial-gradient(circle at 52% 78%, rgba(255,255,255,.06), transparent 31%),
+                linear-gradient(135deg, #120207 0%, #03112f 45%, #190326 100%) !important;
+            box-shadow:
+                0 30px 90px rgba(0,0,0,.42),
+                0 0 52px rgba(30,64,175,.16),
+                inset 0 1px 0 rgba(255,255,255,.10) !important;
+        }
+
+        #absen .leaderboard-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                radial-gradient(circle at 8% 12%, rgba(255,255,255,.85) 0 1px, transparent 1.8px),
+                radial-gradient(circle at 30% 42%, rgba(255,255,255,.48) 0 1px, transparent 1.8px),
+                radial-gradient(circle at 50% 24%, rgba(191,219,254,.72) 0 1px, transparent 2px),
+                radial-gradient(circle at 74% 36%, rgba(255,255,255,.58) 0 1px, transparent 1.8px),
+                radial-gradient(circle at 92% 70%, rgba(233,213,255,.62) 0 1px, transparent 1.8px),
+                linear-gradient(110deg, transparent 0%, rgba(255,255,255,.08) 48%, transparent 64%);
+            background-size: 150px 150px, 210px 210px, 170px 170px, 240px 240px, 190px 190px, 100% 100%;
+            opacity: .55;
+        }
+
+        #absen .leaderboard-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        #absen .leaderboard-head .badge {
+            color: #fff;
+            background: rgba(255,255,255,.10);
+            border-color: rgba(255,255,255,.18);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
+        }
+
+        #absen .absen-reset-info {
+            display: grid;
+            gap: 4px;
+            margin: 0 0 18px;
+            padding: 14px 16px;
+            border-radius: 20px;
+            color: #fff;
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.13);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+        }
+
+        #absen .absen-reset-info span,
+        #absen .absen-reset-info small {
+            color: rgba(255,255,255,.72);
+            font-size: .82rem;
+            font-weight: 800;
+        }
+
+        #absen .absen-reset-info strong {
+            font-size: clamp(1.35rem, 3vw, 2.1rem);
+            line-height: 1;
+            letter-spacing: -.5px;
+        }
+
+        #absen .podium-card {
+            overflow: hidden;
+        }
+
+        #absen .podium-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle at 20% 22%, rgba(255,255,255,.70) 0 1px, transparent 1.8px),
+                radial-gradient(circle at 70% 32%, rgba(255,255,255,.45) 0 1px, transparent 1.8px),
+                radial-gradient(circle at 42% 76%, rgba(255,255,255,.36) 0 1px, transparent 1.8px),
+                linear-gradient(120deg, transparent 0%, rgba(255,255,255,.13) 48%, transparent 68%);
+            background-size: 110px 110px, 160px 160px, 135px 135px, 100% 100%;
+            opacity: .55;
+        }
+
+        #absen .podium-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        #absen .podium-member.rank-1 .podium-card {
+            background:
+                radial-gradient(circle at 50% 4%, rgba(96,165,250,.42), transparent 34%),
+                radial-gradient(circle at 18% 78%, rgba(29,78,216,.36), transparent 38%),
+                linear-gradient(180deg, rgba(6, 22, 63, .98), rgba(2, 8, 32, .98)) !important;
+            border-color: rgba(147,197,253,.36) !important;
+            box-shadow:
+                0 30px 60px rgba(0,0,0,.38),
+                0 0 42px rgba(37,99,235,.30),
+                inset 0 1px 0 rgba(255,255,255,.16) !important;
+        }
+
+        #absen .podium-member.rank-2 .podium-card {
+            background:
+                radial-gradient(circle at 18% 10%, rgba(248,113,113,.42), transparent 34%),
+                radial-gradient(circle at 84% 70%, rgba(127,29,29,.46), transparent 42%),
+                linear-gradient(180deg, rgba(84, 11, 22, .98), rgba(26, 4, 8, .98)) !important;
+            border-color: rgba(252,165,165,.32) !important;
+            box-shadow:
+                0 28px 55px rgba(0,0,0,.34),
+                0 0 38px rgba(239,68,68,.24),
+                inset 0 1px 0 rgba(255,255,255,.14) !important;
+        }
+
+        #absen .podium-member.rank-3 .podium-card {
+            background:
+                radial-gradient(circle at 80% 12%, rgba(216,180,254,.42), transparent 34%),
+                radial-gradient(circle at 22% 82%, rgba(107,33,168,.42), transparent 38%),
+                linear-gradient(180deg, rgba(55, 15, 102, .98), rgba(18, 4, 35, .98)) !important;
+            border-color: rgba(216,180,254,.32) !important;
+            box-shadow:
+                0 28px 55px rgba(0,0,0,.34),
+                0 0 38px rgba(147,51,234,.25),
+                inset 0 1px 0 rgba(255,255,255,.14) !important;
+        }
+
+        #absen .absen-rank-list.compact {
+            max-height: 620px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        #absen .absen-rank-list.compact::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #absen .absen-rank-list.compact::-webkit-scrollbar-track {
+            background: rgba(255,255,255,.06);
+            border-radius: 999px;
+        }
+
+        #absen .absen-rank-list.compact::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,.28);
+            border-radius: 999px;
+        }
+
+        #absen .absen-rank-item {
+            background:
+                radial-gradient(circle at 0% 0%, rgba(239,68,68,.16), transparent 32%),
+                radial-gradient(circle at 52% 0%, rgba(37,99,235,.18), transparent 30%),
+                radial-gradient(circle at 100% 100%, rgba(147,51,234,.18), transparent 34%),
+                rgba(255,255,255,.06) !important;
+            border-color: rgba(255,255,255,.13) !important;
+        }
+
+        #absen .absen-rank-num {
+            background: linear-gradient(135deg, rgba(127,29,29,.88), rgba(30,64,175,.88), rgba(88,28,135,.88)) !important;
+            border-color: rgba(255,255,255,.20) !important;
+            color: #fff !important;
+        }
+
 </style>
 </head>
 <body oncontextmenu="return false">
@@ -3310,7 +3482,7 @@
 <div class="section-head">
 <span class="eyebrow">✦ Bot Absen CAO</span>
 <h2>Bot Absen Member</h2>
-<p>Ketik nama yang sudah disetujui admin, lalu tekan absen. Setiap nama hanya bisa absen 1 kali dalam 24 jam, masuk ke leaderboard peringkat 1–10, dan data otomatis reset setiap awal bulan. Bisa disambungkan ke Firebase agar tampil sama untuk semua user.</p>
+<p>Ketik nama yang sudah disetujui admin, lalu tekan absen. Setiap nama hanya bisa absen 1 kali per periode absen, reset harian pukul 16.00 WIB, masuk ke leaderboard sampai peringkat 99.</p>
 </div>
 <div class="absen-layout">
 <article class="panel absen-card" aria-label="Form absen member">
@@ -3335,7 +3507,7 @@
 <div class="leaderboard-head">
 <div>
 <h3>Leaderboard Top 10</h3>
-<p>Top 1–3 Adalah Member Dengan absen lebih Awal.</p>
+<p>Top 1–3 tampil sebagai podium. Peringkat 4–99 tampil di bawahnya.</p>
 </div>
 <span class="badge" id="absenModeBadge">Menyiapkan...</span>
 </div>
@@ -3420,13 +3592,15 @@
    BOT ABSEN CAO - 1 HTML / GitHub Pages
    - Bisa global semua user memakai Firebase Realtime Database.
    - Jika FIREBASE_CONFIG belum diisi, otomatis fallback ke localStorage browser.
-   - Cooldown 24 jam per nama.
+   - Reset absen harian pukul 16.00 WIB per nama.
    - Reset tampilan setiap bulan lewat pemisahan data per bulan.
    - Nama wajib masuk daftar izin admin sebelum bisa absen.
 ========================================================= */
 (function () {
-    const STORAGE_KEY = "cao_absen_leaderboard_v5_firebase_ready";
-    const COOLDOWN_MS = 24 * 60 * 60 * 1000;
+    const STORAGE_KEY = "cao_absen_leaderboard_v6_reset_1600_wib";
+    const WIB_OFFSET_MS = 7 * 60 * 60 * 1000;
+    const RESET_HOUR_WIB = 16;
+    const MAX_LEADERBOARD_RANK = 99;
     const FIREBASE_ROOT_PATH = "cao_absen";
 
     /* =====================================================
@@ -3509,6 +3683,55 @@
         return date.toLocaleDateString("id-ID", { month: "long", year: "numeric" });
     }
 
+    function pad2(value) {
+        return String(value).padStart(2, "0");
+    }
+
+    function getWIBDate(date = new Date()) {
+        return new Date(date.getTime() + WIB_OFFSET_MS);
+    }
+
+    function getResetPeriodKey(date = new Date()) {
+        const wibDate = getWIBDate(date);
+
+        if (wibDate.getUTCHours() < RESET_HOUR_WIB) {
+            wibDate.setUTCDate(wibDate.getUTCDate() - 1);
+        }
+
+        return `${wibDate.getUTCFullYear()}-${pad2(wibDate.getUTCMonth() + 1)}-${pad2(wibDate.getUTCDate())}`;
+    }
+
+    function getNextResetAt(date = new Date()) {
+        const wibDate = getWIBDate(date);
+        const resetTodayUtcMs = Date.UTC(
+            wibDate.getUTCFullYear(),
+            wibDate.getUTCMonth(),
+            wibDate.getUTCDate(),
+            RESET_HOUR_WIB - 7,
+            0,
+            0,
+            0
+        );
+
+        if (date.getTime() < resetTodayUtcMs) {
+            return resetTodayUtcMs;
+        }
+
+        return resetTodayUtcMs + (24 * 60 * 60 * 1000);
+    }
+
+    function formatResetDate(timestamp = getNextResetAt()) {
+        const date = new Date(Number(timestamp));
+        return date.toLocaleDateString("id-ID", {
+            timeZone: "Asia/Jakarta",
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        }) + " WIB";
+    }
+
     function normalizeName(value) {
         return String(value || "")
             .trim()
@@ -3566,12 +3789,14 @@
 
             const key = nameKey(approvedName);
             const existing = merged.get(key);
+            const lastAbsentAt = Number(item.lastAbsentAt || 0);
             const cleanItem = {
                 key: key,
                 name: approvedName,
                 count: Math.max(0, Number(item.count || 0)),
                 firstAbsentAt: Number(item.firstAbsentAt || item.lastAbsentAt || Date.now()),
-                lastAbsentAt: Number(item.lastAbsentAt || 0)
+                lastAbsentAt: lastAbsentAt,
+                lastAbsentPeriod: item.lastAbsentPeriod || (lastAbsentAt ? getResetPeriodKey(new Date(lastAbsentAt)) : "")
             };
 
             if (!existing) {
@@ -3582,6 +3807,7 @@
             existing.count += cleanItem.count;
             existing.firstAbsentAt = Math.min(existing.firstAbsentAt || cleanItem.firstAbsentAt, cleanItem.firstAbsentAt || existing.firstAbsentAt);
             existing.lastAbsentAt = Math.max(existing.lastAbsentAt || 0, cleanItem.lastAbsentAt || 0);
+            existing.lastAbsentPeriod = getResetPeriodKey(new Date(existing.lastAbsentAt || cleanItem.lastAbsentAt || Date.now()));
             merged.set(key, existing);
         });
 
@@ -3673,10 +3899,10 @@
 
     function updateModeBadge() {
         if (!modeBadge) return;
-        modeBadge.textContent = firebaseEnabled ? "Global Aktif" : "Mode Browser";
+        modeBadge.textContent = firebaseEnabled ? "Global • Reset 16.00 WIB" : "Browser • Reset 16.00 WIB";
         modeBadge.title = firebaseEnabled
-            ? "Leaderboard tersimpan di Firebase dan terlihat untuk semua user."
-            : "FIREBASE_CONFIG belum diisi, jadi data masih tersimpan di browser masing-masing.";
+            ? "Leaderboard tersimpan di Firebase dan terlihat untuk semua user. Absen bisa diulang setelah reset pukul 16.00 WIB."
+            : "Data masih tersimpan di browser masing-masing. Absen bisa diulang setelah reset pukul 16.00 WIB.";
     }
 
     function getPodiumCharacterMarkup(rank, initial) {
@@ -3728,12 +3954,19 @@
         totalNamaAbsen.textContent = data.length;
         totalAbsenMasuk.textContent = totalCount;
 
-        const topTen = data.slice(0, 10);
-        const topThree = topTen.slice(0, 3);
-        const remaining = topTen.slice(3);
+        const leaderboardData = data.slice(0, MAX_LEADERBOARD_RANK);
+        const topThree = leaderboardData.slice(0, 3);
+        const remaining = leaderboardData.slice(3);
+        const resetInfoHTML = `
+            <div class="absen-reset-info">
+                <span>Reset absen harian</span>
+                <strong>16.00 WIB</strong>
+                <small>Reset berikutnya: ${escapeHTML(formatResetDate(getNextResetAt()))}</small>
+            </div>
+        `;
 
-        if (topTen.length === 0) {
-            leaderboardList.innerHTML = `
+        if (leaderboardData.length === 0) {
+            leaderboardList.innerHTML = resetInfoHTML + `
                 <div class="absen-podium-empty">
                     Belum ada nama yang absen untuk periode ${escapeHTML(getMonthLabel(monthKey))}. Nama harus masuk daftar izin admin dulu sebelum bisa muncul di leaderboard.
                 </div>
@@ -3749,7 +3982,7 @@
         ` : "";
 
         const remainingHTML = remaining.length ? `
-            <div class="absen-rank-subtitle">Peringkat 4–10</div>
+            <div class="absen-rank-subtitle">Peringkat 4–${Math.min(MAX_LEADERBOARD_RANK, leaderboardData.length)}</div>
             <div class="absen-rank-list compact">
                 ${remaining.map(function (item, offset) {
                     const rank = offset + 4;
@@ -3772,7 +4005,7 @@
             </div>
         ` : "";
 
-        leaderboardList.innerHTML = podiumHTML + remainingHTML;
+        leaderboardList.innerHTML = resetInfoHTML + podiumHTML + remainingHTML;
     }
 
     function getCooldownInfo(name) {
@@ -3789,14 +4022,15 @@
             return { approvedName, found: null, remaining: 0, canAbsent: true };
         }
 
-        const elapsed = Date.now() - Number(found.lastAbsentAt || 0);
-        const remaining = COOLDOWN_MS - elapsed;
+        const currentPeriod = getResetPeriodKey();
+        const lastPeriod = found.lastAbsentPeriod || getResetPeriodKey(new Date(Number(found.lastAbsentAt || 0)));
+        const remaining = getNextResetAt() - Date.now();
 
         return {
             approvedName,
             found,
             remaining,
-            canAbsent: remaining <= 0
+            canAbsent: lastPeriod !== currentPeriod
         };
     }
 
@@ -3863,20 +4097,22 @@
         const data = readLocalStore().data;
         const existingIndex = data.findIndex(item => item.key === key);
         const now = Date.now();
+        const currentPeriod = getResetPeriodKey(new Date(now));
 
         if (existingIndex >= 0) {
             const member = data[existingIndex];
-            const elapsed = now - Number(member.lastAbsentAt || 0);
-            const remaining = COOLDOWN_MS - elapsed;
+            const lastPeriod = member.lastAbsentPeriod || getResetPeriodKey(new Date(Number(member.lastAbsentAt || 0)));
+            const remaining = getNextResetAt() - now;
 
-            if (remaining > 0) {
-                setStatus(`${member.name} sudah absen hari ini. Bisa absen lagi dalam ${formatRemaining(remaining)}.`, "warning");
+            if (lastPeriod === currentPeriod) {
+                setStatus(`${member.name} sudah absen periode ini. Bisa absen lagi setelah reset 16.00 WIB, sisa ${formatRemaining(remaining)}.`, "warning");
                 return;
             }
 
             member.name = approvedName;
             member.count = Number(member.count || 0) + 1;
             member.lastAbsentAt = now;
+            member.lastAbsentPeriod = currentPeriod;
             data[existingIndex] = member;
         } else {
             data.push({
@@ -3884,13 +4120,14 @@
                 name: approvedName,
                 count: 1,
                 firstAbsentAt: now,
-                lastAbsentAt: now
+                lastAbsentAt: now,
+                lastAbsentPeriod: currentPeriod
             });
         }
 
         saveLocalData(data);
         renderLeaderboard();
-        setStatus(`Berhasil! ${approvedName} masuk absen bulan ini. Cooldown 24 jam dimulai sekarang.`, "success");
+        setStatus(`Berhasil! ${approvedName} masuk absen. Absen berikutnya terbuka setelah reset pukul 16.00 WIB.`, "success");
         inputNama.value = "";
     }
 
@@ -3908,12 +4145,13 @@
 
         memberRef.transaction(function (current) {
             const now = Date.now();
+            const currentPeriod = getResetPeriodKey(new Date(now));
 
             if (current && current.lastAbsentAt) {
-                const elapsed = now - Number(current.lastAbsentAt || 0);
-                const remaining = COOLDOWN_MS - elapsed;
+                const lastPeriod = current.lastAbsentPeriod || getResetPeriodKey(new Date(Number(current.lastAbsentAt || 0)));
+                const remaining = getNextResetAt() - now;
 
-                if (remaining > 0) {
+                if (lastPeriod === currentPeriod) {
                     blockedInfo = {
                         name: current.name || approvedName,
                         remaining: remaining
@@ -3927,7 +4165,8 @@
                 name: approvedName,
                 count: Number(current && current.count ? current.count : 0) + 1,
                 firstAbsentAt: Number(current && current.firstAbsentAt ? current.firstAbsentAt : now),
-                lastAbsentAt: now
+                lastAbsentAt: now,
+                lastAbsentPeriod: currentPeriod
             };
         }, function (error, committed) {
             setButtonsBusy(false);
@@ -3940,11 +4179,11 @@
 
             if (!committed) {
                 const remaining = blockedInfo ? blockedInfo.remaining : getCooldownInfo(approvedName).remaining;
-                setStatus(`${approvedName} sudah absen hari ini. Bisa absen lagi dalam ${formatRemaining(remaining)}.`, "warning");
+                setStatus(`${approvedName} sudah absen periode ini. Bisa absen lagi setelah reset 16.00 WIB, sisa ${formatRemaining(remaining)}.`, "warning");
                 return;
             }
 
-            setStatus(`Berhasil! ${approvedName} masuk absen global bulan ini. Semua user bisa melihat leaderboard terbaru.`, "success");
+            setStatus(`Berhasil! ${approvedName} masuk absen global. Semua user bisa melihat leaderboard terbaru. Reset absen pukul 16.00 WIB.`, "success");
             inputNama.value = "";
         }, false);
     }
@@ -3989,14 +4228,14 @@
         }
 
         if (!info.found) {
-            setStatus(`${info.approvedName} sudah disetujui admin dan bisa absen sekarang untuk periode ${getMonthLabel()}.`, "success");
+            setStatus(`${info.approvedName} sudah disetujui admin dan bisa absen sekarang. Reset absen harian pukul 16.00 WIB.`, "success");
             return;
         }
 
         if (info.canAbsent) {
-            setStatus(`${info.found.name} sudah bebas cooldown dan bisa absen sekarang.`, "success");
+            setStatus(`${info.found.name} sudah masuk periode baru dan bisa absen sekarang.`, "success");
         } else {
-            setStatus(`${info.found.name} masih cooldown. Sisa waktu: ${formatRemaining(info.remaining)}.`, "warning");
+            setStatus(`${info.found.name} sudah absen periode ini. Bisa absen lagi setelah reset 16.00 WIB, sisa ${formatRemaining(info.remaining)}.`, "warning");
         }
     }
 
@@ -4020,7 +4259,7 @@
 
         const info = getCooldownInfo(cleanName);
         if (info.found && !info.canAbsent && statusBox.classList.contains("warning")) {
-            setStatus(`${info.found.name} masih cooldown. Sisa waktu: ${formatRemaining(info.remaining)}.`, "warning");
+            setStatus(`${info.found.name} sudah absen periode ini. Bisa absen lagi setelah reset 16.00 WIB, sisa ${formatRemaining(info.remaining)}.`, "warning");
         }
     }, 1000);
 
