@@ -4005,6 +4005,48 @@
     display: none !important;
 }
 
+
+/* UPDATE: Khusus tampilan PC, leaderboard dipindah ke bawah form absen */
+@media (min-width: 881px) {
+    #absen .absen-layout {
+        grid-template-columns: 1fr !important;
+        max-width: 1100px;
+        margin: 0 auto;
+        gap: 24px !important;
+    }
+
+    #absen .absen-card {
+        width: min(760px, 100%);
+        margin: 0 auto;
+    }
+
+    #absen .leaderboard-card {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    #absen .leaderboard-head {
+        align-items: center;
+    }
+
+    #absen .absen-top-podium {
+        max-width: 880px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #absen .absen-rank-list.compact {
+        max-width: 940px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #absen .absen-pagination {
+        max-width: 940px;
+    }
+}
+
 </style>
 </head>
 <body oncontextmenu="return false">
