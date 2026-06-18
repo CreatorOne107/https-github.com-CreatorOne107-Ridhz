@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Creator Anime One</title>
+<title>Creator Anime One | CAO Fams</title>
 
 <link rel="icon" type="image/png" href="./favicon.png?v=1">
 
@@ -3112,9 +3112,900 @@
                 inset 0 1px 0 rgba(255,255,255,.14) !important;
         }
 
+
+        /* =========================================================
+           FINAL POLISH: clean galaxy premium
+           Perubahan ringan untuk membuat tampilan lebih rapi,
+           modern, dan tetap mempertahankan identitas CAO.
+        ========================================================= */
+
+        :root {
+            --primary: #b15cff;
+            --primary-2: #6d28d9;
+            --secondary: #60a5fa;
+            --accent: #f8fafc;
+            --bg: #03020a;
+            --bg-soft: #10051d;
+            --glass: rgba(255, 255, 255, .082);
+            --glass-strong: rgba(255, 255, 255, .145);
+            --line: rgba(233, 213, 255, .17);
+            --text: #ffffff;
+            --text-muted: #e5ddff;
+            --text-soft: #aaa2c8;
+            --shadow-soft: 0 24px 80px rgba(0, 0, 0, .38);
+            --shadow-glow: 0 0 56px rgba(168, 85, 247, .18);
+        }
+
+        body {
+            background:
+                radial-gradient(ellipse at 50% -16%, rgba(216, 180, 254, .58), transparent 42%),
+                radial-gradient(circle at 16% 18%, rgba(124, 58, 237, .44), transparent 32%),
+                radial-gradient(circle at 84% 16%, rgba(37, 99, 235, .22), transparent 28%),
+                radial-gradient(circle at 50% 70%, rgba(88, 28, 135, .30), transparent 44%),
+                linear-gradient(180deg, #07000f 0%, #130021 44%, #06000d 78%, #020106 100%) !important;
+        }
+
+        body::before {
+            opacity: .62 !important;
+        }
+
+        .container {
+            width: min(1160px, calc(100% - 44px));
+        }
+
+        .navbar {
+            top: 12px;
+            width: min(1160px, calc(100% - 28px));
+            margin: 0 auto;
+            border-radius: 999px;
+            padding: 10px 0;
+            border: 1px solid rgba(233,213,255,.16) !important;
+            background: rgba(12, 3, 24, .58) !important;
+            box-shadow: 0 18px 60px rgba(0,0,0,.30);
+        }
+
+        .brand {
+            letter-spacing: -.45px;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 14px;
+        }
+
+        .nav-menu {
+            gap: 4px;
+            padding-right: 4px;
+        }
+
+        .nav-menu a {
+            color: rgba(237,233,254,.78);
+            border: 1px solid transparent;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,.09);
+            border-color: rgba(255,255,255,.10);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+        }
+
+        .hero {
+            min-height: 92vh;
+            padding-top: 96px;
+        }
+
+        .cards {
+            transform: translateY(2px);
+            filter:
+                drop-shadow(0 28px 42px rgba(0,0,0,.46))
+                drop-shadow(0 0 38px rgba(168,85,247,.20));
+        }
+
+        .card {
+            border-radius: 26px;
+            border-color: rgba(255,255,255,.18);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+        }
+
+        .card span {
+            background: rgba(12, 3, 24, .52);
+            color: #fff;
+        }
+
+        .eyebrow,
+        .badge,
+        .founder-role {
+            background: rgba(255,255,255,.075);
+            border-color: rgba(233,213,255,.18);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+        }
+
+        .hero h1 {
+            max-width: 960px;
+            text-shadow: 0 18px 70px rgba(192,132,252,.18);
+        }
+
+        .hero p {
+            max-width: 670px;
+        }
+
+        .btn {
+            border-radius: 17px;
+            min-height: 52px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.12);
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.18) 46%, transparent 70%);
+            transform: translateX(-120%);
+            transition: transform .55s ease;
+        }
+
+        .btn:hover::before {
+            transform: translateX(120%);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            filter: brightness(1.05);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d8b4fe 0%, #9333ea 46%, #4c1d95 100%) !important;
+            box-shadow: 0 20px 44px rgba(147,51,234,.34), inset 0 1px 0 rgba(255,255,255,.18) !important;
+        }
+
+        .btn-secondary {
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        section {
+            padding: 88px 0;
+        }
+
+        .section-head {
+            margin-bottom: 36px;
+        }
+
+        .section-head h2 {
+            text-shadow: 0 16px 50px rgba(192,132,252,.16);
+        }
+
+        .panel,
+        .glass-card,
+        .founder-card,
+        .admin-card,
+        .absen-card,
+        .leaderboard-card {
+            border-radius: 30px;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.048)) !important;
+            box-shadow: var(--shadow-soft), var(--shadow-glow), inset 0 1px 0 rgba(255,255,255,.08) !important;
+        }
+
+        .glass-card:hover,
+        .founder-card:hover,
+        .admin-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(233,213,255,.28) !important;
+            box-shadow:
+                0 30px 90px rgba(0,0,0,.42),
+                0 0 70px rgba(168,85,247,.22),
+                inset 0 1px 0 rgba(255,255,255,.10) !important;
+        }
+
+        .info-banner {
+            min-height: 340px;
+        }
+
+        .info-copy {
+            padding: clamp(28px, 4vw, 46px);
+        }
+
+        .info-copy h3 {
+            max-width: 620px;
+        }
+
+        .info-visual {
+            overflow: hidden;
+        }
+
+        .info-visual::before {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,.18), transparent 62%);
+            filter: blur(4px);
+        }
+
+        .join-visual-img {
+            position: relative;
+            z-index: 1;
+            width: min(340px, 84%);
+        }
+
+        #generation .glass-card {
+            padding: 22px;
+        }
+
+        #generation .gen-card-img,
+        .founder-photo,
+        .admin-photo {
+            border-color: rgba(233,213,255,.20);
+        }
+
+        #generation .glass-card h3,
+        .founder-card h3,
+        .admin-card h3 {
+            color: #fff;
+        }
+
+        #statistik .count-card {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(216,180,254,.20), transparent 35%),
+                linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.048)) !important;
+        }
+
+        .count-number {
+            letter-spacing: -5px;
+            text-shadow: 0 0 34px rgba(216,180,254,.25);
+        }
+
+        #statistik .hashtag strong {
+            letter-spacing: -.35px;
+        }
+
+        #statistik .mini-stat {
+            background: rgba(255,255,255,.072) !important;
+        }
+
+        #member .section-head h2 {
+            text-shadow: 0 18px 60px rgba(192,132,252,.28);
+        }
+
+        .founder-card.owner {
+            border: 1px solid rgba(233,213,255,.30) !important;
+            box-shadow:
+                0 38px 110px rgba(0,0,0,.44),
+                0 0 80px rgba(192,132,252,.22),
+                inset 0 1px 0 rgba(255,255,255,.12) !important;
+        }
+
+        .founder-social {
+            filter: drop-shadow(0 18px 26px rgba(0,0,0,.36));
+        }
+
+        .admin-slider {
+            padding-bottom: 24px;
+        }
+
+        .admin-card {
+            min-height: 286px;
+        }
+
+        .admin-photo {
+            transform: translateY(0);
+            transition: transform .28s ease, box-shadow .28s ease;
+        }
+
+        .admin-card:hover .admin-photo {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 22px 44px rgba(0,0,0,.34);
+        }
+
+        #absen .absen-input {
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+        }
+
+        #absen .absen-status {
+            background: rgba(255,255,255,.062);
+        }
+
+        #absen .absen-rank-item {
+            background: rgba(255,255,255,.062);
+        }
+
+        .kage-footer {
+            margin: 0 auto;
+            width: min(1160px, calc(100% - 28px));
+            border-radius: 30px 30px 0 0;
+            background: rgba(255,255,255,.055);
+            border: 1px solid rgba(233,213,255,.13);
+            border-bottom: 0;
+            box-shadow: 0 -18px 60px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.06);
+        }
+
+        .kage-footer .footer-content {
+            display: grid;
+            gap: 8px;
+        }
+
+        .kage-footer a {
+            color: #f3e8ff !important;
+            font-weight: 900;
+        }
+
+        @media (max-width: 880px) {
+            .navbar {
+                top: 8px;
+                width: min(100% - 22px, 1160px);
+            }
+
+            .hero {
+                min-height: 86vh;
+                padding-top: 78px;
+            }
+
+            section {
+                padding: 68px 0;
+            }
+
+            .info-banner {
+                border-radius: 28px;
+            }
+
+            .info-copy {
+                text-align: left;
+            }
+
+            .founder-card.owner {
+                box-shadow:
+                    0 36px 96px rgba(0,0,0,.48),
+                    0 0 74px rgba(192,132,252,.24),
+                    inset 0 1px 0 rgba(255,255,255,.10) !important;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .container {
+                width: min(100% - 26px, 1160px);
+            }
+
+            .navbar {
+                border-radius: 24px;
+            }
+
+            .brand span:last-child {
+                font-size: .94rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.6rem, 13vw, 4.2rem);
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .buttons {
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .hero .buttons .btn {
+                width: auto;
+                flex: 1 1 145px;
+            }
+
+            .section-head h2 {
+                letter-spacing: -.8px;
+            }
+
+            #generation .glass-card {
+                box-shadow:
+                    0 18px 48px rgba(0,0,0,.32),
+                    0 0 34px rgba(168,85,247,.10),
+                    inset 0 1px 0 rgba(255,255,255,.07) !important;
+            }
+
+            .count-number {
+                letter-spacing: -3px;
+            }
+
+            .kage-footer {
+                width: min(100% - 22px, 1160px);
+                border-radius: 24px 24px 0 0;
+            }
+        }
+
+
+
+        /* =========================================================
+           UPDATE V6: FITUR INTERAKTIF TAMBAHAN
+           - Scroll progress bar
+           - Theme switcher Galaxy / Neon / Midnight
+           - Fitur cepat: copy link join, random motto, guide singkat
+           - Search admin
+           - Floating action + mobile dock
+           - Reveal animation saat scroll
+        ========================================================= */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100000;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #ffffff, #c084fc, #9333ea);
+            box-shadow: 0 0 18px rgba(192,132,252,.72);
+            transition: width .08s linear;
+        }
+
+        body.theme-neon {
+            --primary: #22d3ee;
+            --primary-2: #2563eb;
+            --secondary: #a78bfa;
+            --text-muted: #dbeafe;
+            --text-soft: #a9b6da;
+            background:
+                radial-gradient(ellipse at 50% -12%, rgba(34, 211, 238, .40), transparent 42%),
+                radial-gradient(circle at 14% 18%, rgba(37, 99, 235, .36), transparent 34%),
+                radial-gradient(circle at 86% 20%, rgba(168, 85, 247, .30), transparent 29%),
+                linear-gradient(180deg, #020617 0%, #071326 42%, #030712 100%) !important;
+        }
+
+        body.theme-midnight {
+            --primary: #ffffff;
+            --primary-2: #6d28d9;
+            --secondary: #94a3b8;
+            --text-muted: #d4d4d8;
+            --text-soft: #9ca3af;
+            background:
+                radial-gradient(ellipse at 50% -12%, rgba(255, 255, 255, .16), transparent 38%),
+                radial-gradient(circle at 18% 22%, rgba(76, 29, 149, .28), transparent 34%),
+                radial-gradient(circle at 85% 20%, rgba(30, 41, 59, .55), transparent 34%),
+                linear-gradient(180deg, #030307 0%, #0a0714 48%, #010104 100%) !important;
+        }
+
+        body.theme-neon .btn-primary {
+            background: linear-gradient(135deg, #22d3ee 0%, #2563eb 52%, #7c3aed 100%) !important;
+            box-shadow: 0 18px 40px rgba(34,211,238,.22), 0 18px 40px rgba(37,99,235,.18) !important;
+        }
+
+        body.theme-midnight .btn-primary {
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 46%, #111827 100%) !important;
+            color: #080710;
+            box-shadow: 0 18px 40px rgba(255,255,255,.14), 0 18px 40px rgba(124,58,237,.20) !important;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .feature-card {
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .feature-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 18px;
+            display: grid;
+            place-items: center;
+            font-size: 1.55rem;
+            background:
+                radial-gradient(circle at 32% 22%, rgba(255,255,255,.28), transparent 34%),
+                linear-gradient(135deg, rgba(192,132,252,.48), rgba(88,28,135,.28));
+            border: 1px solid rgba(233,213,255,.18);
+            box-shadow: 0 18px 36px rgba(0,0,0,.26);
+        }
+
+        .feature-card h3 {
+            font-size: 1.22rem;
+            letter-spacing: -.35px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p,
+        .feature-status,
+        .feature-small {
+            color: var(--text-muted);
+            line-height: 1.65;
+            font-size: .94rem;
+        }
+
+        .feature-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .mini-btn {
+            border: 0;
+            cursor: pointer;
+            color: #fff;
+            min-height: 44px;
+            padding: 0 16px;
+            border-radius: 14px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #c084fc, #9333ea 52%, #4c1d95);
+            box-shadow: 0 14px 30px rgba(147,51,234,.25);
+            transition: transform .25s ease, filter .25s ease, background .25s ease;
+        }
+
+        .mini-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.06);
+        }
+
+        .mini-btn.ghost {
+            background: rgba(255,255,255,.075);
+            border: 1px solid rgba(233,213,255,.16);
+            box-shadow: none;
+        }
+
+        .theme-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .theme-pill {
+            min-height: 42px;
+            padding: 0 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(233,213,255,.16);
+            background: rgba(255,255,255,.065);
+            color: #fff;
+            cursor: pointer;
+            font-weight: 900;
+            transition: .25s ease;
+        }
+
+        .theme-pill.active,
+        .theme-pill:hover {
+            background: rgba(192,132,252,.20);
+            border-color: rgba(233,213,255,.32);
+            transform: translateY(-2px);
+        }
+
+        .quote-box {
+            padding: 16px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.055);
+            border: 1px solid rgba(233,213,255,.12);
+            color: #fff;
+            font-weight: 800;
+            line-height: 1.55;
+        }
+
+        .admin-tools {
+            margin: -6px 0 22px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .admin-search-wrap {
+            width: min(520px, 100%);
+            position: relative;
+        }
+
+        .admin-search-wrap::before {
+            content: "⌕";
+            position: absolute;
+            left: 17px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-soft);
+            font-weight: 900;
+            pointer-events: none;
+        }
+
+        .admin-search {
+            width: 100%;
+            min-height: 54px;
+            border: 1px solid rgba(233,213,255,.17);
+            border-radius: 18px;
+            background: rgba(255,255,255,.07);
+            color: #fff;
+            outline: none;
+            padding: 0 18px 0 44px;
+            font-weight: 800;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+        }
+
+        .admin-search::placeholder {
+            color: rgba(222,212,255,.70);
+        }
+
+        .admin-card.is-hidden {
+            display: none !important;
+        }
+
+        .floating-actions {
+            position: fixed;
+            right: 18px;
+            bottom: 20px;
+            z-index: 9999;
+            display: grid;
+            gap: 10px;
+        }
+
+        .float-btn {
+            width: 54px;
+            height: 54px;
+            border-radius: 18px;
+            border: 1px solid rgba(233,213,255,.18);
+            background: rgba(18, 0, 38, .72);
+            color: #fff;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem;
+            font-weight: 900;
+            box-shadow: 0 18px 44px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            opacity: .92;
+            transition: .25s ease;
+        }
+
+        .float-btn:hover {
+            transform: translateY(-3px) scale(1.04);
+            opacity: 1;
+        }
+
+        .mobile-dock {
+            display: none;
+            position: fixed;
+            left: 50%;
+            bottom: 12px;
+            transform: translateX(-50%);
+            z-index: 9998;
+            width: min(100% - 24px, 430px);
+            padding: 8px;
+            border-radius: 22px;
+            background: rgba(10, 0, 24, .74);
+            border: 1px solid rgba(233,213,255,.15);
+            box-shadow: 0 18px 48px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .mobile-dock a {
+            flex: 1;
+            min-height: 48px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            gap: 2px;
+            color: #fff;
+            font-size: .72rem;
+            font-weight: 900;
+            background: rgba(255,255,255,.045);
+        }
+
+        .mobile-dock a span {
+            display: block;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .reveal-ready {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .65s ease, transform .65s ease;
+        }
+
+        .reveal-ready.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sparkle-dot {
+            position: fixed;
+            z-index: 100001;
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            pointer-events: none;
+            background: #f3e8ff;
+            box-shadow: 0 0 16px rgba(216,180,254,.9);
+            animation: sparkle-pop .72s ease forwards;
+        }
+
+        @keyframes sparkle-pop {
+            from { transform: translate(0, 0) scale(1); opacity: 1; }
+            to { transform: translate(var(--sx), var(--sy)) scale(0); opacity: 0; }
+        }
+
+        @media (max-width: 880px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            .feature-card { min-height: unset; }
+            .floating-actions { bottom: 92px; right: 14px; }
+            .mobile-dock { display: flex; }
+            .kage-footer { padding-bottom: 86px; }
+        }
+
+        @media (max-width: 540px) {
+            .feature-card { padding: 20px !important; }
+            .feature-actions { align-items: stretch; }
+            .feature-actions .mini-btn { flex: 1 1 140px; }
+            .float-btn { width: 50px; height: 50px; border-radius: 17px; }
+        }
+
+
+/* UPDATE: section fitur cepat dihapus, ganti tema tetap lewat tombol floating/dock */
+.mobile-dock button,
+.dock-theme-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+}
+
+.dock-theme-btn {
+    display: grid;
+    place-items: center;
+    gap: 2px;
+    min-width: 0;
+    padding: 8px 10px;
+    border-radius: 18px;
+}
+
+.dock-theme-btn span {
+    font-size: 1.08rem;
+    line-height: 1;
+}
+
+.dock-theme-btn small {
+    font-size: .68rem;
+    font-weight: 800;
+    color: var(--text-muted);
+}
+
+.dock-theme-btn:active {
+    transform: scale(.96);
+}
+
+
+/* UPDATE: CTA Join dibuat single-button agar lebih clean */
+.cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.info-copy .cta-actions .btn-primary {
+    min-width: 170px;
+    justify-content: center;
+}
+
+@media (max-width: 540px) {
+    .info-copy .cta-actions {
+        width: 100%;
+    }
+
+    .info-copy .cta-actions .btn-primary {
+        width: 100%;
+    }
+}
+
+
+/* UPDATE: Pagination leaderboard absen, aktif saat data lebih dari 9 nama */
+#absen .absen-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 22px auto 0;
+    padding-top: 6px;
+}
+
+#absen .absen-page-btn,
+#absen .absen-page-dots {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-grid;
+    place-items: center;
+    color: #f8f3ff;
+    font-size: .92rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+#absen .absen-page-btn {
+    border: 1px solid rgba(233,213,255,.16);
+    background: rgba(255,255,255,.075);
+    cursor: pointer;
+    transition: transform .22s ease, background .22s ease, border-color .22s ease, opacity .22s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+#absen .absen-page-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.12);
+    border-color: rgba(233,213,255,.28);
+}
+
+#absen .absen-page-btn.active {
+    background: linear-gradient(135deg, #d946ef 0%, #9333ea 55%, #4c1d95 100%);
+    border-color: rgba(255,255,255,.30);
+    box-shadow: 0 14px 28px rgba(147,51,234,.34), inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+#absen .absen-page-btn.nav {
+    font-size: 1.35rem;
+}
+
+#absen .absen-page-btn:disabled {
+    opacity: .38;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#absen .absen-page-dots {
+    width: auto;
+    min-width: 24px;
+    color: rgba(255,255,255,.62);
+}
+
+@media (max-width: 540px) {
+    #absen .absen-pagination {
+        gap: 6px;
+    }
+
+    #absen .absen-page-btn,
+    #absen .absen-page-dots {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        font-size: .82rem;
+    }
+
+    #absen .absen-page-btn.nav {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* UPDATE: tombol Absen di hero dihapus, sisa Explore CAO dan TikTok */
+.hero .buttons {
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero .buttons .btn {
+    min-width: 190px;
+}
+
+@media (max-width: 540px) {
+    .hero .buttons .btn {
+        min-width: unset;
+        flex: 1 1 140px;
+    }
+}
+
 </style>
 </head>
 <body oncontextmenu="return false">
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <nav class="navbar">
 <div class="container nav-inner">
 <a class="brand" href="#home">
@@ -3122,8 +4013,8 @@
 <span>Creator Anime One</span>
 </a>
 <div class="nav-menu">
-<a href="#info">Info</a>
-<a href="#generation">Gen</a>
+<a href="#info">Gas Join Marga CAO!</a>
+<a href="#generation">Generasi</a>
 <a href="#member">Pendiri</a>
 <a href="#admin">Admin</a>
 <a href="#absen">Absen</a>
@@ -3146,13 +4037,12 @@
 <span>V3</span>
 </figure>
 </div>
-<div class="eyebrow">✦ Marga sepuh anime editor</div>
+<div class="eyebrow">✦ Komunitas Anime Editor</div>
 <h1>Creator Anime One</h1>
-<p>Marganya Sepuh Anime. Tempat kreator, editor, dan pecinta anime berkumpul untuk berkarya bareng, saling support, dan naik level bersama.</p>
+<p>Rumah kreator, editor, dan pecinta anime untuk berkarya bareng, saling support, dan naik level bersama dalam satu marga yang solid.</p>
 <div class="buttons">
-<a class="btn btn-primary" href="#info">Jelajahi</a>
+<a class="btn btn-primary" href="#info">Explore CAO</a>
 <a class="btn btn-secondary" href="https://www.tiktok.com/@officialanimeone" target="_blank">TikTok</a>
-<a class="btn btn-secondary" href="#absen">Absen</a>
 </div>
 </div>
 </main>
@@ -3160,17 +4050,16 @@
 <div class="container">
 <div class="section-head">
 <h2>Informasi Creator Anime One</h2>
-<p>Komunitas kreator anime yang terus berkembang dan terbuka untuk member yang ingin aktif, kreatif, dan solid.</p>
+<p>Komunitas kreator anime yang terus berkembang untuk member yang aktif, kreatif, dan siap tumbuh bareng.</p>
 </div>
 <div class="panel info-banner">
 <div class="info-copy">
 <span class="eyebrow">Open Member</span>
-<h3>Gas Join, Marga CAO!</h3>
-<p>Creator Anime One berisi editor, content creator, reviewer, dan pecinta anime. Fokus kami adalah membangun komunitas yang aktif, rapi, dan punya semangat berkarya.</p>
+<h3>Gas Join Marga CAO!</h3>
+<p>Creator Anime One berisi editor, content creator, reviewer, dan pecinta anime. Fokusnya sederhana: komunitas yang aktif, rapi, solid, dan punya semangat berkarya.</p>
 <div class="buttons" style="justify-content: flex-start;">
 <div class="cta-actions">
     <a class="btn btn-primary" href="https://chat.whatsapp.com/E2Ow1ygwDq1KdPKIqfgD6A?utm_medium=social&utm_source=heylink.me" target="_blank" rel="noopener noreferrer">JOIN</a>
-    <a class="btn btn-secondary" href="#generation">Lihat Gen</a>
 </div>
 </div>
 </div>
@@ -3180,6 +4069,7 @@
 </div>
 </div>
 </section>
+
 <section id="generation">
 <div class="container">
 <div class="section-head">
@@ -3212,7 +4102,7 @@
 <div class="container">
 <div class="section-head">
 <h2>Jumlah Member &amp; Hashtag</h2>
-<p>Ringkasan komunitas dan hashtag yang bisa dipakai untuk memperkuat identitas Creator Anime One.</p>
+<p>Ringkasan pertumbuhan komunitas dan hashtag utama untuk memperkuat identitas Creator Anime One.</p>
 </div>
 <div class="stats-grid">
 <div class="panel count-card">
@@ -3252,7 +4142,7 @@
 </div>
 <span class="founder-role">Co-Owner</span>
 <h3>RIDHZ</h3>
-<p>Yang Paling Berkuasa</p>
+<p>Pengarah komunitas dan penjaga vibe CAO.</p>
 
 <a class="founder-social tiktok-social" href="https://www.tiktok.com/@ridhztempesto" target="_blank" rel="noopener noreferrer" aria-label="Buka TikTok RIDHZ">
 <img src="tiktok-logo.png?v=1" alt="TikTok RIDHZ"/>
@@ -3264,7 +4154,7 @@
 </div>
 <span class="founder-role">Owner</span>
 <h3>ARMY</h3>
-<p>Pendiri Sekaligus Tetua</p>
+<p>Pendiri utama sekaligus penggerak identitas CAO.</p>
 
 <a class="founder-social tiktok-social" href="https://www.tiktok.com/@armyone100" target="_blank" rel="noopener noreferrer" aria-label="Buka TikTok ARMY">
 <img src="tiktok-logo.png?v=1" alt="TikTok ARMY"/>
@@ -3276,7 +4166,7 @@
 </div>
 <span class="founder-role">Admin</span>
 <h3>CELZ</h3>
-<p>Leader of Admin</p>
+<p>Koordinator admin dan operasional komunitas.</p>
 
 <a class="founder-social tiktok-social" href="https://www.tiktok.com/@celzpreset" target="_blank" rel="noopener noreferrer" aria-label="Buka TikTok CELZ">
 <img src="tiktok-logo.png?v=1" alt="TikTok CELZ"/>
@@ -3289,8 +4179,15 @@
 <div class="container">
 <div class="section-head">
 <h2>Admin of Creator Anime One</h2>
-<p>Para Admin2 Creator Anime One.</p>
+<p>Tim admin yang membantu menjaga komunitas tetap aktif, rapi, dan solid.</p>
 </div>
+
+<div class="admin-tools">
+<div class="admin-search-wrap">
+<input class="admin-search" id="adminSearch" type="search" placeholder="Cari admin, contoh: Xyzoo, Reyy, Collab..." autocomplete="off"/>
+</div>
+</div>
+
 <div aria-label="Admin Creator Anime One manual scroll" class="admin-slider" id="adminSlider">
 <div class="admin-track">
 <div class="admin-set">
@@ -3387,12 +4284,12 @@
 <div class="absen-layout">
 <article class="panel absen-card" aria-label="Form absen member">
 <h3>Isi Absen</h3>
-<p>Nama harus masuk daftar izin admin agar tidak ada nickname yang kurang sopan</p>
+<p>Nama harus masuk daftar izin admin agar leaderboard tetap rapi dan aman.</p>
 <div class="absen-form">
 <label class="absen-label" for="absenNama">Nama Member</label>
 <input class="absen-input" id="absenNama" maxlength="32" placeholder="Contoh: Ridhz" autocomplete="off"/>
 <div class="absen-actions">
-<button class="absen-btn" id="btnAbsen" type="button">Absen Sekarang</button>
+<button class="absen-btn" id="btnAbsen" type="button">Absen Sekarang ✦</button>
 <button class="absen-btn secondary" id="btnCekCooldown" type="button">Cek Cooldown</button>
 </div>
 </div>
@@ -3407,7 +4304,7 @@
 <div class="leaderboard-head">
 <div>
 <h3>Leaderboard</h3>
-<p>Top 1–3 tampil sebagai Big three. Peringkat 4–99 tampil di bawahnya.</p>
+<p>Top 1–3 tampil sebagai Big three. Jika lebih dari 9 nama, leaderboard otomatis dibagi halaman.</p>
 </div>
 <span class="badge" id="absenModeBadge">Menyiapkan...</span>
 </div>
@@ -3417,13 +4314,25 @@
 </div>
 </section>
 
-<footer>
-<footer class='kage-footer'>
-    <div class='footer-content'>
+
+<div class="floating-actions" aria-label="Tombol cepat website">
+<button class="float-btn" id="themeCycleBtn" type="button" title="Ganti tema">◐</button>
+<button class="float-btn" id="backToTopBtn" type="button" title="Kembali ke atas">↑</button>
+</div>
+<nav class="mobile-dock" aria-label="Menu cepat mobile">
+<a href="#home"><span>⌂</span>Home</a>
+<a href="#info"><span>🔥</span>Gas Join</a>
+<a href="#generation"><span>V</span>Gen</a>
+<a href="#absen"><span>✓</span>Absen</a>
+</nav>
+
+<footer class="kage-footer">
+    <div class="footer-content">
         <p>2026 © Creator Anime One. All rights reserved.</p>
-        <p class='footer-credit'>
-        Made with ❤️ by <a href='https://www.tiktok.com/@jojojocijoo' target='_blank' style='text-decoration: none; color: inherit;'>Xyzoo✦</a>
+        <p class="footer-credit">
+            Made with ❤️ by <a href="https://www.tiktok.com/@jojojocijoo" target="_blank" rel="noopener noreferrer">Xyzoo✦</a>
         </p>
+    </div>
 </footer>
 <script>
         // Mouse drag untuk slider admin di desktop/laptop
@@ -3501,6 +4410,7 @@
     const WIB_OFFSET_MS = 7 * 60 * 60 * 1000;
     const RESET_HOUR_WIB = 16;
     const MAX_LEADERBOARD_RANK = 99;
+    const LEADERBOARD_PAGE_SIZE = 9;
     const FIREBASE_ROOT_PATH = "cao_absen";
 
     /* =====================================================
@@ -3588,6 +4498,7 @@
     let firebaseRef = null;
     let cachedGlobalData = [];
     let activeMonthKey = getMonthKey();
+    let currentLeaderboardPage = 1;
 
     function getMonthKey(date = new Date()) {
         const year = date.getFullYear();
@@ -3864,46 +4775,64 @@
         `;
     }
 
-    function renderLeaderboard() {
-        const monthKey = firebaseEnabled ? activeMonthKey : readLocalStore().monthKey;
-        const data = getSortedData();
-        const totalCount = data.reduce((sum, item) => sum + Number(item.count || 0), 0);
+    function getPaginationItems(currentPage, totalPages) {
+        const items = [];
 
-        totalNamaAbsen.textContent = data.length;
-        totalAbsenMasuk.textContent = totalCount;
-
-        const leaderboardData = data.slice(0, MAX_LEADERBOARD_RANK);
-        const topThree = leaderboardData.slice(0, 3);
-        const remaining = leaderboardData.slice(3);
-        const resetInfoHTML = `
-            <div class="absen-reset-info">
-                <span>Reset absen harian</span>
-                <strong>16.00 WIB</strong>
-                <small>Reset berikutnya: ${escapeHTML(formatResetDate(getNextResetAt()))}</small>
-            </div>
-        `;
-
-        if (leaderboardData.length === 0) {
-            leaderboardList.innerHTML = resetInfoHTML + `
-                <div class="absen-podium-empty">
-                    Belum ada nama yang absen untuk periode ${escapeHTML(getMonthLabel(monthKey))}. Nama harus masuk daftar izin admin dulu sebelum bisa muncul di leaderboard.
-                </div>
-            `;
-            return;
+        if (totalPages <= 7) {
+            for (let page = 1; page <= totalPages; page++) items.push(page);
+            return items;
         }
 
-        const podiumHTML = topThree.length ? `
-            <div class="absen-rank-subtitle">Podium Top 1–3 • ${escapeHTML(getMonthLabel(monthKey))}</div>
-            <div class="absen-top-podium">
-                ${topThree.map(renderPodiumItem).join("")}
-            </div>
-        ` : "";
+        items.push(1);
 
-        const remainingHTML = remaining.length ? `
-            <div class="absen-rank-subtitle">Peringkat 4–${Math.min(MAX_LEADERBOARD_RANK, leaderboardData.length)}</div>
+        if (currentPage > 3) items.push("dots-left");
+
+        const startPage = Math.max(2, currentPage - 1);
+        const endPage = Math.min(totalPages - 1, currentPage + 1);
+
+        for (let page = startPage; page <= endPage; page++) {
+            items.push(page);
+        }
+
+        if (currentPage < totalPages - 2) items.push("dots-right");
+
+        items.push(totalPages);
+
+        return items;
+    }
+
+    function renderPagination(currentPage, totalPages) {
+        if (totalPages <= 1) return "";
+
+        const items = getPaginationItems(currentPage, totalPages);
+
+        return `
+            <div class="absen-pagination" aria-label="Navigasi halaman leaderboard">
+                <button class="absen-page-btn nav" type="button" data-absen-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""} aria-label="Halaman sebelumnya">‹</button>
+                ${items.map(function (item) {
+                    if (typeof item === "string") {
+                        return `<span class="absen-page-dots">...</span>`;
+                    }
+
+                    return `
+                        <button class="absen-page-btn ${item === currentPage ? "active" : ""}" type="button" data-absen-page="${item}" aria-label="Buka halaman ${item}">
+                            ${item}
+                        </button>
+                    `;
+                }).join("")}
+                <button class="absen-page-btn nav" type="button" data-absen-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""} aria-label="Halaman berikutnya">›</button>
+            </div>
+        `;
+    }
+
+    function renderRankList(items, startRank, title) {
+        if (!items.length) return "";
+
+        return `
+            <div class="absen-rank-subtitle">${title}</div>
             <div class="absen-rank-list compact">
-                ${remaining.map(function (item, offset) {
-                    const rank = offset + 4;
+                ${items.map(function (item, offset) {
+                    const rank = startRank + offset;
                     return `
                         <div class="absen-rank-item">
                             <div class="absen-rank-left">
@@ -3921,9 +4850,93 @@
                     `;
                 }).join("")}
             </div>
-        ` : "";
+        `;
+    }
 
-        leaderboardList.innerHTML = resetInfoHTML + podiumHTML + remainingHTML;
+    function renderLeaderboard() {
+        const monthKey = firebaseEnabled ? activeMonthKey : readLocalStore().monthKey;
+        const data = getSortedData();
+        const totalCount = data.reduce((sum, item) => sum + Number(item.count || 0), 0);
+
+        totalNamaAbsen.textContent = data.length;
+        totalAbsenMasuk.textContent = totalCount;
+
+        const leaderboardData = data.slice(0, MAX_LEADERBOARD_RANK);
+        const totalPages = Math.max(1, Math.ceil(leaderboardData.length / LEADERBOARD_PAGE_SIZE));
+
+        if (currentLeaderboardPage > totalPages) currentLeaderboardPage = totalPages;
+        if (currentLeaderboardPage < 1) currentLeaderboardPage = 1;
+
+        const pageStartIndex = (currentLeaderboardPage - 1) * LEADERBOARD_PAGE_SIZE;
+        const pageEndIndex = Math.min(pageStartIndex + LEADERBOARD_PAGE_SIZE, leaderboardData.length);
+        const pageItems = leaderboardData.slice(pageStartIndex, pageEndIndex);
+
+        const resetInfoHTML = `
+            <div class="absen-reset-info">
+                <span>Reset absen harian</span>
+                <strong>16.00 WIB</strong>
+                <small>Reset berikutnya: ${escapeHTML(formatResetDate(getNextResetAt()))}</small>
+            </div>
+        `;
+
+        if (leaderboardData.length === 0) {
+            leaderboardList.innerHTML = resetInfoHTML + `
+                <div class="absen-podium-empty">
+                    Belum ada nama yang absen untuk periode ${escapeHTML(getMonthLabel(monthKey))}. Nama harus masuk daftar izin admin dulu sebelum bisa muncul di leaderboard.
+                </div>
+            `;
+            return;
+        }
+
+        let contentHTML = "";
+
+        if (currentLeaderboardPage === 1) {
+            const topThree = pageItems.slice(0, 3);
+            const remaining = pageItems.slice(3);
+            const remainingStartRank = 4;
+            const remainingEndRank = Math.min(LEADERBOARD_PAGE_SIZE, leaderboardData.length);
+
+            const podiumHTML = topThree.length ? `
+                <div class="absen-rank-subtitle">Podium Top 1–3 • ${escapeHTML(getMonthLabel(monthKey))}</div>
+                <div class="absen-top-podium">
+                    ${topThree.map(renderPodiumItem).join("")}
+                </div>
+            ` : "";
+
+            const remainingHTML = renderRankList(
+                remaining,
+                remainingStartRank,
+                `Peringkat ${remainingStartRank}–${remainingEndRank}`
+            );
+
+            contentHTML = podiumHTML + remainingHTML;
+        } else {
+            const startRank = pageStartIndex + 1;
+            const endRank = pageEndIndex;
+
+            contentHTML = renderRankList(
+                pageItems,
+                startRank,
+                `Peringkat ${startRank}–${endRank} • ${escapeHTML(getMonthLabel(monthKey))}`
+            );
+        }
+
+        leaderboardList.innerHTML = resetInfoHTML + contentHTML + renderPagination(currentLeaderboardPage, totalPages);
+
+        leaderboardList.querySelectorAll("[data-absen-page]").forEach(function (button) {
+            button.addEventListener("click", function () {
+                const nextPage = Number(button.dataset.absenPage);
+                if (!nextPage || nextPage < 1 || nextPage > totalPages || nextPage === currentLeaderboardPage) return;
+
+                currentLeaderboardPage = nextPage;
+                renderLeaderboard();
+
+                const card = leaderboardList.closest(".leaderboard-card");
+                if (card) {
+                    card.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        });
     }
 
     function getCooldownInfo(name) {
@@ -4101,6 +5114,7 @@
                 return;
             }
 
+            currentLeaderboardPage = 1;
             setStatus(`Berhasil! ${approvedName} masuk absen global. Semua user bisa melihat leaderboard terbaru. Reset absen pukul 16.00 WIB.`, "success");
             inputNama.value = "";
         }, false);
@@ -4182,6 +5196,154 @@
     }, 1000);
 
     initFirebaseOrLocal();
+})();
+</script>
+
+
+<script>
+/* =========================================================
+   FITUR INTERAKTIF TAMBAHAN - Creator Anime One
+========================================================= */
+(function () {
+    const themeMap = {
+        galaxy: "",
+        neon: "theme-neon",
+        midnight: "theme-midnight"
+    };
+    const themeOrder = ["galaxy", "neon", "midnight"];
+    const savedTheme = localStorage.getItem("cao_theme") || "galaxy";
+    const progress = document.getElementById("scrollProgress");
+    const themePills = Array.from(document.querySelectorAll(".theme-pill"));
+    const themeCycleBtn = document.getElementById("themeCycleBtn");
+    const backToTopBtn = document.getElementById("backToTopBtn");
+    const copyBtn = document.getElementById("copyJoinLink");
+    const copyStatus = document.getElementById("copyJoinStatus");
+    const shuffleBtn = document.getElementById("shuffleQuote");
+    const quoteBox = document.getElementById("caoQuote");
+    const adminSearch = document.getElementById("adminSearch");
+    const joinLink = "https://chat.whatsapp.com/E2Ow1ygwDq1KdPKIqfgD6A?utm_medium=social&utm_source=heylink.me";
+    const quotes = [
+        "Satu edit kecil hari ini bisa jadi karya besar besok.",
+        "CAO bukan cuma marga, tapi tempat buat tumbuh bareng.",
+        "Konsisten dulu, viral nanti ikut jalan.",
+        "Editor kuat bukan yang selalu ramai, tapi yang nggak berhenti upgrade.",
+        "Bikin karya yang rapi, biar namamu ikut naik.",
+        "Solid di komunitas, tajam di kreativitas."
+    ];
+
+    function applyTheme(themeName) {
+        const safeTheme = themeMap.hasOwnProperty(themeName) ? themeName : "galaxy";
+        document.body.classList.remove("theme-neon", "theme-midnight");
+        if (themeMap[safeTheme]) document.body.classList.add(themeMap[safeTheme]);
+        localStorage.setItem("cao_theme", safeTheme);
+        themePills.forEach(function (pill) {
+            pill.classList.toggle("active", pill.dataset.theme === safeTheme);
+        });
+    }
+
+    function updateProgress() {
+        if (!progress) return;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const value = max > 0 ? (window.scrollY / max) * 100 : 0;
+        progress.style.width = Math.min(100, Math.max(0, value)) + "%";
+    }
+
+    function burstSparkles(x, y) {
+        for (let i = 0; i < 14; i++) {
+            const dot = document.createElement("span");
+            const angle = (Math.PI * 2 * i) / 14;
+            const distance = 28 + Math.random() * 44;
+            dot.className = "sparkle-dot";
+            dot.style.left = x + "px";
+            dot.style.top = y + "px";
+            dot.style.setProperty("--sx", Math.cos(angle) * distance + "px");
+            dot.style.setProperty("--sy", Math.sin(angle) * distance + "px");
+            document.body.appendChild(dot);
+            setTimeout(function () { dot.remove(); }, 760);
+        }
+    }
+
+    applyTheme(savedTheme);
+    updateProgress();
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+
+    themePills.forEach(function (pill) {
+        pill.addEventListener("click", function () {
+            applyTheme(pill.dataset.theme);
+            const rect = pill.getBoundingClientRect();
+            burstSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        });
+    });
+
+    if (themeCycleBtn) {
+        themeCycleBtn.addEventListener("click", function () {
+            const current = localStorage.getItem("cao_theme") || "galaxy";
+            const next = themeOrder[(themeOrder.indexOf(current) + 1) % themeOrder.length];
+            applyTheme(next);
+            const rect = themeCycleBtn.getBoundingClientRect();
+            burstSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        });
+    }
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    if (copyBtn && copyStatus) {
+        copyBtn.addEventListener("click", async function (event) {
+            try {
+                await navigator.clipboard.writeText(joinLink);
+                copyStatus.textContent = "Link join berhasil disalin.";
+                copyStatus.style.color = "#86efac";
+                burstSparkles(event.clientX, event.clientY);
+            } catch (error) {
+                copyStatus.textContent = "Browser tidak mengizinkan copy otomatis. Buka grup lalu salin manual.";
+                copyStatus.style.color = "#facc15";
+            }
+        });
+    }
+
+    if (shuffleBtn && quoteBox) {
+        shuffleBtn.addEventListener("click", function (event) {
+            const current = quoteBox.textContent.trim();
+            let next = quotes[Math.floor(Math.random() * quotes.length)];
+            if (quotes.length > 1) {
+                while (next === current) next = quotes[Math.floor(Math.random() * quotes.length)];
+            }
+            quoteBox.textContent = next;
+            burstSparkles(event.clientX, event.clientY);
+        });
+    }
+
+    if (adminSearch) {
+        adminSearch.addEventListener("input", function () {
+            const keyword = adminSearch.value.trim().toLowerCase();
+            document.querySelectorAll("#admin .admin-card").forEach(function (card) {
+                const text = card.textContent.toLowerCase();
+                card.classList.toggle("is-hidden", keyword && !text.includes(keyword));
+            });
+        });
+    }
+
+    const revealTargets = document.querySelectorAll(".section-head, .panel, .glass-card, .feature-card");
+    revealTargets.forEach(function (target) { target.classList.add("reveal-ready"); });
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: .14 });
+        revealTargets.forEach(function (target) { observer.observe(target); });
+    } else {
+        revealTargets.forEach(function (target) { target.classList.add("is-visible"); });
+    }
 })();
 </script>
 
