@@ -1890,12 +1890,7 @@
 
 
 
-        /* =========================================================
-           BOT ABSEN DALAM 1 HTML
-           - Tanpa login
-           - Cooldown 24 jam per nama
-           - Leaderboard podium top 1-3 + daftar peringkat 4-99
-        ========================================================= */
+        
         #absen {
             padding: 86px 0;
         }
@@ -2870,12 +2865,6 @@
         }
 
 
-        /* =========================================================
-           UPDATE ABSEN V9: GALAXY LEADERBOARD + RANK 4-99 + RESET 16.00 WIB
-           - Podium kiri merah, tengah biru tua, kanan ungu.
-           - Daftar bawah menampilkan peringkat 4 sampai 99.
-           - Badge reset absen ditampilkan jelas.
-        ========================================================= */
         #absen .leaderboard-card {
             position: relative;
             overflow: hidden !important;
@@ -4002,6 +3991,20 @@
     }
 }
 
+
+/* FIX ABSEN: elemen wajib JS dikembalikan supaya leaderboard tidak stuck di 'Menyiapkan...' */
+#absen .absen-status.compact {
+    margin-top: 16px;
+    padding: 13px 15px;
+    min-height: unset;
+    font-size: .9rem;
+    border-radius: 18px;
+}
+
+#absen .absen-mini-info-hidden {
+    display: none !important;
+}
+
 </style>
 </head>
 <body oncontextmenu="return false">
@@ -4293,6 +4296,11 @@
 <button class="absen-btn secondary" id="btnCekCooldown" type="button">Cek Cooldown</button>
 </div>
 </div>
+<div class="absen-status compact" id="absenStatus">Kontak admin di WhatsApp untuk menambahkan namamu.</div>
+<div class="absen-mini-info absen-mini-info-hidden" aria-hidden="true">
+<div class="absen-stat-box"><b id="totalNamaAbsen">0</b><span>Total nama absen</span></div>
+<div class="absen-stat-box"><b id="totalAbsenMasuk">0</b><span>Total absen masuk</span></div>
+</div>
 <p class="absen-note"></p>
 </article>
 <article class="panel leaderboard-card" aria-label="Leaderboard absen member">
@@ -4461,7 +4469,7 @@
     const totalAbsenMasuk = document.getElementById("totalAbsenMasuk");
     const modeBadge = document.getElementById("absenModeBadge");
 
-    if (!inputNama || !btnAbsen || !btnCek || !statusBox || !leaderboardList) return;
+    if (!inputNama || !btnAbsen || !btnCek || !leaderboardList) return;
 
     let firebaseEnabled = false;
     let firebaseDb = null;
@@ -4682,7 +4690,8 @@
     }
 
     function setStatus(message, type) {
-        statusBox.className = "absen-status";
+        if (!statusBox) return;
+        statusBox.className = "absen-status compact";
         if (type) statusBox.classList.add(type);
         statusBox.textContent = message;
     }
@@ -4828,8 +4837,8 @@
         const data = getSortedData();
         const totalCount = data.reduce((sum, item) => sum + Number(item.count || 0), 0);
 
-        totalNamaAbsen.textContent = data.length;
-        totalAbsenMasuk.textContent = totalCount;
+        if (totalNamaAbsen) totalNamaAbsen.textContent = data.length;
+        if (totalAbsenMasuk) totalAbsenMasuk.textContent = totalCount;
 
         const leaderboardData = data.slice(0, MAX_LEADERBOARD_RANK);
         const totalPages = Math.max(1, Math.ceil(leaderboardData.length / LEADERBOARD_PAGE_SIZE));
@@ -4959,7 +4968,10 @@
             renderLeaderboard();
         }, function (error) {
             console.error("Firebase read error:", error);
-            setStatus("Firebase belum bisa dibaca. Cek FIREBASE_CONFIG dan rules Realtime Database.", "danger");
+            firebaseEnabled = false;
+            updateModeBadge();
+            renderLeaderboard();
+            setStatus("Firebase belum bisa dibaca. Sementara leaderboard memakai mode browser di perangkat ini.", "warning");
         });
     }
 
