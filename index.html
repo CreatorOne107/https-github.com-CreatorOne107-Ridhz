@@ -4279,12 +4279,12 @@
 <div class="section-head">
 <span class="eyebrow">✦ Bot Absen CAO</span>
 <h2>Bot Absen Member</h2>
-<p>Ketik nama yang sudah disetujui admin, lalu tekan absen. Setiap nama hanya bisa absen 1 kali per periode absen, reset harian pukul 16.00 WIB, masuk ke leaderboard sampai peringkat 99, dan data tetap tersimpan per bulan.</p>
+<p></p>
 </div>
 <div class="absen-layout">
 <article class="panel absen-card" aria-label="Form absen member">
 <h3>Isi Absen</h3>
-<p>Nama harus masuk daftar izin admin agar leaderboard tetap rapi dan aman.</p>
+<p>Gabisa input nama kamu? langsung hubgungin mimin Xyzoo yaa!.</p>
 <div class="absen-form">
 <label class="absen-label" for="absenNama">Nama Member</label>
 <input class="absen-input" id="absenNama" maxlength="32" placeholder="Contoh: Ridhz" autocomplete="off"/>
@@ -4293,18 +4293,13 @@
 <button class="absen-btn secondary" id="btnCekCooldown" type="button">Cek Cooldown</button>
 </div>
 </div>
-<div class="absen-status" id="absenStatus">Masukkan nama yang sudah disetujui admin, lalu klik absen.</div>
-<div class="absen-mini-info">
-<div class="absen-stat-box"><b id="totalNamaAbsen">0</b><span>Total nama absen</span></div>
-<div class="absen-stat-box"><b id="totalAbsenMasuk">0</b><span>Total absen masuk</span></div>
-</div>
 <p class="absen-note"></p>
 </article>
 <article class="panel leaderboard-card" aria-label="Leaderboard absen member">
 <div class="leaderboard-head">
 <div>
 <h3>Leaderboard</h3>
-<p>Top 1–3 tampil sebagai Big three. Jika lebih dari 9 nama, leaderboard otomatis dibagi halaman.</p>
+<p>Top 1–3 tampil sebagai Big three.</p>
 </div>
 <span class="badge" id="absenModeBadge">Menyiapkan...</span>
 </div>
@@ -4397,14 +4392,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-database-compat.js"></script>
 <script>
-/* =========================================================
-   BOT ABSEN CAO - 1 HTML / GitHub Pages
-   - Bisa global semua user memakai Firebase Realtime Database.
-   - Jika FIREBASE_CONFIG belum diisi, otomatis fallback ke localStorage browser.
-   - Reset absen harian pukul 16.00 WIB per nama.
-   - Reset tampilan setiap bulan lewat pemisahan data per bulan.
-   - Nama wajib masuk daftar izin admin sebelum bisa absen.
-========================================================= */
+
 (function () {
     const STORAGE_KEY = "cao_absen_leaderboard_v6_reset_1600_wib";
     const WIB_OFFSET_MS = 7 * 60 * 60 * 1000;
@@ -4413,15 +4401,7 @@
     const LEADERBOARD_PAGE_SIZE = 9;
     const FIREBASE_ROOT_PATH = "cao_absen";
 
-    /* =====================================================
-       FIREBASE CONFIG UNTUK LEADERBOARD GLOBAL
-       Cara isi:
-       1. Buat project Firebase.
-       2. Aktifkan Realtime Database.
-       3. Buka Project Settings > Web App.
-       4. Copy firebaseConfig, lalu tempel nilainya di bawah.
-       Jika bagian ini masih kosong, data hanya tersimpan di browser sendiri.
-    ===================================================== */
+ 
     const FIREBASE_CONFIG = {
         apiKey: "AIzaSyAFjfJHRLhvVoVI59MjiFpXm0ig6hfTkw4",
         authDomain: "caoone.firebasestorage.app",
@@ -4432,11 +4412,7 @@
         appId: "1:232440325309:web:55b9afae56e69a8365c3d4"
     };
 
-    /* =====================================================
-       DAFTAR NAMA YANG DIIZINKAN ABSEN
-       Tambahkan nama member di sini, lalu upload ulang index.html.
-       Member hanya bisa absen memakai nama yang ada di daftar ini.
-    ===================================================== */
+    
     const APPROVED_MEMBER_NAMES = [
         "RixCihuyy",
         "Blezx",
@@ -4462,13 +4438,7 @@
             
     ];
 
-    /* =====================================================
-       CUSTOM IMAGE PODIUM
-       Upload file gambar ke folder yang sama dengan index.html.
-       Lebih bagus pakai PNG transparan.
-       Karakter podium akan otomatis berada di belakang card.
-       Kosongkan dengan "" kalau tidak ingin pakai gambar.
-    ===================================================== */
+  
     const PODIUM_ASSETS = {
         characters: {
             1: "podium-top1.png",
@@ -4873,9 +4843,7 @@
 
         const resetInfoHTML = `
             <div class="absen-reset-info">
-                <span>Reset absen harian</span>
-                <strong>16.00 WIB</strong>
-                <small>Reset berikutnya: ${escapeHTML(formatResetDate(getNextResetAt()))}</small>
+                <strong>Top Member Rajin Absen</strong>
             </div>
         `;
 
