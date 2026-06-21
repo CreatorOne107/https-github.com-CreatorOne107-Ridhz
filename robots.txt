@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://creatoranimeone.my.id/sitemap.xml
