@@ -1,0 +1,18 @@
+{
+  "type": "creatoranimeone_official_links",
+  "updatedAt": "2026-06-20",
+  "links": [
+    {
+      "platform": "Website",
+      "label": "Creator Anime One Official Website",
+      "url": "https://creatoranimeone.my.id/",
+      "status": "official"
+    },
+    {
+      "platform": "TikTok",
+      "label": "CREATOR ANIME ONE | OFC",
+      "url": "https://www.tiktok.com/@officialanimeone",
+      "status": "official"
+    }
+  ]
+}
