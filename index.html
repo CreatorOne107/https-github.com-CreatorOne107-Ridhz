@@ -4595,17 +4595,6 @@
     }
 }
 
-
-.tiktok-live-grid.views-likes-only {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-@media (max-width: 540px) {
-    .tiktok-live-grid.views-likes-only {
-        grid-template-columns: 1fr;
-    }
-}
-
 </style>
 </head>
 <body oncontextmenu="return false">
@@ -4988,20 +4977,6 @@
 </div>
 </div>
 
-
-<div class="tiktok-live-panel panel" aria-label="Statistik TikTok otomatis">
-<div class="tiktok-live-copy">
-<span class="eyebrow">✦ TikTok Stats</span>
-<h3>Statistik Video TikTok</h3>
-<p>Card ini menampilkan views dan likes video TikTok secara otomatis. UI utama tetap sama, hanya angka yang dimuat dari TikTok.</p>
-<a class="tiktok-live-link" id="tiktokStatsOpen" href="https://www.tiktok.com/@moenzyy7/video/7647940150923889941" target="_blank" rel="noopener noreferrer">Buka Video TikTok</a>
-</div>
-<div class="tiktok-live-grid views-likes-only">
-<div class="tiktok-live-stat"><span>👀 Views</span><b id="tiktokViews">Loading...</b></div>
-<div class="tiktok-live-stat"><span>❤️ Likes</span><b id="tiktokLikes">Loading...</b></div>
-<div class="tiktok-live-status warning" id="tiktokStatsStatus">Memuat views dan likes TikTok...</div>
-</div>
-</div>
 <div class="top-view-grid" id="topViewGrid" aria-label="Top 1 sampai Top 3 view terbanyak"></div>
 
 <div class="views-note-card">
@@ -6341,113 +6316,7 @@ Catatan custom TikTok:
 <script>
 /* =========================================================
    PROTEKSI ANTI COPY RINGAN - Creator Anime One
-   Ditempel sebelum <script>
-/* =========================================================
-   TIKTOK AUTO STATS - VIEWS & LIKES ONLY
-   Menggunakan corsproxy.io sesuai permintaan.
-   Catatan: ini bukan API resmi TikTok, jadi bisa gagal jika TikTok/proxy membatasi akses.
-========================================================= */
-(function () {
-    const proxy = "https://corsproxy.io/?";
-    const tiktokUrl = "https://www.tiktok.com/@moenzyy7/video/7647940150923889941";
-    const refreshIntervalMs = 60000;
-
-    const viewsEl = document.getElementById("tiktokViews");
-    const likesEl = document.getElementById("tiktokLikes");
-    const statusEl = document.getElementById("tiktokStatsStatus");
-    const openEl = document.getElementById("tiktokStatsOpen");
-
-    function setStatus(text, type = "warning") {
-        if (!statusEl) return;
-        statusEl.textContent = text;
-        statusEl.className = "tiktok-live-status " + type;
-    }
-
-    function setValue(element, value) {
-        if (!element) return;
-        element.textContent = value || "N/A";
-    }
-
-    function formatNumber(value) {
-        const number = Number(value);
-        if (!Number.isFinite(number)) return "N/A";
-
-        if (number >= 1000000000) return (number / 1000000000).toFixed(1).replace(".0", "") + "B";
-        if (number >= 1000000) return (number / 1000000).toFixed(1).replace(".0", "") + "M";
-        if (number >= 1000) return (number / 1000).toFixed(1).replace(".0", "") + "K";
-        return String(number);
-    }
-
-    function findStat(html, key) {
-        const patterns = [
-            new RegExp('"' + key + '"\\s*:\\s*(\\d+)', "i"),
-            new RegExp('"' + key + '"\\s*:\\s*"?(\\d+)"?', "i")
-        ];
-
-        for (const pattern of patterns) {
-            const match = html.match(pattern);
-            if (match && match[1]) return match[1];
-        }
-
-        return null;
-    }
-
-    async function fetchWithTimeout(url, timeoutMs = 12000) {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), timeoutMs);
-
-        try {
-            const response = await fetch(url, {
-                cache: "no-store",
-                signal: controller.signal
-            });
-
-            if (!response.ok) {
-                throw new Error("HTTP " + response.status);
-            }
-
-            return await response.text();
-        } finally {
-            clearTimeout(timeout);
-        }
-    }
-
-    async function loadTikTokStats() {
-        if (!viewsEl || !likesEl) return;
-
-        setValue(viewsEl, "Loading...");
-        setValue(likesEl, "Loading...");
-        setStatus("Memuat views dan likes TikTok...", "warning");
-
-        try {
-            const html = await fetchWithTimeout(proxy + encodeURIComponent(tiktokUrl));
-
-            const views = findStat(html, "playCount");
-            const likes = findStat(html, "diggCount");
-
-            setValue(viewsEl, views ? formatNumber(views) : "N/A");
-            setValue(likesEl, likes ? formatNumber(likes) : "N/A");
-
-            if (openEl) openEl.href = tiktokUrl;
-
-            if (views || likes) {
-                setStatus("Views dan likes berhasil dimuat otomatis.", "success");
-            } else {
-                setStatus("Views dan likes tidak terbaca dari halaman TikTok.", "danger");
-            }
-        } catch (error) {
-            console.error("TikTok auto stats error:", error);
-            setValue(viewsEl, "N/A");
-            setValue(likesEl, "N/A");
-            setStatus("Gagal memuat otomatis. TikTok/proxy kemungkinan membatasi akses.", "danger");
-        }
-    }
-
-    loadTikTokStats();
-    setInterval(loadTikTokStats, refreshIntervalMs);
-})();
-</script>
-</body>.
+   Ditempel sebelum </body>.
    Tetap ingat: HTML/CSS/JS publik tidak bisa 100% anti salin.
 ========================================================= */
 (function () {
@@ -6524,111 +6393,5 @@ Catatan custom TikTok:
 </script>
 
 
-<script>
-/* =========================================================
-   TIKTOK AUTO STATS - VIEWS & LIKES ONLY
-   Menggunakan corsproxy.io sesuai permintaan.
-   Catatan: ini bukan API resmi TikTok, jadi bisa gagal jika TikTok/proxy membatasi akses.
-========================================================= */
-(function () {
-    const proxy = "https://corsproxy.io/?";
-    const tiktokUrl = "https://www.tiktok.com/@moenzyy7/video/7647940150923889941";
-    const refreshIntervalMs = 60000;
-
-    const viewsEl = document.getElementById("tiktokViews");
-    const likesEl = document.getElementById("tiktokLikes");
-    const statusEl = document.getElementById("tiktokStatsStatus");
-    const openEl = document.getElementById("tiktokStatsOpen");
-
-    function setStatus(text, type = "warning") {
-        if (!statusEl) return;
-        statusEl.textContent = text;
-        statusEl.className = "tiktok-live-status " + type;
-    }
-
-    function setValue(element, value) {
-        if (!element) return;
-        element.textContent = value || "N/A";
-    }
-
-    function formatNumber(value) {
-        const number = Number(value);
-        if (!Number.isFinite(number)) return "N/A";
-
-        if (number >= 1000000000) return (number / 1000000000).toFixed(1).replace(".0", "") + "B";
-        if (number >= 1000000) return (number / 1000000).toFixed(1).replace(".0", "") + "M";
-        if (number >= 1000) return (number / 1000).toFixed(1).replace(".0", "") + "K";
-        return String(number);
-    }
-
-    function findStat(html, key) {
-        const patterns = [
-            new RegExp('"' + key + '"\\s*:\\s*(\\d+)', "i"),
-            new RegExp('"' + key + '"\\s*:\\s*"?(\\d+)"?', "i")
-        ];
-
-        for (const pattern of patterns) {
-            const match = html.match(pattern);
-            if (match && match[1]) return match[1];
-        }
-
-        return null;
-    }
-
-    async function fetchWithTimeout(url, timeoutMs = 12000) {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), timeoutMs);
-
-        try {
-            const response = await fetch(url, {
-                cache: "no-store",
-                signal: controller.signal
-            });
-
-            if (!response.ok) {
-                throw new Error("HTTP " + response.status);
-            }
-
-            return await response.text();
-        } finally {
-            clearTimeout(timeout);
-        }
-    }
-
-    async function loadTikTokStats() {
-        if (!viewsEl || !likesEl) return;
-
-        setValue(viewsEl, "Loading...");
-        setValue(likesEl, "Loading...");
-        setStatus("Memuat views dan likes TikTok...", "warning");
-
-        try {
-            const html = await fetchWithTimeout(proxy + encodeURIComponent(tiktokUrl));
-
-            const views = findStat(html, "playCount");
-            const likes = findStat(html, "diggCount");
-
-            setValue(viewsEl, views ? formatNumber(views) : "N/A");
-            setValue(likesEl, likes ? formatNumber(likes) : "N/A");
-
-            if (openEl) openEl.href = tiktokUrl;
-
-            if (views || likes) {
-                setStatus("Views dan likes berhasil dimuat otomatis.", "success");
-            } else {
-                setStatus("Views dan likes tidak terbaca dari halaman TikTok.", "danger");
-            }
-        } catch (error) {
-            console.error("TikTok auto stats error:", error);
-            setValue(viewsEl, "N/A");
-            setValue(likesEl, "N/A");
-            setStatus("Gagal memuat otomatis. TikTok/proxy kemungkinan membatasi akses.", "danger");
-        }
-    }
-
-    loadTikTokStats();
-    setInterval(loadTikTokStats, refreshIntervalMs);
-})();
-</script>
 </body>
 </html>
