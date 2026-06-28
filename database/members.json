@@ -94,9 +94,10 @@
     {
       "name": "Nazz",
       "status": "active"
+    },
     {
       "name": "army",
       "status": "active"
-    },
-  {
+    }
+  ]
 }
