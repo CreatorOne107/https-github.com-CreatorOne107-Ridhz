@@ -1,103 +1,52 @@
 {
   "type": "creatoranimeone_member_db",
-  "description": "Database nama member yang diizinkan untuk absen di website Creator Anime One.",
-  "updatedAt": "2026-06-20",
+  "description": "nama member yang diizinkan untuk absen di website Creator Anime One.",
+  "updatedAt": "2026-06-29",
   "members": [
-    {
-      "name": "RixCihuyy",
-      "status": "active"
-    },
-    {
-      "name": "Blezx",
-      "status": "active"
-    },
-    {
-      "name": "Joulezy",
-      "status": "active"
-    },
-    {
-      "name": "riq",
-      "status": "active"
-    },
-    {
-      "name": "Kaziroo",
-      "status": "active"
-    },
-    {
-      "name": "Febzz",
-      "status": "active"
-    },
-    {
-      "name": "Sero",
-      "status": "active"
-    },
-    {
-      "name": "Roop",
-      "status": "active"
-    },
-    {
-      "name": "Zell",
-      "status": "active"
-    },
-    {
-      "name": "Ridhz",
-      "status": "active"
-    },
-    {
-      "name": "Xyzoo",
-      "status": "active"
-    },
-    {
-      "name": "Men",
-      "status": "active"
-    },
-    {
-      "name": "Caine",
-      "status": "active"
-    },
-    {
-      "name": "Nano",
-      "status": "active"
-    },
-    {
-      "name": "Rem",
-      "status": "active"
-    },
-    {
-      "name": "Karumi",
-      "status": "active"
-    },
-    {
-      "name": "Reyy",
-      "status": "active"
-    },
-    {
-      "name": "Nixara",
-      "status": "active"
-    },
-    {
-      "name": "Ayase",
-      "status": "active"
-    },
-    {
-      "name": "Kaishi",
-      "status": "active"
-    },
-    {
-      "name": "Kaz",
-      "status": "active"
-    },
-    {
-      "name": "Kazuro",
-      "status": "active"
-    },
-    {
-      "name": "Nazz",
-      "status": "active"
-    },
-    {
-      "name": "army",
-      "status": "active"
-    }
+    { "name": "RixCihuyy", "status": "active" },
+    { "name": "Blezx", "status": "active" },
+    { "name": "Joulezy", "status": "active" },
+    { "name": "riq", "status": "active" },
+    { "name": "Kaziroo", "status": "active" },
+    { "name": "Febzz", "status": "active" },
+    { "name": "Sero", "status": "active" },
+    { "name": "Roop", "status": "active" },
+    { "name": "Zell", "status": "active" },
+    { "name": "Ridhz", "status": "active" },
+    { "name": "Xyzoo", "status": "active" },
+    { "name": "Men", "status": "active" },
+    { "name": "Caine", "status": "active" },
+    { "name": "Nano", "status": "active" },
+    { "name": "Rem", "status": "active" },
+    { "name": "Karumi", "status": "active" },
+    { "name": "Reyy", "status": "active" },
+    { "name": "Nixara", "status": "active" },
+    { "name": "Ayase", "status": "active" },
+    { "name": "Kaishi", "status": "active" },
+    { "name": "Kaz", "status": "active" },
+    { "name": "Kazuro", "status": "active" },
+    { "name": "Nazz", "status": "active" },
+    { "name": "army", "status": "active" },
+    { "name": "ridzy", "status": "active" },
+    { "name": "ken", "status": "active" },
+    { "name": "kaizenn", "status": "active" },
+    { "name": "chiro", "status": "active" },
+    { "name": "kagenou", "status": "active" },
+    { "name": "Reyhan", "status": "active" },
+    { "name": "RIO", "status": "active" },
+    { "name": "zen", "status": "active" },
+    { "name": "Zetsu", "status": "active" },
+    { "name": "Zuya", "status": "active" },
+    { "name": "Alz", "status": "active" },
+    { "name": "Jeju", "status": "active" },
+    { "name": "waldi", "status": "active" },
+    { "name": "yuhen", "status": "active" },
+    { "name": "haru", "status": "active" },
+    { "name": "Raysuu", "status": "active" },
+    { "name": "ipiiinaa", "status": "active" },
+    { "name": "Zahra", "status": "active" },
+    { "name": "ipiiinaaa", "status": "active" },
+    { "name": "Dz", "status": "active" },
+    { "name": "Awdm_", "status": "active" }
   ]
 }
