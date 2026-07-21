@@ -1,7 +1,7 @@
 {
   "type": "creatoranimeone_member_db",
   "description": "Database nama member yang diizinkan untuk absen di website Creator Anime One.",
-  "updatedAt": "2026-07-01",
+  "updatedAt": "2026-07-21",
   "members": [
     {
       "name": "RixCihuyy",
@@ -213,6 +213,42 @@
     },
     {
       "name": "zeesky",
+      "status": "active"
+    },
+    {
+      "name": "Zyann",
+      "status": "active"
+    },
+    {
+      "name": "Aiko",
+      "status": "active"
+    },
+    {
+      "name": "Shinici",
+      "status": "active"
+    },
+    {
+      "name": "Yeon",
+      "status": "active"
+    },
+    {
+      "name": "Arill",
+      "status": "active"
+    },
+    {
+      "name": "Fib",
+      "status": "active"
+    },
+    {
+      "name": "Reoo",
+      "status": "active"
+    },
+    {
+      "name": "Yamura",
+      "status": "active"
+    },
+    {
+      "name": "Rio",
       "status": "active"
     }
   ]
