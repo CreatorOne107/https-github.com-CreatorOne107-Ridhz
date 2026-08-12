@@ -5967,18 +5967,9 @@ function escapeHTML(value) {
             const requestAuth = window.firebase.auth();
             const requestDb = window.firebase.database();
 
-            // Member biasa tidak perlu memiliki akun admin.
-            // Kita memakai Firebase Anonymous Authentication secara otomatis.
-            // Ini membuat Firebase memberikan UID sementara sehingga Rules dapat
-            // mengizinkan request tanpa membuka akses baca name_requests ke publik.
-            if (!requestAuth.currentUser) {
-                await requestAuth.signInAnonymously();
-            }
-
-            if (!requestAuth.currentUser) {
-                throw new Error("Anonymous authentication gagal.");
-            }
-
+            // MEMBER BIASA TIDAK PERLU LOGIN / AKUN FIREBASE.
+            // Request baru diizinkan oleh Realtime Database Rules.
+            // Admin tetap harus login Firebase untuk membaca dan memproses request.
             const requestRef = requestDb.ref(`${FIREBASE_ROOT_PATH}/name_requests`).push();
             const now = Date.now();
 
@@ -5989,7 +5980,7 @@ function escapeHTML(value) {
                 requestedAt: now,
                 lastRequestedAt: now,
                 requestedCount: 1,
-                requesterUid: requestAuth.currentUser.uid
+                requesterUid: "public"
             });
 
             setRequestStatus(`Request "${cleanName}" berhasil dikirim. Tunggu admin melakukan approval.`, "success");
@@ -5998,6 +5989,7 @@ function escapeHTML(value) {
             const code = error && error.code ? ` [${error.code}]` : "";
             const detail = error && error.message ? ` ${error.message}` : "";
             setRequestStatus(`Request gagal dikirim.${code}${detail}`, "danger");
+            console.error("Firebase request detail:", { code: error?.code, message: error?.message, name: cleanName });
         }
     }
 
