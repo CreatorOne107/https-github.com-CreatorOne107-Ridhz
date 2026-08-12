@@ -3512,15 +3512,6 @@
 
 
 
-        /* =========================================================
-           UPDATE V6: FITUR INTERAKTIF TAMBAHAN
-           - Scroll progress bar
-           - Theme switcher Galaxy / Neon / Midnight
-           - Fitur cepat: copy link join, random motto, guide singkat
-           - Search admin
-           - Floating action + mobile dock
-           - Reveal animation saat scroll
-        ========================================================= */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -3834,7 +3825,7 @@
         }
 
 
-/* UPDATE: section fitur cepat dihapus, ganti tema tetap lewat tombol floating/dock */
+
 .mobile-dock button,
 .dock-theme-btn {
     appearance: none;
@@ -3871,7 +3862,7 @@
 }
 
 
-/* UPDATE: CTA Join dibuat single-button agar lebih clean */
+
 .cta-actions {
     display: flex;
     align-items: center;
@@ -3894,7 +3885,7 @@
 }
 
 
-/* UPDATE: Pagination leaderboard absen, aktif saat data lebih dari 9 nama */
+
 #absen .absen-pagination {
     display: flex;
     align-items: center;
@@ -3973,7 +3964,7 @@
 }
 
 
-/* UPDATE: tombol Absen di hero dihapus, sisa Explore CAO dan TikTok */
+
 .hero .buttons {
     max-width: 520px;
     margin-left: auto;
@@ -3992,7 +3983,7 @@
 }
 
 
-/* FIX ABSEN: elemen wajib JS dikembalikan supaya leaderboard tidak stuck di 'Menyiapkan...' */
+
 #absen .absen-status.compact {
     margin-top: 16px;
     padding: 13px 15px;
@@ -4006,7 +3997,7 @@
 }
 
 
-/* UPDATE: Khusus tampilan PC, leaderboard dipindah ke bawah form absen */
+
 @media (min-width: 881px) {
     #absen .absen-layout {
         grid-template-columns: 1fr !important;
@@ -4048,10 +4039,7 @@
 }
 
 
-        /* =========================================================
-           SINGLE PAGE APP MODE
-           Menu pindah tampilan tanpa lompat/scroll ke section bawah.
-        ========================================================= */
+    
         html {
             scroll-behavior: auto !important;
         }
@@ -4093,9 +4081,7 @@
             }
         }
 
-        /* =========================================================
-           EVENT PAGE
-        ========================================================= */
+        
         #event {
             min-height: calc(100vh - 72px);
             padding: 86px 0;
@@ -4257,10 +4243,7 @@
         }
 
 
-        /* =========================================================
-           VIEW TERBANYAK PAGE
-           Top 1-3 video dengan view paling tinggi dari hashtag CAO.
-        ========================================================= */
+        
         #views {
             min-height: calc(100vh - 72px);
             padding: 86px 0;
@@ -4737,7 +4720,7 @@
 <strong>#creatoranimeone</strong>
 <div class="mini-stats">
 <div class="mini-stat"><b>2,6M+</b><span>Jumlah Penonton</span></div>
-<div class="mini-stat"><b>35,0RB+</b><span>Jumlah Video</span></div>
+<div class="mini-stat"><b>35,1RB+</b><span>Jumlah Video</span></div>
 </div>
 </div>
 <div class="panel hashtag">
@@ -4945,9 +4928,9 @@
 <label class="absen-label" for="adminPassword">Password</label>
 <input class="absen-input" id="adminPassword" type="password" maxlength="64" placeholder="Masukkan password" autocomplete="current-password">
 <button class="absen-btn" type="submit">Login Admin ✦</button>
-<div class="absen-status compact" id="adminLoginStatus"></div>
+<div class="absen-status compact" id="adminLoginStatus"> </div>
 </form>
-<div class="admin-login-note"><strong>INI KAWASAN ATMIN RAWRR:</strong> </div>
+<div class="admin-login-note"><strong>CAO:</strong> Min atmin </div>
 </div>
 <div id="adminDashboard" class="admin-dashboard" hidden>
 <div class="panel admin-dashboard-head">
@@ -5059,7 +5042,7 @@
     </div>
 </footer>
 <script>
-        // Mouse drag untuk slider admin di desktop/laptop
+       
         const adminSlider = document.getElementById("adminSlider");
 
         if (adminSlider) {
@@ -5094,7 +5077,7 @@
         }
 
 
-        // Auto-center card Owner di bagian Pendiri saat tampilan HP
+       
         const founderPodium = document.querySelector(".founder-podium");
         const founderOwner = document.querySelector(".founder-card.owner");
 
@@ -5121,10 +5104,7 @@
 
 
 <script>
-/* =========================================================
-   SINGLE PAGE APP ROUTER - Creator Anime One
-   Klik menu mengganti tampilan, bukan lompat scroll ke section.
-========================================================= */
+
 (function () {
     const pageMap = {
         home: "home",
@@ -5225,11 +5205,7 @@
         appId: "1:232440325309:web:55b9afae56e69a8365c3d4"
     };
 
-    /*
-       Data nama member sudah dipindah dari index.html ke GitHub DB.
-       Sistem akan coba membaca dari data/members.json, database/members.json,
-       lalu databases/members.json agar tetap aman meski nama folder berbeda.
-    */
+    
     const MEMBER_DB_URLS = [
         "data/members.json?v=1",
         "database/members.json?v=1",
@@ -5833,7 +5809,7 @@ function escapeHTML(value) {
             firebaseEnabled = true;
             updateModeBadge();
             startFirebaseListener();
-            setStatus("Tunggu mas admin approve ya untuk menambahkan namamu.", "success");
+            setStatus("Kontak admin di whatsapp untuk menambahkan namamu.", "success");
         } catch (error) {
             console.error("Firebase init error:", error);
             firebaseEnabled = false;
@@ -5943,21 +5919,46 @@ function escapeHTML(value) {
     function setRequestStatus(message, type) { if(!requestStatus) return; requestStatus.className="absen-status compact request-status"; if(type) requestStatus.classList.add(type); requestStatus.textContent=message; }
 
     async function submitApprovalRequest() {
-        const cleanName=normalizeName(inputNama.value);
-        if(!cleanName){ setRequestStatus("Ketik nama terlebih dahulu sebelum mengirim request.","danger"); inputNama.focus(); return; }
-        const approvedName=getApprovedName(cleanName);
-        if(approvedName){ setRequestStatus(`${approvedName} sudah disetujui admin dan bisa digunakan untuk absen.`,"success"); return; }
-        if(!window.firebase || !FIREBASE_CONFIG){ setRequestStatus("Firebase belum tersedia. Request belum dapat dikirim.","danger"); return; }
+        const cleanName = normalizeName(inputNama.value);
+        if (!cleanName) {
+            setRequestStatus("Ketik nama terlebih dahulu sebelum mengirim request.", "danger");
+            inputNama.focus();
+            return;
+        }
+
+        const approvedName = getApprovedName(cleanName);
+        if (approvedName) {
+            setRequestStatus(`${approvedName} sudah disetujui admin dan bisa digunakan untuk absen.`, "success");
+            return;
+        }
+
+        if (!window.firebase || !FIREBASE_CONFIG) {
+            setRequestStatus("Firebase belum tersedia. Request belum dapat dikirim.", "danger");
+            return;
+        }
+
         try {
-            if(!window.firebase.apps.length) window.firebase.initializeApp(FIREBASE_CONFIG);
-            const requestDb=window.firebase.database(); const key=nameKey(cleanName); const ref=requestDb.ref(`${FIREBASE_ROOT_PATH}/name_requests/${key}`);
-            const snapshot=await ref.once("value"); const existing=snapshot.val();
-            if(existing && existing.status==="pending"){ setRequestStatus(`Request "${cleanName}" sudah menunggu approval admin.`,"warning"); return; }
-            if(existing && existing.status==="approved"){ setRequestStatus(`Nama "${cleanName}" sudah pernah disetujui admin.`,"success"); return; }
-            const now=Date.now();
-            await ref.set({key:key,name:cleanName,status:"pending",requestedAt:now,lastRequestedAt:now,requestedCount:Number(existing && existing.requestedCount || 0)+1});
-            setRequestStatus(`Request "${cleanName}" berhasil dikirim. Tunggu admin melakukan approval.`,"success");
-        } catch(error){ console.error("Gagal mengirim request approval:",error); setRequestStatus("Request gagal dikirim. Cek koneksi dan Firebase Rules.","danger"); }
+            if (!window.firebase.apps.length) window.firebase.initializeApp(FIREBASE_CONFIG);
+            const requestDb = window.firebase.database();
+
+           
+            const requestRef = requestDb.ref(`${FIREBASE_ROOT_PATH}/name_requests`).push();
+            const now = Date.now();
+
+            await requestRef.set({
+                key: requestRef.key,
+                name: cleanName,
+                status: "pending",
+                requestedAt: now,
+                lastRequestedAt: now,
+                requestedCount: 1
+            });
+
+            setRequestStatus(`Request "${cleanName}" berhasil dikirim. Tunggu admin melakukan approval.`, "success");
+        } catch (error) {
+            console.error("Gagal mengirim request approval:", error);
+            setRequestStatus("Request gagal dikirim. Pastikan Firebase Rules mengizinkan member membuat request.", "danger");
+        }
     }
 
     function handleAbsen() {
@@ -6058,9 +6059,7 @@ function escapeHTML(value) {
 
 
 <script>
-/* =========================================================
-   FITUR INTERAKTIF TAMBAHAN - Creator Anime One
-========================================================= */
+
 (function () {
     const themeMap = {
         galaxy: "",
@@ -6206,11 +6205,7 @@ function escapeHTML(value) {
 
 
 <script>
-/* =========================================================
-   TOP VIEWS PAGE - Data manual sementara
-   Ganti isi array caoTopViewVideos untuk update ranking.
-   Nanti array ini bisa diganti dari hasil fetch API/backend.
-========================================================= */
+
 (function () {
     const topViewGrid = document.getElementById("topViewGrid");
     const filterButtons = Array.from(document.querySelectorAll(".views-filter-btn"));
@@ -6370,20 +6365,12 @@ function escapeHTML(value) {
 })();
 </script>
 
-<!--
-Catatan custom TikTok:
-1. Ganti file tiktok-logo.png jika ingin memakai gambar/logo TikTok lain.
-2. Ganti href pada .founder-social jika tiap pendiri punya akun TikTok masing-masing.
--->
+
 
 
 
 <script>
-/* =========================================================
-   PROTEKSI ANTI COPY RINGAN - Creator Anime One
-   Ditempel sebelum </body>.
-   Tetap ingat: HTML/CSS/JS publik tidak bisa 100% anti salin.
-========================================================= */
+        
 (function () {
     const blockedMessage = "Waku Wakuu Mau Ngapain Senpaiii.";
 
