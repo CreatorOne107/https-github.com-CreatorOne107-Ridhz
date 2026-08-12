@@ -4595,6 +4595,33 @@
     }
 }
 
+
+/* ADMIN APPROVAL SYSTEM */
+.admin-nav-link { color:#ddd6fe !important; border:1px solid rgba(196,181,253,.14); background:rgba(139,92,246,.08); }
+.admin-auth-card,.admin-dashboard-head,.admin-request-card,.admin-account-card,.admin-info-card { padding:28px; }
+.admin-auth-card { max-width:560px; margin:0 auto; }
+.admin-auth-form { display:grid; gap:12px; }
+.admin-auth-form .absen-btn { width:100%; margin-top:6px; }
+.admin-login-note { margin-top:18px; padding:14px 16px; border-radius:16px; color:var(--text-muted); background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.08); font-size:.82rem; line-height:1.6; }
+.admin-dashboard[hidden] { display:none !important; }
+.admin-dashboard { display:grid; gap:18px; }
+.admin-dashboard-head { display:flex; align-items:center; justify-content:space-between; gap:18px; }
+.admin-dashboard-head h3,.admin-request-card h3,.admin-account-card h3 { font-size:1.35rem; margin:8px 0; }
+.admin-dashboard-head p,.admin-request-card p,.admin-account-card p,.admin-info-card p { color:var(--text-muted); line-height:1.65; }
+.admin-request-grid { display:grid; grid-template-columns:1.4fr .6fr; gap:18px; align-items:start; }
+.admin-request-list,.admin-account-list { display:grid; gap:12px; margin-top:18px; }
+.admin-request-item { display:grid; grid-template-columns:1fr auto; gap:16px; align-items:center; padding:16px; border-radius:20px; background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.08); }
+.admin-request-name { font-size:1.05rem; font-weight:800; margin-bottom:5px; }
+.admin-request-meta,.admin-muted { color:var(--text-soft) !important; font-size:.82rem; }
+.admin-request-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; }
+.admin-action-btn { border:0; border-radius:12px; padding:10px 14px; color:#fff; font:inherit; font-weight:800; cursor:pointer; transition:.2s ease; }
+.admin-action-btn:hover { transform:translateY(-2px); } .admin-action-btn.approve { background:linear-gradient(135deg,#16a34a,#059669); } .admin-action-btn.reject { background:linear-gradient(135deg,#dc2626,#be123c); } .admin-action-btn:disabled { opacity:.55; cursor:wait; transform:none; }
+.admin-account-item { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:13px 15px; border-radius:16px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); }
+.admin-account-item strong { font-size:.95rem; } .admin-account-role { color:var(--text-soft); font-size:.76rem; }
+.admin-empty-state { padding:30px 18px; text-align:center; color:var(--text-soft); border:1px dashed rgba(255,255,255,.12); border-radius:18px; }
+.request-status { margin-top:10px; display:block; } .absen-btn.request { background:linear-gradient(135deg,#2563eb,#7c3aed,#9333ea); } .admin-info-card { border-color:rgba(139,92,246,.22); }
+@media (max-width:880px) { .admin-request-grid { grid-template-columns:1fr; } .admin-dashboard-head { align-items:flex-start; } }
+@media (max-width:540px) { .admin-auth-card,.admin-dashboard-head,.admin-request-card,.admin-account-card,.admin-info-card { padding:20px; } .admin-request-item { grid-template-columns:1fr; } .admin-request-actions { justify-content:stretch; } .admin-action-btn { flex:1 1 130px; } .admin-dashboard-head { flex-direction:column; } .admin-dashboard-head .absen-btn { width:100%; } }
 </style>
 </head>
 <body oncontextmenu="return false">
@@ -4611,6 +4638,7 @@
 <a class="spa-link" href="#absen" data-route="absen">Absen</a>
 <a class="spa-link" href="#event" data-route="event">Event</a>
 <a class="spa-link" href="#views" data-route="views">View Terbanyak</a>
+<a class="spa-link admin-nav-link" href="#admin" data-route="admin">Admin</a>
 </div>
 </div>
 </nav>
@@ -4875,9 +4903,11 @@
 <div class="absen-actions">
 <button class="absen-btn" id="btnAbsen" type="button">Absen Sekarang ✦</button>
 <button class="absen-btn secondary" id="btnCekCooldown" type="button">Cek Cooldown</button>
+<button class="absen-btn request" id="btnRequestApprove" type="button">Request Approve Name</button>
 </div>
 </div>
 <div class="absen-status compact" id="absenStatus">Kontak admin di WhatsApp untuk menambahkan namamu.</div>
+<div class="absen-status compact request-status" id="requestStatus">Belum ada request nama.</div>
 <div class="absen-mini-info absen-mini-info-hidden" aria-hidden="true">
 <div class="absen-stat-box"><b id="totalNamaAbsen">0</b><span>Total nama absen</span></div>
 <div class="absen-stat-box"><b id="totalAbsenMasuk">0</b><span>Total absen masuk</span></div>
@@ -4900,6 +4930,43 @@
 
 
 </div>
+<div id="page-admin" class="spa-page" data-route="admin">
+<section id="admin-panel-page">
+<div class="container">
+<div class="section-head">
+<span class="eyebrow">✦ Admin Area</span>
+<h2>Login Admin Creator Anime One</h2>
+<p>Panel khusus admin untuk memeriksa dan menyetujui request nama absen member.</p>
+</div>
+<div id="adminLoginCard" class="panel admin-auth-card">
+<form id="adminLoginForm" class="admin-auth-form" autocomplete="off">
+<label class="absen-label" for="adminUsername">Username Admin</label>
+<input class="absen-input" id="adminUsername" maxlength="32" placeholder="Masukkan username" autocomplete="username">
+<label class="absen-label" for="adminPassword">Password</label>
+<input class="absen-input" id="adminPassword" type="password" maxlength="64" placeholder="Masukkan password" autocomplete="current-password">
+<button class="absen-btn" type="submit">Login Admin ✦</button>
+<div class="absen-status compact" id="adminLoginStatus">Login menggunakan akun admin Firebase. Password tidak disimpan di website.</div>
+</form>
+<div class="admin-login-note"><strong>Keamanan:</strong> password admin diverifikasi oleh Firebase Authentication dan tidak disimpan di HTML/JavaScript. Hak akses admin tetap dikunci oleh Firebase Realtime Database Rules.</div>
+</div>
+<div id="adminDashboard" class="admin-dashboard" hidden>
+<div class="panel admin-dashboard-head">
+<div><span class="badge">ADMIN LOGIN</span><h3>Panel Approval Nama</h3><p>Login sebagai <strong id="adminLoggedName">-</strong>. Request pending akan muncul otomatis.</p></div>
+<button class="absen-btn secondary" id="adminLogoutBtn" type="button">Logout</button>
+</div>
+<div class="admin-request-grid">
+<article class="panel admin-request-card">
+<div class="leaderboard-head"><div><h3>Request Pending</h3><p>Approve nama yang boleh digunakan untuk absen.</p></div><span class="badge" id="pendingRequestCount">0</span></div>
+<div id="adminRequestList" class="admin-request-list"><div class="admin-empty-state">Belum ada request nama.</div></div>
+</article>
+<article class="panel admin-account-card"><h3>Daftar Login Admin</h3><p class="admin-muted">Akun admin yang terdaftar di Firebase:</p><div id="adminAccountList" class="admin-account-list"></div></article>
+</div>
+<div class="panel admin-info-card"><span class="badge">ALUR</span><p>Member mengirim request dari menu <strong>Absen</strong> → request masuk ke Firebase → admin login → <strong>Approve</strong> → nama otomatis masuk daftar yang diizinkan absen.</p></div>
+</div>
+</div>
+</section>
+</div>
+
 <div id="page-event" class="spa-page" data-route="event">
 <section id="event">
 <div class="container">
@@ -5066,7 +5133,7 @@
         statistik: "home",
         team: "team",
         member: "team",
-        admin: "team",
+        admin: "admin",
         absen: "absen",
         event: "event",
         views: "views",
@@ -5136,6 +5203,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
 <script>
 
 (function () {
@@ -5186,6 +5254,8 @@ const PODIUM_ASSETS = {
     const inputNama = document.getElementById("absenNama");
     const btnAbsen = document.getElementById("btnAbsen");
     const btnCek = document.getElementById("btnCekCooldown");
+    const btnRequestApprove = document.getElementById("btnRequestApprove");
+    const requestStatus = document.getElementById("requestStatus");
     const statusBox = document.getElementById("absenStatus");
     const leaderboardList = document.getElementById("absenLeaderboardList");
     const totalNamaAbsen = document.getElementById("totalNamaAbsen");
@@ -5303,43 +5373,29 @@ const PODIUM_ASSETS = {
 
     async function loadApprovedMembers() {
         try {
-            setStatus("Memuat database member dari GitHub DB...", "warning");
-
-            let response = null;
-            let lastError = null;
-
+            setStatus("Memuat database member...", "warning");
+            let response = null; let lastError = null;
             for (const url of MEMBER_DB_URLS) {
-                try {
-                    const candidate = await fetch(url, { cache: "no-store" });
-                    if (candidate.ok) {
-                        response = candidate;
-                        break;
-                    }
-                    lastError = new Error(url + " HTTP " + candidate.status);
-                } catch (error) {
-                    lastError = error;
+                try { const candidate = await fetch(url, { cache: "no-store" }); if (candidate.ok) { response=candidate; break; } lastError=new Error(url+" HTTP "+candidate.status); }
+                catch (error) { lastError=error; }
+            }
+            let names=[];
+            if (response) { const db=await response.json(); names=getMemberNamesFromDB(db); }
+            else console.warn("Database member statis tidak ditemukan:", lastError);
+            try {
+                if (window.firebase && FIREBASE_CONFIG) {
+                    if (!window.firebase.apps.length) window.firebase.initializeApp(FIREBASE_CONFIG);
+                    const approvalDb=window.firebase.database();
+                    const approvedSnapshot=await approvalDb.ref(`${FIREBASE_ROOT_PATH}/approved_members`).once("value");
+                    const approvedData=approvedSnapshot.val() || {};
+                    Object.keys(approvedData).forEach(function(key){ const item=approvedData[key]; if(item && item.status!=="revoked" && item.name) names.push(item.name); });
                 }
-            }
-
-            if (!response) {
-                throw lastError || new Error("Database member tidak ditemukan.");
-            }
-
-            const db = await response.json();
-            const names = getMemberNamesFromDB(db);
+            } catch (firebaseApprovalError) { console.warn("Database approval Firebase belum bisa dibaca:", firebaseApprovalError); }
             rebuildApprovedNameMap(names);
-
-            if (!APPROVED_MEMBER_NAMES.length) {
-                setStatus("Database member kosong. Isi dulu data/members.json agar member bisa absen.", "warning");
-                return false;
-            }
-
+            if (!APPROVED_MEMBER_NAMES.length) { setStatus("Database member kosong. Admin perlu approve nama terlebih dahulu.", "warning"); return false; }
             return true;
         } catch (error) {
-            console.error("Gagal memuat GitHub DB member:", error);
-            rebuildApprovedNameMap([]);
-            setStatus("Database member gagal dimuat. Pastikan file data/members.json sudah ada di folder data, atau gunakan database/databases sesuai struktur repo.", "danger");
-            return false;
+            console.error("Gagal memuat database member:", error); rebuildApprovedNameMap([]); setStatus("Database member gagal dimuat. Pastikan data/members.json atau Firebase approval tersedia.", "danger"); return false;
         }
     }
 
@@ -5884,6 +5940,26 @@ function escapeHTML(value) {
         }, false);
     }
 
+    function setRequestStatus(message, type) { if(!requestStatus) return; requestStatus.className="absen-status compact request-status"; if(type) requestStatus.classList.add(type); requestStatus.textContent=message; }
+
+    async function submitApprovalRequest() {
+        const cleanName=normalizeName(inputNama.value);
+        if(!cleanName){ setRequestStatus("Ketik nama terlebih dahulu sebelum mengirim request.","danger"); inputNama.focus(); return; }
+        const approvedName=getApprovedName(cleanName);
+        if(approvedName){ setRequestStatus(`${approvedName} sudah disetujui admin dan bisa digunakan untuk absen.`,"success"); return; }
+        if(!window.firebase || !FIREBASE_CONFIG){ setRequestStatus("Firebase belum tersedia. Request belum dapat dikirim.","danger"); return; }
+        try {
+            if(!window.firebase.apps.length) window.firebase.initializeApp(FIREBASE_CONFIG);
+            const requestDb=window.firebase.database(); const key=nameKey(cleanName); const ref=requestDb.ref(`${FIREBASE_ROOT_PATH}/name_requests/${key}`);
+            const snapshot=await ref.once("value"); const existing=snapshot.val();
+            if(existing && existing.status==="pending"){ setRequestStatus(`Request "${cleanName}" sudah menunggu approval admin.`,"warning"); return; }
+            if(existing && existing.status==="approved"){ setRequestStatus(`Nama "${cleanName}" sudah pernah disetujui admin.`,"success"); return; }
+            const now=Date.now();
+            await ref.set({key:key,name:cleanName,status:"pending",requestedAt:now,lastRequestedAt:now,requestedCount:Number(existing && existing.requestedCount || 0)+1});
+            setRequestStatus(`Request "${cleanName}" berhasil dikirim. Tunggu admin melakukan approval.`,"success");
+        } catch(error){ console.error("Gagal mengirim request approval:",error); setRequestStatus("Request gagal dikirim. Cek koneksi dan Firebase Rules.","danger"); }
+    }
+
     function handleAbsen() {
         const cleanName = normalizeName(inputNama.value);
 
@@ -5937,6 +6013,9 @@ function escapeHTML(value) {
 
     btnAbsen.addEventListener("click", handleAbsen);
     btnCek.addEventListener("click", handleCekCooldown);
+    if (btnRequestApprove) btnRequestApprove.addEventListener("click", submitApprovalRequest);
+
+    window.addEventListener("cao-approved-updated", async function () { await loadApprovedMembers(); renderLeaderboard(); });
 
     inputNama.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
@@ -6379,5 +6458,325 @@ Catatan custom TikTok:
 </script>
 
 
+
+<script>
+(function () {
+    // Username yang diketik admin dipetakan ke email internal Firebase.
+    // Password TIDAK disimpan di sini. Firebase Authentication yang memverifikasinya.
+    const ADMIN_LOGIN_MAP = {
+        xyzoo: "xyzoo@cao-admin.local",
+        // Tambahkan admin lain setelah membuat akun Firebase, contoh:
+        // ridhz: "ridhz@cao-admin.local"
+    };
+
+    const FIREBASE_CONFIG_ADMIN = {
+        apiKey: "AIzaSyAFjfJHRLhvVoVI59MjiFpXm0ig6hfTkw4",
+        authDomain: "caoone.firebasestorage.app",
+        databaseURL: "https://caoone-default-rtdb.asia-southeast1.firebasedatabase.app/",
+        projectId: "caoone",
+        storageBucket: "caoone.firebasestorage.app",
+        messagingSenderId: "232440325309",
+        appId: "1:232440325309:web:55b9afae56e69a8365c3d4"
+    };
+
+    const ROOT = "cao_absen";
+    const loginCard = document.getElementById("adminLoginCard");
+    const loginForm = document.getElementById("adminLoginForm");
+    const usernameInput = document.getElementById("adminUsername");
+    const passwordInput = document.getElementById("adminPassword");
+    const loginStatus = document.getElementById("adminLoginStatus");
+    const dashboard = document.getElementById("adminDashboard");
+    const loggedName = document.getElementById("adminLoggedName");
+    const logoutBtn = document.getElementById("adminLogoutBtn");
+    const requestList = document.getElementById("adminRequestList");
+    const pendingCount = document.getElementById("pendingRequestCount");
+    const accountList = document.getElementById("adminAccountList");
+
+    if (!loginForm || !dashboard || !window.firebase) return;
+
+    let auth = null;
+    let db = null;
+    let requestRef = null;
+    let currentAdmin = null;
+
+    function ensureFirebase() {
+        if (!window.firebase.apps.length) {
+            window.firebase.initializeApp(FIREBASE_CONFIG_ADMIN);
+        }
+        auth = auth || window.firebase.auth();
+        db = db || window.firebase.database();
+        return { auth, db };
+    }
+
+    function normalizeAdmin(value) {
+        return String(value || "").trim().toLowerCase();
+    }
+
+    function setLoginStatus(message, type) {
+        loginStatus.className = "absen-status compact";
+        if (type) loginStatus.classList.add(type);
+        loginStatus.textContent = message;
+    }
+
+    function esc(value) {
+        return String(value ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/\"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function dateFmt(timestamp) {
+        return timestamp
+            ? new Date(Number(timestamp)).toLocaleString("id-ID", {
+                timeZone: "Asia/Jakarta",
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit"
+            }) + " WIB"
+            : "-";
+    }
+
+    function renderAccounts() {
+        if (!accountList) return;
+        const names = Object.keys(ADMIN_LOGIN_MAP);
+        accountList.innerHTML = names.length
+            ? names.map(name => `
+                <div class="admin-account-item">
+                    <div><strong>${esc(name)}</strong><div class="admin-account-role">Admin</div></div>
+                    <span class="badge">FIREBASE</span>
+                </div>`).join("")
+            : '<div class="admin-empty-state">Belum ada username admin.</div>';
+    }
+
+    function renderRequests(data) {
+        const values = data && typeof data === "object" ? Object.entries(data).map(([key, value]) => ({ key, ...(value || {}) })) : [];
+        const pending = values
+            .filter(item => item.status === "pending" && item.name)
+            .sort((a, b) => Number(a.requestedAt || 0) - Number(b.requestedAt || 0));
+
+        pendingCount.textContent = String(pending.length);
+
+        if (!pending.length) {
+            requestList.innerHTML = '<div class="admin-empty-state">Belum ada request nama yang menunggu approval.</div>';
+            return;
+        }
+
+        requestList.innerHTML = pending.map(item => {
+            const key = esc(item.key);
+            return `
+                <div class="admin-request-item" data-request-key="${key}">
+                    <div>
+                        <div class="admin-request-name">${esc(item.name)}</div>
+                        <div class="admin-request-meta">Request: ${esc(dateFmt(item.requestedAt))} • ${Number(item.requestedCount || 1)}x dikirim</div>
+                    </div>
+                    <div class="admin-request-actions">
+                        <button class="admin-action-btn approve" type="button" data-approve-key="${key}">✓ Approve</button>
+                        <button class="admin-action-btn reject" type="button" data-reject-key="${key}">✕ Reject</button>
+                    </div>
+                </div>`;
+        }).join("");
+
+        requestList.querySelectorAll("[data-approve-key]").forEach(button => {
+            button.addEventListener("click", () => processRequest(button.dataset.approveKey, true));
+        });
+
+        requestList.querySelectorAll("[data-reject-key]").forEach(button => {
+            button.addEventListener("click", () => processRequest(button.dataset.rejectKey, false));
+        });
+    }
+
+    function startRequestListener() {
+        try {
+            const { db } = ensureFirebase();
+            if (requestRef) requestRef.off();
+            requestRef = db.ref(`${ROOT}/name_requests`);
+            requestRef.on("value", snapshot => {
+                renderRequests(snapshot.val() || {});
+            }, error => {
+                console.error("Request listener error:", error);
+                requestList.innerHTML = '<div class="admin-empty-state">Firebase Rules menolak akses request. Periksa Rules Realtime Database.</div>';
+            });
+        } catch (error) {
+            console.error(error);
+            requestList.innerHTML = '<div class="admin-empty-state">Firebase belum siap. Periksa konfigurasi.</div>';
+        }
+    }
+
+    async function processRequest(key, approve) {
+        if (!key || !currentAdmin) return;
+
+        const item = requestList.querySelector(`[data-request-key="${CSS.escape(key)}"]`);
+        if (item) item.querySelectorAll("button").forEach(button => button.disabled = true);
+
+        try {
+            const { db } = ensureFirebase();
+            const requestRefOnce = db.ref(`${ROOT}/name_requests/${key}`);
+            const snapshot = await requestRefOnce.once("value");
+            const request = snapshot.val();
+
+            if (!request || !request.name) throw new Error("Request tidak ditemukan.");
+            if (request.status !== "pending") throw new Error("Request sudah diproses.");
+
+            const now = Date.now();
+
+            if (approve) {
+                await db.ref(`${ROOT}/approved_members/${key}`).set({
+                    key,
+                    name: request.name,
+                    status: "active",
+                    approvedBy: currentAdmin.username,
+                    approvedByUid: currentAdmin.uid,
+                    approvedAt: now
+                });
+
+                await requestRefOnce.update({
+                    status: "approved",
+                    processedBy: currentAdmin.username,
+                    processedByUid: currentAdmin.uid,
+                    processedAt: now
+                });
+
+                window.dispatchEvent(new CustomEvent("cao-approved-updated"));
+            } else {
+                await requestRefOnce.update({
+                    status: "rejected",
+                    processedBy: currentAdmin.username,
+                    processedByUid: currentAdmin.uid,
+                    processedAt: now
+                });
+            }
+        } catch (error) {
+            console.error("Gagal memproses request:", error);
+            alert("Gagal memproses request. Cek login admin dan Firebase Rules.");
+        }
+    }
+
+    async function verifyAdmin(user) {
+        if (!user) return null;
+
+        const { db } = ensureFirebase();
+        const snapshot = await db.ref(`${ROOT}/admins/${user.uid}`).once("value");
+        const adminData = snapshot.val();
+
+        if (!adminData || adminData.role !== "admin") {
+            return null;
+        }
+
+        return {
+            uid: user.uid,
+            username: adminData.username || user.email || "Admin",
+            role: adminData.role
+        };
+    }
+
+    function showDashboard(admin) {
+        currentAdmin = admin;
+        loginCard.hidden = true;
+        dashboard.hidden = false;
+        loggedName.textContent = `${admin.username} • ${admin.role}`;
+        renderAccounts();
+        startRequestListener();
+    }
+
+    function showLogin() {
+        currentAdmin = null;
+        loginCard.hidden = false;
+        dashboard.hidden = true;
+        if (requestRef) {
+            requestRef.off();
+            requestRef = null;
+        }
+        renderAccounts();
+    }
+
+    loginForm.addEventListener("submit", async event => {
+        event.preventDefault();
+
+        const username = normalizeAdmin(usernameInput.value);
+        const password = String(passwordInput.value || "");
+        const email = ADMIN_LOGIN_MAP[username];
+
+        if (!email) {
+            setLoginStatus("Username admin tidak terdaftar.", "danger");
+            passwordInput.value = "";
+            return;
+        }
+
+        try {
+            const { auth } = ensureFirebase();
+            setLoginStatus("Memverifikasi akun...", "warning");
+            const credential = await auth.signInWithEmailAndPassword(email, password);
+            const admin = await verifyAdmin(credential.user);
+
+            if (!admin) {
+                await auth.signOut();
+                setLoginStatus("Akun Firebase ini bukan admin yang terdaftar.", "danger");
+                passwordInput.value = "";
+                return;
+            }
+
+            setLoginStatus("Login berhasil.", "success");
+            passwordInput.value = "";
+            showDashboard(admin);
+        } catch (error) {
+            console.error("Login admin gagal:", error);
+            let message = "Username atau password admin salah.";
+            if (error && error.code === "auth/too-many-requests") {
+                message = "Terlalu banyak percobaan login. Coba lagi beberapa saat.";
+            } else if (error && error.code === "auth/network-request-failed") {
+                message = "Koneksi bermasalah. Coba lagi.";
+            }
+            setLoginStatus(message, "danger");
+            passwordInput.value = "";
+        }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+        try {
+            const { auth } = ensureFirebase();
+            await auth.signOut();
+            setLoginStatus("Kamu sudah logout dari panel admin.", "success");
+        } catch (error) {
+            console.error("Logout gagal:", error);
+        }
+        showLogin();
+    });
+
+    renderAccounts();
+
+    try {
+        const { auth } = ensureFirebase();
+        auth.onAuthStateChanged(async user => {
+            if (!user) {
+                showLogin();
+                return;
+            }
+
+            try {
+                const admin = await verifyAdmin(user);
+                if (!admin) {
+                    await auth.signOut();
+                    setLoginStatus("Akun ini tidak memiliki akses admin.", "danger");
+                    showLogin();
+                    return;
+                }
+                showDashboard(admin);
+            } catch (error) {
+                console.error("Verifikasi admin gagal:", error);
+                await auth.signOut();
+                setLoginStatus("Tidak dapat memverifikasi hak admin.", "danger");
+                showLogin();
+            }
+        });
+    } catch (error) {
+        console.error("Firebase Authentication tidak siap:", error);
+        setLoginStatus("Firebase Authentication belum siap.", "danger");
+    }
+})();
+</script>
 </body>
 </html>
