@@ -4728,7 +4728,7 @@
 </div>
 <div class="stats-grid">
 <div class="panel count-card">
-<div class="count-number">400+</div>
+<div class="count-number">450+</div>
 <h3>Jumlah Member</h3>
 <p style="color: var(--text-muted); margin-top: 8px;">Anggota aktif saat ini</p>
 </div>
@@ -4736,15 +4736,15 @@
 <div class="panel hashtag">
 <strong>#creatoranimeone</strong>
 <div class="mini-stats">
-<div class="mini-stat"><b>2,3M+</b><span>Jumlah Penonton</span></div>
-<div class="mini-stat"><b>28,6RB+</b><span>Jumlah Video</span></div>
+<div class="mini-stat"><b>2,6M+</b><span>Jumlah Penonton</span></div>
+<div class="mini-stat"><b>35,0RB+</b><span>Jumlah Video</span></div>
 </div>
 </div>
 <div class="panel hashtag">
 <strong>#caofams</strong>
 <div class="mini-stats">
-<div class="mini-stat"><b>956JT+</b><span>Jumlah Penonton</span></div>
-<div class="mini-stat"><b>8RB+</b><span>Jumlah Video</span></div>
+<div class="mini-stat"><b>1M+</b><span>Jumlah Penonton</span></div>
+<div class="mini-stat"><b>10RB+</b><span>Jumlah Video</span></div>
 </div>
 </div>
 </div>
@@ -4945,9 +4945,9 @@
 <label class="absen-label" for="adminPassword">Password</label>
 <input class="absen-input" id="adminPassword" type="password" maxlength="64" placeholder="Masukkan password" autocomplete="current-password">
 <button class="absen-btn" type="submit">Login Admin ✦</button>
-<div class="absen-status compact" id="adminLoginStatus">Login menggunakan akun admin Firebase. Password tidak disimpan di website.</div>
+<div class="absen-status compact" id="adminLoginStatus"></div>
 </form>
-<div class="admin-login-note"><strong>Keamanan:</strong> password admin diverifikasi oleh Firebase Authentication dan tidak disimpan di HTML/JavaScript. Hak akses admin tetap dikunci oleh Firebase Realtime Database Rules.</div>
+<div class="admin-login-note"><strong>INI KAWASAN ATMIN RAWRR:</strong> </div>
 </div>
 <div id="adminDashboard" class="admin-dashboard" hidden>
 <div class="panel admin-dashboard-head">
@@ -5833,7 +5833,7 @@ function escapeHTML(value) {
             firebaseEnabled = true;
             updateModeBadge();
             startFirebaseListener();
-            setStatus("Kontak admin di whatsapp untuk menambahkan namamu.", "success");
+            setStatus("Tunggu mas admin approve ya untuk menambahkan namamu.", "success");
         } catch (error) {
             console.error("Firebase init error:", error);
             firebaseEnabled = false;
