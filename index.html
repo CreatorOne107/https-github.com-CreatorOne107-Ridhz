@@ -4651,6 +4651,22 @@
 @media (max-width:540px) { .admin-auth-card,.admin-dashboard-head,.admin-request-card,.admin-account-card,.admin-info-card { padding:20px; } .admin-request-item { grid-template-columns:1fr; } .admin-request-actions { justify-content:stretch; } .admin-action-btn { flex:1 1 130px; } .admin-dashboard-head { flex-direction:column; } .admin-dashboard-head .absen-btn { width:100%; } }
 </style>
 
+
+<style>
+/* Creator Anime One: leadership arrangement + anime character portraits */
+.founder-podium.cao-leadership { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1120px; }
+.founder-podium.cao-leadership .founder-card { text-align:center; }
+.founder-podium.cao-leadership .founder-card.owner { transform: translateY(-8px); }
+.founder-podium.cao-leadership .founder-card .founder-photo { margin-left:auto; margin-right:auto; }
+.founder-card.co-owner { background: radial-gradient(circle at 50% 0%, rgba(56,189,248,.22), transparent 35%), rgba(255,255,255,.08); }
+.founder-card.leader-admin { background: radial-gradient(circle at 50% 0%, rgba(124,58,237,.22), transparent 35%), rgba(255,255,255,.08); }
+@media (max-width: 880px) {
+ .founder-podium.cao-leadership { display:flex; }
+ .founder-podium.cao-leadership .founder-card { flex:0 0 min(305px,74vw); }
+ .founder-podium.cao-leadership .founder-card.owner { transform:none; }
+}
+</style>
+
 </head>
 <body oncontextmenu="return false">
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -4786,19 +4802,19 @@
 <div class="section-head">
 <h2>Pendiri Creator Anime One</h2>
 </div>
-<div class="founder-podium">
-
+<div class="founder-podium cao-leadership">
+<article class="glass-card founder-card leader-admin">
+<div class="founder-photo"><img alt="Foto Leader Admin Men" onerror="this.remove()" src="assets/images/men1.png"/><span class="founder-placeholder">+ Add<br/>Image</span></div>
+<span class="founder-role">Leader Admin</span><h3>Men</h3><p>Leader Admin Creator Anime One.</p>
+</article>
 <article class="glass-card founder-card owner">
-<div class="founder-photo">
-<img alt="Foto Owner Ridhz" onerror="this.remove()" src="assets/images/chibiridhz.png"/>
-<span class="founder-placeholder">+ Add<br/>Image</span>
-</div>
-<span class="founder-role">Owner</span>
-<h3>RIDHZ</h3>
-<p>Pemegang kekuasaan tertinggi Creator Anime One.</p>
-<a class="founder-social tiktok-social" href="https://www.tiktok.com/@ridhztempesto" target="_blank" rel="noopener noreferrer" aria-label="Buka TikTok RIDHZ">
-<img src="assets/images/tiktok-logo.png?v=1" alt="TikTok RIDHZ"/>
-</a>
+<div class="founder-photo"><img alt="Foto Owner Ridhz" onerror="this.remove()" src="assets/images/chibiridhz.png"/><span class="founder-placeholder">+ Add<br/>Image</span></div>
+<span class="founder-role">Owner</span><h3>RIDHZ</h3><p>Pemegang kekuasaan tertinggi Creator Anime One.</p>
+<a class="founder-social tiktok-social" href="https://www.tiktok.com/@ridhztempesto" target="_blank" rel="noopener noreferrer" aria-label="Buka TikTok RIDHZ"><img src="assets/images/tiktok-logo.png?v=1" alt="TikTok RIDHZ"/></a>
+</article>
+<article class="glass-card founder-card co-owner">
+<div class="founder-photo"><img alt="Foto Co-owner Zell" onerror="this.remove()" src="assets/images/zell.png"/><span class="founder-placeholder">+ Add<br/>Image</span></div>
+<span class="founder-role">Co-owner</span><h3>Zell</h3><p>Co-owner Creator Anime One.</p>
 </article>
 </div>
 </div>
@@ -4865,8 +4881,14 @@
 <img alt="Foto Admin Slot 06" onerror="this.remove()" src="assets/images/men1.png"/>
 </div>
 <h3>Men</h3>
-<small>Admin Seleksi</small>
+<small>Leader Admin</small>
 </article>
+<article class="glass-card admin-card"><div class="admin-photo"><img alt="Elaina" onerror="this.remove()" src="assets/images/elaina.png"/></div><h3>Shin</h3><small>Seleksi</small></article>
+<article class="glass-card admin-card"><div class="admin-photo"><img alt="Ancia La Elle Zerathilion" onerror="this.remove()" src="assets/images/ancia-la-elle-zerathilion.png"/></div><h3>Nuna</h3><small>Live</small></article>
+<article class="glass-card admin-card"><div class="admin-photo"><img alt="Knox von Reinhaver" onerror="this.remove()" src="assets/images/knox-von-reinhaver.png"/></div><h3>Knox</h3><small>Meme</small></article>
+<article class="glass-card admin-card"><div class="admin-photo"><img alt="Nino Nakano" onerror="this.remove()" src="assets/images/nino-nakano.png"/></div><h3>Nino</h3><small>Leader</small></article>
+<article class="glass-card admin-card"><div class="admin-photo"><img alt="Priscilla Guardian Tales" onerror="this.remove()" src="assets/images/priscilla-guardian-tales.png"/></div><h3>Keichi</h3><small>Seleksi</small></article>
+<article class="glass-card admin-card"><div class="admin-photo"><img alt="Kaoruko Waguri" onerror="this.remove()" src="assets/images/kaoruko-waguri.png"/></div><h3>Jelz</h3><small>Live</small></article>
 </div>
 </div>
 </div>
