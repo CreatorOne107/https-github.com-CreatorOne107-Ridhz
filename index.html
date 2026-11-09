@@ -4660,36 +4660,6 @@
 .founder-podium.cao-leadership .founder-card .founder-photo { margin-left:auto; margin-right:auto; }
 .founder-card.co-owner { background: radial-gradient(circle at 50% 0%, rgba(56,189,248,.22), transparent 35%), rgba(255,255,255,.08); }
 .founder-card.leader-admin { background: radial-gradient(circle at 50% 0%, rgba(124,58,237,.22), transparent 35%), rgba(255,255,255,.08); }
-
-/* Ukuran kotak foto sama untuk Leader Admin, Owner, dan Co-owner */
-.founder-podium.cao-leadership .founder-photo,
-.founder-podium.cao-leadership .founder-card.owner .founder-photo {
-    aspect-ratio: 16 / 10;
-    border-radius: 22px;
-    overflow: hidden;
-    align-items: center;
-    justify-items: center;
-}
-
-/* Owner: gambar full seperti semula */
-.founder-podium.cao-leadership .founder-card.owner .founder-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* Leader Admin & Co-owner: tampil utuh di tengah kotak */
-.founder-podium.cao-leadership .founder-card.leader-admin .founder-photo img,
-.founder-podium.cao-leadership .founder-card.co-owner .founder-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    padding: 4px 0;
-    box-sizing: border-box;
-}
-
 @media (max-width: 880px) {
  .founder-podium.cao-leadership { display:flex; }
  .founder-podium.cao-leadership .founder-card { flex:0 0 min(305px,74vw); }
