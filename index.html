@@ -4652,8 +4652,27 @@
 </style>
 
 
-<style>
-/* FIX carousel Pendiri di HP: bisa geser kiri-kanan, urutan Zell - Ridhz - Nino */
+<<style>
+/* FIX Pendiri: urutan Zell - Ridhz - Nino di semua ukuran layar */
+.founder-podium.cao-leadership .founder-card.co-owner     { order: 1; }
+.founder-podium.cao-leadership .founder-card.owner        { order: 2; }
+.founder-podium.cao-leadership .founder-card.leader-admin { order: 3; }
+
+/* PC / laptop: 3 kolom sejajar */
+@media (min-width: 881px) {
+  .founder-podium.cao-leadership {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    justify-content: stretch !important;
+    align-items: center !important;
+    max-width: 1120px !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    gap: 20px !important;
+  }
+}
+
+/* HP: carousel geser kiri-kanan */
 @media (max-width: 880px) {
   .founder-podium.cao-leadership {
     display: flex !important;
@@ -4663,9 +4682,6 @@
     padding-right: max(14px, calc((100vw - min(292px, 72vw)) / 2)) !important;
     scroll-padding-inline: max(14px, calc((100vw - min(292px, 72vw)) / 2)) !important;
   }
-  .founder-podium.cao-leadership .founder-card.co-owner     { order: 1 !important; }
-  .founder-podium.cao-leadership .founder-card.owner        { order: 2 !important; }
-  .founder-podium.cao-leadership .founder-card.leader-admin { order: 3 !important; }
 }
 @media (max-width: 540px) {
   .founder-podium.cao-leadership {
