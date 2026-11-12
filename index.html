@@ -4653,17 +4653,26 @@
 
 
 <style>
-/* Creator Anime One: leadership arrangement + anime character portraits */
-.founder-podium.cao-leadership { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1120px; }
-.founder-podium.cao-leadership .founder-card { text-align:center; }
-.founder-podium.cao-leadership .founder-card.owner { transform: translateY(-8px); }
-.founder-podium.cao-leadership .founder-card .founder-photo { margin-left:auto; margin-right:auto; }
-.founder-card.co-owner { background: radial-gradient(circle at 50% 0%, rgba(56,189,248,.22), transparent 35%), rgba(255,255,255,.08); }
-.founder-card.leader-admin { background: radial-gradient(circle at 50% 0%, rgba(124,58,237,.22), transparent 35%), rgba(255,255,255,.08); }
+/* FIX carousel Pendiri di HP: bisa geser kiri-kanan, urutan Zell - Ridhz - Nino */
 @media (max-width: 880px) {
- .founder-podium.cao-leadership { display:flex; }
- .founder-podium.cao-leadership .founder-card { flex:0 0 min(305px,74vw); }
- .founder-podium.cao-leadership .founder-card.owner { transform:none; }
+  .founder-podium.cao-leadership {
+    display: flex !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    padding-left: max(14px, calc((100vw - min(292px, 72vw)) / 2)) !important;
+    padding-right: max(14px, calc((100vw - min(292px, 72vw)) / 2)) !important;
+    scroll-padding-inline: max(14px, calc((100vw - min(292px, 72vw)) / 2)) !important;
+  }
+  .founder-podium.cao-leadership .founder-card.co-owner     { order: 1 !important; }
+  .founder-podium.cao-leadership .founder-card.owner        { order: 2 !important; }
+  .founder-podium.cao-leadership .founder-card.leader-admin { order: 3 !important; }
+}
+@media (max-width: 540px) {
+  .founder-podium.cao-leadership {
+    padding-left: max(14px, calc((100vw - min(268px, 72vw)) / 2)) !important;
+    padding-right: max(14px, calc((100vw - min(268px, 72vw)) / 2)) !important;
+    scroll-padding-inline: max(14px, calc((100vw - min(268px, 72vw)) / 2)) !important;
+  }
 }
 </style>
 
