@@ -7128,5 +7128,163 @@ Catatan custom TikTok:
 })();
 </script>
         
+<!-- =====================================================================
+  CAO x AQUA ADMIN - Liquid Glass patch
+  Cara pakai: tempel SELURUH isi file ini tepat sebelum </body>
+  (setelah script Liquid Glass yang sudah ada). Background tidak disentuh.
+===================================================================== -->
+<style>
+:root{--lg-spring:cubic-bezier(.34,1.56,.64,1)}
+.nav-menu{position:relative}
+.nav-menu a,.mobile-dock a{position:relative;z-index:1}
+.mobile-dock{touch-action:none}
+.nav-menu.lg-on a.active,.mobile-dock.lg-on a.active{background:transparent !important;border-color:transparent !important;box-shadow:none !important}
+
+/* pill kaca cair yang meluncur dan melar seperti air */
+.lg-pill{position:absolute;top:0;left:0;z-index:0;pointer-events:none;opacity:0;transition:transform .65s var(--lg-spring),width .65s var(--lg-spring),height .65s var(--lg-spring),opacity .3s}
+.lg-pill i{display:block;width:100%;height:100%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.36),rgba(192,132,252,.24));-webkit-backdrop-filter:blur(8px) saturate(180%);backdrop-filter:blur(8px) saturate(180%);box-shadow:inset 0 1.5px 1px rgba(255,255,255,.75),inset 0 -1px 1px rgba(255,255,255,.2),0 6px 18px rgba(88,28,135,.45)}
+.lg-jelly{animation:lgJelly .65s ease-out}
+@keyframes lgJelly{0%{transform:scale(1)}25%{transform:scale(1.16,.82)}55%{transform:scale(.95,1.08)}80%{transform:scale(1.02,.98)}100%{transform:scale(1)}}
+
+/* pindah halaman dengan pegas */
+.spa-page.active{animation:lgPage .75s var(--lg-spring) both}
+@keyframes lgPage{from{opacity:0;transform:translateY(26px) scale(.975)}to{opacity:1;transform:none}}
+
+/* riak air saat menekan atau menyeret */
+.lg-ripple{position:fixed;width:260px;height:260px;border-radius:50%;pointer-events:none;z-index:100002;border:2px solid rgba(255,255,255,.7);background:radial-gradient(circle,transparent 55%,rgba(255,255,255,.22));box-shadow:0 0 30px rgba(255,255,255,.3),inset 0 0 30px rgba(255,255,255,.2);animation:lgRipple .95s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes lgRipple{from{transform:translate(-50%,-50%) scale(.1);opacity:.9}to{transform:translate(-50%,-50%) scale(1);opacity:0}}
+.float-btn.lg-off{opacity:.45 !important;filter:grayscale(1)}
+
+/* toast kaca */
+.lg-toast{position:fixed;left:50%;top:calc(76px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:100003;padding:11px 20px;border-radius:999px;color:#fff;font-weight:800;font-size:.9rem;white-space:nowrap;background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.08));-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.3);box-shadow:inset 0 1.5px 1px rgba(255,255,255,.5),0 18px 40px rgba(0,0,0,.4);animation:lgPop .55s var(--lg-spring) backwards;transition:opacity .4s,transform .4s}
+.lg-toast.out{opacity:0;transform:translateX(-50%) translateY(-10px)}
+@keyframes lgPop{from{opacity:0;transform:translateX(-50%) translateY(-16px) scale(.8)}}
+
+/* tombol leaderboard ikut kenyal */
+#absen .absen-page-btn,#absen .previous-month-btn{transition:transform .55s var(--lg-spring),background .22s ease,border-color .22s ease,opacity .22s ease}
+#absen .absen-page-btn:active:not(:disabled),#absen .previous-month-btn:active{transform:scale(.88)}
+.count-number,.mini-stat b{font-variant-numeric:tabular-nums}
+
+@media (prefers-reduced-motion:reduce){.lg-pill{transition:none}.spa-page.active{animation:none}}
+</style>
+
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
+
+  /* 1. Pill kaca cair di navbar dan dock mobile (bisa digeser) */
+  function liquidPill(box) {
+    if (!box) return;
+    var pill = document.createElement('span'), inner = document.createElement('i'), cur = null;
+    pill.className = 'lg-pill'; pill.appendChild(inner);
+    box.insertBefore(pill, box.firstChild); box.classList.add('lg-on');
+
+    function place(jelly, instant) {
+      var a = box.querySelector('a.active');
+      if (!a || !a.offsetWidth) { pill.style.opacity = 0; return; }
+      if (instant) pill.style.transition = 'none';
+      pill.style.opacity = 1;
+      pill.style.width = a.offsetWidth + 'px';
+      pill.style.height = a.offsetHeight + 'px';
+      pill.style.transform = 'translate(' + a.offsetLeft + 'px,' + a.offsetTop + 'px)';
+      if (instant) { void pill.offsetWidth; pill.style.transition = ''; }
+      if (jelly && !reduce && cur && cur !== a) {
+        inner.classList.remove('lg-jelly'); void inner.offsetWidth; inner.classList.add('lg-jelly');
+      }
+      cur = a;
+    }
+
+    new MutationObserver(function () { place(true, false); })
+      .observe(box, { attributes: true, attributeFilter: ['class'], subtree: true });
+    addEventListener('resize', function () { place(false, true); });
+    addEventListener('load', function () { place(false, true); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { place(false, true); });
+    place(false, true);
+
+    box.addEventListener('pointermove', function (e) {
+      if (!(e.buttons & 1) || !window.caoShowPage) return;
+      var ls = box.querySelectorAll('a[data-route]');
+      for (var i = 0; i < ls.length; i++) {
+        var r = ls[i].getBoundingClientRect();
+        if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) {
+          if (!ls[i].classList.contains('active')) window.caoShowPage(ls[i].dataset.route);
+          break;
+        }
+      }
+    });
+  }
+  liquidPill(document.querySelector('.nav-menu'));
+  liquidPill(document.querySelector('.mobile-dock'));
+
+  /* 2. Toast kaca */
+  function toast(msg) {
+    var t = document.createElement('div');
+    t.className = 'lg-toast'; t.textContent = msg; document.body.appendChild(t);
+    setTimeout(function () { t.classList.add('out'); }, 1800);
+    setTimeout(function () { t.remove(); }, 2300);
+  }
+
+  /* 3. Riak air saat menekan atau menyeret (bisa dimatikan lewat tombol 💧) */
+  var fx = !reduce && store.get('cao_ripple') !== '0', down = false, last = 0;
+  function ripple(x, y) {
+    if (document.querySelectorAll('.lg-ripple').length > 9) return;
+    var d = document.createElement('span');
+    d.className = 'lg-ripple'; d.style.left = x + 'px'; d.style.top = y + 'px';
+    document.body.appendChild(d);
+    setTimeout(function () { d.remove(); }, 950);
+  }
+  addEventListener('pointerdown', function (e) { if (!fx || e.button > 0) return; down = true; ripple(e.clientX, e.clientY); }, true);
+  addEventListener('pointermove', function (e) { if (!fx || !down || e.timeStamp - last < 110) return; last = e.timeStamp; ripple(e.clientX, e.clientY); });
+  addEventListener('pointerup', function () { down = false; });
+  addEventListener('pointercancel', function () { down = false; });
+
+  var fa = document.querySelector('.floating-actions');
+  if (fa && !reduce) {
+    var b = document.createElement('button');
+    b.className = 'float-btn'; b.type = 'button'; b.id = 'lgRippleBtn'; b.title = 'Efek riak air'; b.textContent = '💧';
+    b.classList.toggle('lg-off', !fx);
+    b.addEventListener('click', function () {
+      fx = !fx; store.set('cao_ripple', fx ? '1' : '0');
+      b.classList.toggle('lg-off', !fx);
+      toast(fx ? 'Efek riak air aktif' : 'Efek riak air nonaktif');
+    });
+    fa.appendChild(b);
+  }
+
+  /* 4. Kabar saat ganti tema */
+  var tb = document.getElementById('themeCycleBtn');
+  if (tb) tb.addEventListener('click', function () {
+    setTimeout(function () {
+      var n = { galaxy: 'Galaxy', neon: 'Neon', midnight: 'Midnight' }[store.get('cao_theme') || 'galaxy'] || 'Galaxy';
+      toast('Tema ' + n);
+    }, 0);
+  });
+
+  /* 5. Angka statistik menghitung naik saat terlihat */
+  function countUp(el) {
+    var raw = el.textContent.trim(), m = raw.match(/^([\d.,]+)(.*)$/);
+    if (!m) return;
+    var dec = (m[1].split(',')[1] || '').length, to = parseFloat(m[1].replace(/\./g, '').replace(',', '.')), t0 = null;
+    if (!isFinite(to)) return;
+    function step(t) {
+      t0 = t0 || t;
+      var p = Math.min((t - t0) / 1300, 1), v = to * (1 - Math.pow(1 - p, 4));
+      el.textContent = p < 1 ? v.toFixed(dec).replace('.', ',') + m[2] : raw;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { io.unobserve(en.target); countUp(en.target); } });
+    }, { threshold: .5 });
+    document.querySelectorAll('.count-number, .mini-stat b').forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
 </body>
-</html> 
+</html>
